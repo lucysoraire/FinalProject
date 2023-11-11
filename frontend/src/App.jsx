@@ -7,8 +7,8 @@ import HomePage from './pages/HomePage/HomePage'
 import ContactPage from './pages/ContactPage/ContactPage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import AdminPage from './pages/AdminPage/AdminPage'
-import AboutPage from './pages/AboutPage/AboutPage'
 import AppointmentPage from './pages/AppointmentPage/AppointmentPage'
+import AboutPage from './pages/AboutPage/AboutPage'
 
 function App() {
 

@@ -13,7 +13,7 @@ app.use(morgan('dev'))
 
 app.use('/fisiosport', router) 
 
-sequelize.sync({ force: true }).then(async() => {  
+sequelize.sync({ alter: true }).then(async() => {  
     app.listen(PORT, () => { 
         console.log('server on port 3001');
     }) 
