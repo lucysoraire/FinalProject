@@ -16,5 +16,5 @@ app.use('/fisiosport', router)
 sequelize.sync({ alter: true }).then(async() => {  
     app.listen(PORT, () => { 
         console.log('server on port 3001');
-    }) 
+    })  
 })     

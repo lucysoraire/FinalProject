@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
                 autoIncrement: true
             },
             date: {
-                type: DataTypes.STRING,
+                type: DataTypes.DATE,
             },
             hour: {
                 type: DataTypes.STRING
