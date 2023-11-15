@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import AdminPage from './pages/AdminPage/AdminPage'
 import AppointmentPage from './pages/AppointmentPage/AppointmentPage'
 import AboutPage from './pages/AboutPage/AboutPage'
+import RegisterPage from './pages/RegisterPage/RegisterPage'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/contacto' element={<ContactPage />} />
         <Route path='/login' element={<LoginPage />} />
+        <Route path='/register' element={<RegisterPage />} />
         <Route path='/admin' element={<AdminPage />} />
         <Route path='/turno' element={<AppointmentPage />} />
         <Route path='/about' element={<AboutPage />} />

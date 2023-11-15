@@ -1,15 +1,10 @@
-import { useNavigate } from 'react-router-dom';
-import './LoginPage.css'
+import './RegisterPage.css'
 import { useState } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
-import { userAuth } from '../../Redux/Actions/Actions';
+import { useNavigate } from 'react-router-dom';
 
-
-const LoginPage = () => {
-
-    const dispatch = useDispatch()
+const RegisterPage = () => {
 
     const navigate = useNavigate();
 
@@ -25,11 +20,11 @@ const LoginPage = () => {
         })
     }
 
-    const login = (event) => {
+    const login = async(event) => {
         event.preventDefault()
         const errors = Object.values(user)
         if(errors.includes('')) return
-        dispatch(userAuth(user))
+        const response = await axios.post('http://localhost:3001/fisiosport/user/register', user)
         setUser({
             email: '',
             password: ''
@@ -39,21 +34,21 @@ const LoginPage = () => {
     }
 
     return (
-        <div className='containerLogin'>
+        <div className='containerRegister'>
 
-        <div className='containerFormLogin'>
+        <div className='containerFormRegister'>
 
-            <form onSubmit={login} className='formLogin'>
+            <form onSubmit={login} className='formRegister'>
 
                 <input placeholder='Email' type="text" name="email" onChange={onChangeHandler} value={user.email} />
 
                 <input placeholder='Contraseña' type="password" name="password" onChange={onChangeHandler} value={user.password} />
 
-                <button className='buttonLogin' type="submit">Iniciar Sesión</button>
+                <button className='buttonRegister' type="submit">Registrarse</button>
 
-                <p className='noAccount'>¿Aún no tienes una cuenta?</p>
+                <p>¿Ya tienes una cuenta?</p>
 
-                <Link to='/register'><button className='buttonLogin' type='button'>Registrarse</button></Link>
+                <Link to='/login'><button className='buttonLogin' type='button'>Iniciar Sesion</button></Link>
 
             </form>
         </div>
@@ -61,4 +56,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default RegisterPage

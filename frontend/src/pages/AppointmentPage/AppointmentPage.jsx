@@ -40,14 +40,22 @@ const AppointmentPage = () => {
         console.log(response.data);
     }
 
+    const cancelAppointment = () => {
+        setDate(null)
+        setHour('')
+        setDisponibility([])
+    }
+
     return (
         <div className='containerAppointment'>
+             {/* MUESTRA LA FECHA Y HORARIOS SELECCIONADOS */}
             {date && <div>
                 <p>Turno</p>
                 <p>Fecha: {date.toLocaleDateString()}</p>
                 <p>Hora: {hour}</p>
                
             </div>}
+            {/* CONTENEDOR DEL CALENDARIO Y HORARIOS */}
             <div className='containerCalendar'>
 
                 <Calendar
@@ -74,7 +82,7 @@ const AppointmentPage = () => {
                                 className='hours'
                                 key={index}
                                 onClick={() => setHour(horario)}
-                                disabled={disponibility.some(item => item.hour === horario && item.total_people === '4')}
+                                disabled={disponibility.some(item => item.hour === horario && item.total_people === '4') || !date}
                             >
                                 {horario}
                             </button>
@@ -82,9 +90,10 @@ const AppointmentPage = () => {
                     </div>
                 </div>
             </div>
+             {/* CONTENEDOR BOTONES PARA RESERVAR O CANCELAR EL TURNO */}
             <div>
                 <button onClick={reserveAppointment}>Reservar</button>
-                <button>Cancelar</button>
+                <button onClick={cancelAppointment}>Cancelar</button>
             </div>
         </div>
     )
