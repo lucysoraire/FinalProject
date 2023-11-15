@@ -1,14 +1,46 @@
-const { Appointment } = require('../../db')
+const { Appointment, Patient } = require('../../db')
 const { Sequelize } = require('sequelize');
 
 const allAppointments = async () => {
 
-    const appointments = await Appointment.findAll({ order: [['id_appointment', 'ASC']] })
-    return appointments
+    const appointments = await Appointment.findAll(
+        {
+            order: [['id_appointment', 'ASC']],
+            include: [
+                {
+                    model: Patient,
+                    as: 'Patient'
+                }
+            ]
+        }
+    )
+    const appointmentsClean = appointments.map(appointment => {
+        // Copiar el objeto original
+        const nuevoAppointment = { ...appointment.dataValues };
+
+        // Convertir la fecha en el objeto principal
+        const fechaOriginal = new Date(appointment.date);
+        const dia = fechaOriginal.getDate();
+        const mes = fechaOriginal.getMonth() + 1;
+        const ano = fechaOriginal.getFullYear();
+        nuevoAppointment.date = `${dia}/${mes}/${ano}`;
+
+        // Convertir la fecha en el objeto "Patient"
+        if (appointment.Patient && appointment.Patient.createdAt) {
+            const fechaOriginalPatient = new Date(appointment.Patient.createdAt);
+            const diaPatient = fechaOriginalPatient.getDate();
+            const mesPatient = fechaOriginalPatient.getMonth() + 1;
+            const anoPatient = fechaOriginalPatient.getFullYear();
+            nuevoAppointment.Patient.createdAt = `${diaPatient}/${mesPatient}/${anoPatient}`;
+        }
+
+        return nuevoAppointment;
+    });
+
+    return appointmentsClean
 }
 
 const getDisponibilityHour = async (selectedDate) => {
-    console.log('llegue');
     const turnosPorFecha = await Appointment.findAll({
         where: {
             date: selectedDate,

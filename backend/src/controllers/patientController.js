@@ -2,6 +2,7 @@ const { Patient, User } = require('../../db')
 
 const allPatients = async () => {
     const patients = await Patient.findAll({ order: [['id_patient', 'ASC']] })
+    console.log(patients);
     return patients
 }
 
@@ -13,6 +14,7 @@ const createData = async ({ name, lastname, phone, dni, email }) => {
         dni,
         email
     })
+    console.log(createData);
     return dataCreated 
 }
 

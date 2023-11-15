@@ -1,7 +1,15 @@
-const { MedicalHistory } = require('../../db')
+const { MedicalHistory, Patient } = require('../../db')
 
 const allMedicalHistories = async () => {
-    const medicalHistories = await MedicalHistory.findAll({ order: [['id_patient', 'ASC']] })
+    const medicalHistories = await MedicalHistory.findAll(
+        {
+            order: [['id_patient', 'ASC']],
+            include: [{
+                model: Patient,
+                as: 'Patient'
+            }]
+        }
+    )
     return medicalHistories
 }
 

@@ -22,11 +22,11 @@ const searchUser = async (email, password) => {
     })
     if (!user) return { message: "usuario no registrado" };
     const passwordCompare = await verify(password, user.password)
-    if (!passwordCompare) return {  authenticated: passwordCompare, isAdmin: false };
+    if (!passwordCompare) return {  authenticated: passwordCompare, isAdmin: false, email: null };
     return {
         authenticated: passwordCompare,
         isAdmin: user.isAdmin,
-        userId: user.id
+        email: user.email
     }
 }
 
