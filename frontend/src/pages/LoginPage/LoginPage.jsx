@@ -4,7 +4,7 @@ import { useState } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
-import { userAuth } from '../../Redux/Actions/Actions';
+import { getPatientInfo, userAuth } from '../../Redux/Actions/Actions';
 
 
 const LoginPage = () => {
@@ -26,15 +26,13 @@ const LoginPage = () => {
     }
 
     const login = (event) => {
+
         event.preventDefault()
+
         const errors = Object.values(user)
         if(errors.includes('')) return
         dispatch(userAuth(user))
-        setUser({
-            email: '',
-            password: ''
-        })
-
+        dispatch(getPatientInfo(user.email))
         navigate('/')
     }
 

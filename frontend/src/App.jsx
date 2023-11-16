@@ -10,11 +10,14 @@ import AdminPage from './pages/AdminPage/AdminPage'
 import AppointmentPage from './pages/AppointmentPage/AppointmentPage'
 import AboutPage from './pages/AboutPage/AboutPage'
 import RegisterPage from './pages/RegisterPage/RegisterPage'
+import Nav from './components/NavBar/Nav'
+import PatientInfo from './pages/PatientInfo/PatientInfo'
 
 function App() {
 
   return (
     <div className='app'>
+      <Nav />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/contacto' element={<ContactPage />} />
@@ -23,6 +26,7 @@ function App() {
         <Route path='/admin' element={<AdminPage />} />
         <Route path='/turno' element={<AppointmentPage />} />
         <Route path='/about' element={<AboutPage />} />
+        <Route path='/info' element={<PatientInfo />} />
       </Routes>
     </div>
   )

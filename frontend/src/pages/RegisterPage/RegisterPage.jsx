@@ -25,12 +25,9 @@ const RegisterPage = () => {
         const errors = Object.values(user)
         if(errors.includes('')) return
         const response = await axios.post('http://localhost:3001/fisiosport/user/register', user)
-        setUser({
-            email: '',
-            password: ''
-        })
+        
 
-        navigate('/')
+        navigate('/login')
     }
 
     return (

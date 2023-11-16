@@ -2,9 +2,16 @@ const { Patient, User } = require('../../db')
 
 const allPatients = async () => {
     const patients = await Patient.findAll({ order: [['id_patient', 'ASC']] })
-    console.log(patients);
     return patients
 }
+
+const getPatient = async (userId) => {
+    const patient = await Patient.findOne({
+        where: { email: userId }
+    });
+    console.log(patient);
+    return patient;
+};
 
 const createData = async ({ name, lastname, phone, dni, email }) => {
     const dataCreated = await Patient.create({
@@ -36,5 +43,6 @@ module.exports = {
     allPatients,
     createData,
     updateData,
-    deleteData
+    deleteData,
+    getPatient
 }
