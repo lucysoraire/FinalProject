@@ -28,7 +28,7 @@ const HomePage = () => {
         />
         <div className="textocontainer1">
           <p className="descripcionchristian">
-          <h2 className="titulosobremi">SOBRE MÍ</h2>
+          <h2 className="titulosobremi">Sobre mí</h2>
           <hr />
           <br />
             <b className="holaatodos">¡Hola a todos!</b><br></br>
