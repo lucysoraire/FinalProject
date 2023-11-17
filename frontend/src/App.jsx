@@ -9,11 +9,13 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import AdminPage from './pages/AdminPage/AdminPage'
 import ShiftsPage from './pages/ShiftsPage/ShiftsPage'
 import AboutPage from './pages/AboutPage/AboutPage'
+import NavBar from './components/NavBar/NavBar'
 
 function App() {
 
   return (
     <div className='app'>
+<NavBar></NavBar>
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/contacto' element={<ContactPage />} />
