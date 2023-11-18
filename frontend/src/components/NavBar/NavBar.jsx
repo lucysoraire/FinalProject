@@ -26,15 +26,17 @@ const NavBar = () => {
                         <i class="fa-solid fa-house "></i><NavLink to="/"> Inicio</NavLink>
                         </li>
                         <li>
-                        <i class="fa-solid fa-calendar-days"></i> <NavLink to="/products"> Turnos</NavLink>
+                        <i class="fa-solid fa-calendar-days"></i> <NavLink to="/turno"> Turnos</NavLink>
                         </li>
                         <li>
                             <NavLink to="/about"><i class="fa-solid fa-phone"></i> Contacto</NavLink>
                         </li>
                         <div>
                         <li> 
-                            <NavLink to="/contact" activeClassName="active"><i class="fa-solid fa-user"></i> Iniciar Sesión</NavLink>
-                        </li></div>
+                            <NavLink to="/login" activeClassName="active"><i class="fa-solid fa-user"></i> Iniciar Sesión</NavLink>
+                        </li>
+                        
+                        </div>
 
                     </ul>
                 </div>
