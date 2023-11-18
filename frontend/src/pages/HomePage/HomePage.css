@@ -1,0 +1,114 @@
+.videointro{
+width: 100%;
+margin: 0;
+padding: 0;
+height: 100vh;
+object-fit:cover;
+margin-top: 80px;
+}
+
+.container1{
+    display: flex;
+    align-items: center;
+    padding: 30px 70px;
+
+}
+
+
+.fotochristian{
+    width: 600px;
+    border-radius: 30px;
+}
+
+.descripcionchristian{
+    padding: 0px 50px 0px 100px;
+    text-align: justify;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.link{
+    color: black;
+   
+}
+
+.titulosobremi{
+    font-size: 30px;
+    color: #465BA6;
+    text-align: center;
+}
+
+.holaatodos{
+    color:#F08C30;
+    font-size: 18px;
+}
+
+.primercomentario{
+    width: 90%;
+    border: 1.5px solid #000000;
+    border-radius: 30px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.primercomentario:hover{
+    transform: scale(0.95);
+}
+
+
+.comentarios{
+    display:flex;
+    text-align: start;
+    margin-left:  100px;
+
+}
+
+hr{
+    margin-top: 20px;
+}
+
+.linkreseñas{
+    color: #000000;
+}
+
+.reseña{
+    width:30%;
+    padding: 20px;
+    border: 1.5px solid #000000;
+    border-radius: 30px;
+    margin-top: 20px;
+    background-color:   #FFFFFF;
+    color: #000000;
+}
+.reseña:hover{
+    transform: scale(0.95);
+    
+}
+.nombrereseña{
+    font-size: 18px;
+}
+
+.reseñas{
+    display: flex;
+    gap: 20px;
+    font-size: 16px;
+}
+.titulovideo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.titulosobrevideo{
+    position: absolute;
+    color: white;
+    background-color: #465ba6b9;
+    padding: 30px;
+    border-radius: 60px;
+    border: 1px solid white;
+    text-decoration: none;
+}
+
+.titulosobrevideo:hover{
+    transform: scale(0.95);
+}
