@@ -10,6 +10,7 @@ import AdminPage from './pages/AdminPage/AdminPage'
 import ShiftsPage from './pages/ShiftsPage/ShiftsPage'
 import AboutPage from './pages/AboutPage/AboutPage'
 import NavBar from './components/NavBar/NavBar'
+import Footer from './components/Footer/Footer'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='/turno' element={<ShiftsPage />} />
         <Route path='/about' element={<AboutPage />} />
       </Routes>
+      <Footer></Footer>
     </div>
   )
 }
