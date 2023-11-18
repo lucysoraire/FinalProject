@@ -1,12 +1,82 @@
+.containerAppointment {
+    height: 450px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerCalendarAndInfo {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+/*----- texto con informacion del turno  --------*/
+.appointmentDetail {
+
+    width: 20%;
+    height: 85%;
+}
+
+.containerDetail {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.containerDetail p span {
+    color: #F08C30;
+    letter-spacing: 1px;
+}
+
+.appointmentDetail-title {
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 18px;
+    color: #465BA6;
+}
+
 .containerCalendar {
     display: flex;
-    height: 300px;
+    height: 90%;
+    width: 40%;
+    padding: 15px;
+    padding-right: 1px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgb(34, 34, 34);
 }
 
 .calendar {
-    width:800px;
-    border: 1px solid white;
+    width:480px;
+
 }
+
+/* ---------- BOTONES DE LOS DIAS  ---------------*/
+
+.react-calendar__tile {
+    border: none;
+    width:5px;
+    height: 50px;
+    background: none;
+    font-weight:500;
+}
+
+.react-calendar__tile.disabled {
+    background: none;
+}
+
+.react-calendar__tile--active {
+    background-color: #465BA6;
+    border-radius: 50%;
+    color: white;
+}
+
+/* ---------- PARA LOS DIAS DESHABILITADOS --------------*/
 
 .disabled {
 background-color: gray;
@@ -14,21 +84,97 @@ background-color: gray;
     pointer-events: none;
 }
 
+/*------------- HORAS ------------------*/
+
 .containerTime {
     display: flex;
     flex-direction: column;
-    width: 100px;
-    border: 1px solid white;
+    align-items: center;
+    width: 150px;
+    
 }
 
 .containerHours {
-    max-height: 100%; /* altura maxima */
+    max-height: 500px; /* altura maxima */
     overflow-y: auto; /* Añade un scroll*/
-    border: 1px solid #ccc; /
+
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 5px;
 }
 
 
 .hours {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #465BA6;
+    border-radius: 5px;
+    background: none;
+    height: 500px !important;
+    cursor: pointer;
+}
+
+.hours:hover {
+    background-color: #465BA6;
+    color: white;
+}
+
+/*----- TITULO DEL MES --------*/
+.react-calendar__navigation__label {
+    width: 200px;
+    height: 30px;
+    border: none;
+    background: none;
+    font-weight: 600;
+    font-size: 18px;
+    color: #465BA6;
+}
+/*----- BOTONES PARA CAMBIAR DE MES  --------*/
+.react-calendar__navigation__arrow {
+    width: 30px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    font-weight: 700;
+    
+}
+
+.react-calendar__navigation__arrow:hover {
+    background-color: #F08C30;
+    border-radius: 50%;
+    color: white;
+}
+
+/*----- texto de cada dia  --------*/
+.react-calendar__month-view__weekdays div abbr{
+    color: #465BA6;
+    text-decoration: none;
+}
+
+.react-calendar__month-view__weekdays {
+    border-bottom: 1px solid #F08C30;
+}
+
+/*----- botones para confirmar o cancelar  --------*/
+.containerButtonsCalendar {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.containerButtonsCalendar button {
+    width: 200px;
+    height: 35px;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    background-color: #465BA6;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 1px;
 }

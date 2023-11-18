@@ -18,7 +18,7 @@ const AdminPage = () => {
     }, [])
     
     return (
-        <div>
+        <div className='containerAdmin'>
             <SideBar setCurrentSelection={setCurrentSelection}></SideBar>
             <Content currentSelection={currentSelection}></Content>
         </div>

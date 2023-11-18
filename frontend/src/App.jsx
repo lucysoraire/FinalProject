@@ -15,6 +15,7 @@ import RegisterPage from './pages/RegisterPage/RegisterPage'
 import PatientInfo from './pages/PatientInfo/PatientInfo'
 
 function App() {
+    
 
   return (
     <div className='app'>

@@ -10,6 +10,7 @@ const AppointmentPage = () => {
     const [hour, setHour] = useState('')
     const [disponibility, setDisponibility] = useState([])
 
+    
     // deshabilitar los dias que ya pasaron
     const today = new Date();
 
@@ -22,7 +23,7 @@ const AppointmentPage = () => {
         const response = await axios.post('http://localhost:3001/fisiosport/appointment/disponibility', {
             selectedDate: newDate
         })
-       setDisponibility(response.data)
+        setDisponibility(response.data)
     };
 
     // Array con los horarios de 9am a 6pm
@@ -48,52 +49,60 @@ const AppointmentPage = () => {
 
     return (
         <div className='containerAppointment'>
-             {/* MUESTRA LA FECHA Y HORARIOS SELECCIONADOS */}
-            {date && <div>
-                <p>Turno</p>
-                <p>Fecha: {date.toLocaleDateString()}</p>
-                <p>Hora: {hour}</p>
-               
-            </div>}
-            {/* CONTENEDOR DEL CALENDARIO Y HORARIOS */}
-            <div className='containerCalendar'>
+            {/* MUESTRA LA FECHA Y HORARIOS SELECCIONADOS */}
+            <div className='containerCalendarAndInfo'>
 
-                <Calendar
-                    className='calendar'
-                    onChange={onChange}
-                    value={date}
-                    minDate={today}
-                    tileClassName={({ date, view }) => {
-                        if (view === 'month') {
-                            if (isWeekend(date) || date < today) {
-                                return 'disabled'; // Agrega la clase 'disabled' a los días deshabilitados
+                {/* CONTENEDOR DEL CALENDARIO Y HORARIOS */}
+                <div className='containerCalendar'>
+
+                    <Calendar
+                        className='calendar'
+                        onChange={onChange}
+                        value={date}
+                        minDate={today}
+                        tileClassName={({ date, view }) => {
+                            if (view === 'month') {
+                                if (isWeekend(date) || date < today) {
+                                    return 'disabled'; // Agrega la clase 'disabled' a los días deshabilitados
+                                }
                             }
-                        }
-                    }}
+                        }}
 
-                />
-                <div className='containerTime'>
-                    <div className='titleTime'>
-                        <p>Horarios</p>
-                    </div>
-                    <div className='containerHours'>
-                        {horarios.map((horario, index) => (
-                            <button
-                                className='hours'
-                                key={index}
-                                onClick={() => setHour(horario)}
-                                disabled={disponibility.some(item => item.hour === horario && item.total_people === '4') || !date}
-                            >
-                                {horario}
-                            </button>
-                        ))}
+                    />
+                    <div className='containerTime'>
+                        <div className='titleTime'>
+                            <p>Horarios</p>
+                        </div>
+                        <div className='containerHours'>
+                            {horarios.map((horario, index) => (
+                                <button
+                                    className='hours'
+                                    key={index}
+                                    onClick={() => setHour(horario)}
+                                    disabled={disponibility.some(item => item.hour === horario && item.total_people === '4') || !date}
+                                >
+                                    {horario}
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
+                {<div className='appointmentDetail'>
+                    <p className='appointmentDetail-title'>Detalles del turno</p>
+                    <div className='containerDetail'>
+                        <p><span>Direccion:</span> Álvarez Condarco 1205, altura Av. Coronel Suárez 1200</p>
+                        <p><span>Telefono:</span> </p>
+                        <p><span>Email:</span> </p>
+                        <p><span>Fecha:</span> {date && date.toLocaleDateString()}</p>
+                        <p><span>Hora:</span> {date && hour}</p>
+                    </div>
+
+                </div>}
             </div>
-             {/* CONTENEDOR BOTONES PARA RESERVAR O CANCELAR EL TURNO */}
-            <div>
-                <button onClick={reserveAppointment}>Reservar</button>
-                <button onClick={cancelAppointment}>Cancelar</button>
+            {/* CONTENEDOR BOTONES PARA RESERVAR O CANCELAR EL TURNO */}
+            <div className='containerButtonsCalendar'>
+                <button onClick={reserveAppointment}>Confirmar turno</button>
+                <button onClick={cancelAppointment}>Cancelar turno</button>
             </div>
         </div>
     )
