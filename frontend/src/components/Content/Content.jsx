@@ -1,4 +1,5 @@
 import Appointments from '../Appointments/Appointments';
+import Dashboard from '../Dashboard/Dashboard';
 import MedicalHistory from '../MedicalHistory/MedicalHistory';
 import Patients from '../Patients/Patients';
 import './Content.css'
@@ -14,7 +15,7 @@ const Content = ({currentSelection}) => {
           case 'Appointments':
             return <Appointments />
           default:
-            return <div>INICIO</div>
+            return <Dashboard />
         }
       };
 

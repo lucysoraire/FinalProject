@@ -15,11 +15,12 @@ import RegisterPage from './pages/RegisterPage/RegisterPage'
 import PatientInfo from './pages/PatientInfo/PatientInfo'
 
 function App() {
-    
+
+  const location = useLocation()
 
   return (
     <div className='app'>
-      <NavBar></NavBar>
+      {location.pathname !== '/admin' && <NavBar/>}
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/contacto' element={<ContactPage />} />
@@ -30,7 +31,7 @@ function App() {
         <Route path='/about' element={<AboutPage />} />
         <Route path='/info' element={<PatientInfo />} />
       </Routes>
-      <Footer></Footer>
+      {location.pathname !== '/admin' && <Footer/>}
     </div>
   )
 }
