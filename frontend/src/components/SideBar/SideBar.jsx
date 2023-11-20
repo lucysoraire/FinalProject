@@ -5,6 +5,8 @@ import { BsCalendar2Date } from "react-icons/bs";
 import { IoPersonOutline, IoHomeOutline } from "react-icons/io5";
 import { RiFolderHistoryLine } from "react-icons/ri";
 import { FiLogOut } from "react-icons/fi";
+import { MdOutlineDashboard } from "react-icons/md";
+
 
 const SideBar = ({ setCurrentSelection }) => {
 
@@ -15,6 +17,7 @@ const SideBar = ({ setCurrentSelection }) => {
             </div>
             <div className='containerOptionsMenu'>
                 <ul className='ulMenu'>
+                    <li onClick={() => setCurrentSelection('Dashboard')}><MdOutlineDashboard className='react-icons' />Dashboard</li>
                     <li onClick={() => setCurrentSelection('Patients')}><IoPersonOutline className='react-icons' />Pacientes</li>
                     <li onClick={() => setCurrentSelection('MedicalHistory')}><RiFolderHistoryLine className='react-icons' />Historial Clinico</li>
                     <li onClick={() => setCurrentSelection('Appointments')}><BsCalendar2Date className='react-icons' />Turnos</li>

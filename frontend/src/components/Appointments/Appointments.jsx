@@ -13,7 +13,7 @@ const Appointments = () => {
     const dispatch = useDispatch()
 
     const appointments = useSelector(state => state.appointments)
-
+    console.log(appointments);
     const columns = React.useMemo(
         () => [
             {

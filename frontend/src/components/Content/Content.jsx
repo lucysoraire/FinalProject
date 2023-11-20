@@ -4,26 +4,28 @@ import MedicalHistory from '../MedicalHistory/MedicalHistory';
 import Patients from '../Patients/Patients';
 import './Content.css'
 
-const Content = ({currentSelection}) => {
+const Content = ({ currentSelection }) => {
 
-    const renderSection = () => {
-        switch (currentSelection) {
-          case 'Patients':
-            return <Patients />;
-          case 'MedicalHistory':
-            return <MedicalHistory />;
-          case 'Appointments':
-            return <Appointments />
-          default:
-            return <Dashboard />
-        }
-      };
+  const renderSection = () => {
+    switch (currentSelection) {
+      case 'Patients':
+        return <Patients />;
+      case 'MedicalHistory':
+        return <MedicalHistory />;
+      case 'Appointments':
+        return <Appointments />
+      case 'Dashboard':
+        return <Dashboard />
+      default:
+        return <Dashboard />
+    }
+  };
 
-    return (
-        <div className='containerContent'>
-            {renderSection()}
-        </div>
-    )
+  return (
+    <div className='containerContent'>
+      {renderSection()}
+    </div>
+  )
 }
 
 export default Content
