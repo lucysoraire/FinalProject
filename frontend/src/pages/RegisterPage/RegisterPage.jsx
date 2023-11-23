@@ -33,9 +33,16 @@ const RegisterPage = () => {
     return (
         <div className='containerRegister'>
 
+        <div className='containerTittle'>
+            <h1> ¡Bienvenido a tu inicio de Sesión! </h1>
+            <p> Registrate y sé parte </p>
+        </div>
+
         <div className='containerFormRegister'>
 
             <form onSubmit={login} className='formRegister'>
+
+                <h1 className='registerTittle'> Registrarse </h1>
 
                 <input placeholder='Email' type="text" name="email" onChange={onChangeHandler} value={user.email} />
 
