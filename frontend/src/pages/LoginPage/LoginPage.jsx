@@ -38,8 +38,13 @@ const LoginPage = () => {
 
     return (
         <div className='containerLogin'>
+            <div className='messageLogin'>
+                <h1>¡Bienvenido a tu inicio de Sesión!</h1>
+                <p>Regístrate y sé parte</p>
+            </div>
 
         <div className='containerFormLogin'>
+        <p className='pprincipal'>Iniciar Sesion</p> 
 
             <form onSubmit={login} className='formLogin'>
 
