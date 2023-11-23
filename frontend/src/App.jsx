@@ -22,6 +22,7 @@ function App() {
     <div className='app'>
       {location.pathname !== '/admin' &&
       location.pathname !== '/login' &&
+      location.pathname !== '/register' &&
       <NavBar/>}
       <Routes>
         <Route path='/' element={<HomePage />} />
@@ -33,8 +34,9 @@ function App() {
         <Route path='/about' element={<AboutPage />} />
         <Route path='/info' element={<PatientInfo />} />
       </Routes>
-      {location.pathname !== '/admin' && <Footer/> &&
-      location.pathname !== '/login'
+      {location.pathname !== '/admin' &&
+      location.pathname !== '/login' &&
+      location.pathname !== '/register' && <Footer/>
       }
     </div> 
   )  
