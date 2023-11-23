@@ -73,11 +73,17 @@ const Dashboard = () => {
         <div className="containerDashboard">
             <div className='titleDashboard'>
                 <p>Dashboard</p>
-                <p>=</p>
             </div>
             <div className='containerWelcomeDashboard'>
                 <div className='welcomeDashboard'>
-                    <p>Bienvenido, Christian Fabián Núñez Coso</p>
+                    <div>
+                        <b>Bienvenido,</b>
+                        <p>Christian Fabián Núñez Coso</p>
+                    </div>
+                    <div>
+                        <img src="https://stg.fundacionsantafedebogota.com/sites/default/files/styles/large/public/2022-10/dr-home.png?itok=j0px4kRI" alt="" />
+
+                    </div>
                 </div>
                 <div className='stats'>
                     <div className='containerIconsDashboardStats'>
@@ -100,7 +106,7 @@ const Dashboard = () => {
             </div>
             <div className='containerChart'>
                 <p>Turnos de la semana</p>
-                {<Bar data={data} className='barChart'/>}
+                {<Bar data={data} className='barChart' />}
             </div>
         </div>
     )

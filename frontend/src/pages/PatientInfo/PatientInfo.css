@@ -1,0 +1,84 @@
+.containerPatientInfo { 
+    height: 84vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.containerFormPatientInfo {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formPatientInfo {
+    width: 70%;
+    height: 90%;
+    box-shadow: 0px 0px 8px rgb(124, 124, 124);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.formInfo {
+    width: 80%;
+    height: 85%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}   
+
+.formInfo p {
+    font-size: 25px;
+    color: #F08C30;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.labelsAndInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.labelsAndInputs input {
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #bebebe;
+    padding-left: 9px;
+    height: 30px;
+}
+
+.containerButtonSubmit {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerButtonSubmit button {
+    width: 50%;
+    height: 30px;
+    border-radius: 8px;
+    background-color: #465BA6;
+    border: none;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.containerButtonSubmit button:hover {
+    background-color:#F08C30;
+}
+
+.textPatientInfo {
+    width: 35%;
+    border: 1px solid black;
+    height: 90%;
+}

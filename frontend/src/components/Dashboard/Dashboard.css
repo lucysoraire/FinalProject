@@ -26,7 +26,7 @@
 
 .containerWelcomeDashboard {
     width: 95%;
-    height: 30%;
+    height: 210px;
     display: flex;
     justify-content: center;
     padding: 10px;
@@ -35,8 +35,40 @@
 
 .welcomeDashboard {
     width: 55%;
+    height: 100%;
     background-color: #465BA6;
     border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.welcomeDashboard img {
+    height: 100%;
+    margin: 0;
+}
+
+.welcomeDashboard div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    height: 100%;
+    max-height: 100%;
+    padding-left: 10px;
+    padding-right: 50px;
+
+}
+
+.welcomeDashboard p {
+    color: #ff932d;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.welcomeDashboard b {
+    color: white;
+    font-size: 24px;
 }
 
 .stats {
