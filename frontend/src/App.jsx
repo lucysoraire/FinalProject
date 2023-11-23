@@ -20,7 +20,9 @@ function App() {
 
   return (
     <div className='app'>
-      {location.pathname !== '/admin' && <NavBar/>}
+      {location.pathname !== '/admin' &&
+      location.pathname !== '/login' &&
+      <NavBar/>}
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/contacto' element={<ContactPage />} />
@@ -31,9 +33,11 @@ function App() {
         <Route path='/about' element={<AboutPage />} />
         <Route path='/info' element={<PatientInfo />} />
       </Routes>
-      {location.pathname !== '/admin' && <Footer/>}
-    </div>
-  )
+      {location.pathname !== '/admin' && <Footer/> &&
+      location.pathname !== '/login'
+      }
+    </div> 
+  )  
 }
 
 export default App
