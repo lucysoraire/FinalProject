@@ -10,11 +10,11 @@ const PatientInfo = () => {
     const patientInfo = useSelector((state) => state.patientInfo);
     useEffect(() => {
         setFormData({
-            name: patientInfo.name,
-            lastname: patientInfo.lastname,
-            phone: patientInfo.phone,
-            dni: patientInfo.dni,
-            email: patientInfo.email
+            name: patientInfo?.name,
+            lastname: patientInfo?.lastname,
+            phone: patientInfo?.phone,
+            dni: patientInfo?.dni,
+            email: patientInfo?.email
         })
     }, [patientInfo])
 
@@ -46,7 +46,7 @@ const PatientInfo = () => {
     };
 
     const updatePatient = () => {
-        dispatch(updatePatientInfo(patientInfo.id_patient, formData))
+        dispatch(updatePatientInfo(patientInfo?.id_patient, formData))
     }
 
     return (
@@ -83,7 +83,7 @@ const PatientInfo = () => {
                                     type="text"
                                     name="name"
                                     id="name"
-                                    value={formData.name}
+                                    value={formData?.name}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -93,7 +93,7 @@ const PatientInfo = () => {
                                     type="text"
                                     name="lastname"
                                     id="lastname"
-                                    value={formData.lastname}
+                                    value={formData?.lastname}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -103,7 +103,7 @@ const PatientInfo = () => {
                                     type="text"
                                     name="phone"
                                     id="phone"
-                                    value={formData.phone}
+                                    value={formData?.phone}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -113,7 +113,7 @@ const PatientInfo = () => {
                                     type="text"
                                     name="dni"
                                     id="dni"
-                                    value={formData.dni}
+                                    value={formData?.dni}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -123,7 +123,7 @@ const PatientInfo = () => {
                                     type="email"
                                     name="email"
                                     id="email"
-                                    value={formData.email}
+                                    value={formData?.email}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -138,19 +138,19 @@ const PatientInfo = () => {
                                 {
                                     !edit ? (
                                         <div className='patientInfoLoged'>
-                                            <p><b>Nombre: </b>{patientInfo.name}</p>
-                                            <p><b>Apellido: </b>{patientInfo.lastname}</p>
-                                            <p><b>Telefono: </b>{patientInfo.phone}</p>
-                                            <p><b>DNI: </b>{patientInfo.dni}</p>
-                                            <p><b>Email: </b>{patientInfo.email}</p>
+                                            <p><b>Nombre: </b>{patientInfo?.name}</p>
+                                            <p><b>Apellido: </b>{patientInfo?.lastname}</p>
+                                            <p><b>Telefono: </b>{patientInfo?.phone}</p>
+                                            <p><b>DNI: </b>{patientInfo?.dni}</p>
+                                            <p><b>Email: </b>{patientInfo?.email}</p>
                                         </div>
                                     )
                                         : (
                                             <div className='labelsAndInputsLoged'>
-                                                <input type='text' name='name' value={formData.name} onChange={handleChange} />
-                                                <input type='text' name='lastname' value={formData.lastname} onChange={handleChange} />
-                                                <input type='text' name='phone' value={formData.phone} onChange={handleChange} />
-                                                <input type='text' name='dni' value={formData.dni} onChange={handleChange} />
+                                                <input type='text' name='name' value={formData?.name} onChange={handleChange} />
+                                                <input type='text' name='lastname' value={formData?.lastname} onChange={handleChange} />
+                                                <input type='text' name='phone' value={formData?.phone} onChange={handleChange} />
+                                                <input type='text' name='dni' value={formData?.dni} onChange={handleChange} />
                                                 {/*<input type='text' name='email' value={formData.email} onChange={handleChange}/>*/}
                                                 <div className='containerButtonSubmit'>
 
