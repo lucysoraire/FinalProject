@@ -11,7 +11,7 @@ export const UPDATE_PATIENT_INFO = 'UPDATE_PATIENT_INFO'
 
 export const userAuth = (user) => {
     return async(dispatch) => {
-        const response = await axios.post(`proyectofisiosport-production.up.railway.app/user/login`, user)
+        const response = await axios.post(`https://proyectofisiosport-production.up.railway.app/user/login`, user)
         return dispatch({
             type: USER_AUTH,
             payload: response.data
@@ -21,7 +21,7 @@ export const userAuth = (user) => {
 
 export const getPatients = () => {
     return async(dispatch) => {
-        const response = await axios.get(`proyectofisiosport-production.up.railway.app/patient/`)
+        const response = await axios.get(`https://proyectofisiosport-production.up.railway.app/patient/`)
         console.log(response.data);
         return dispatch({
             type: GET_ALL_PATIENTS,
@@ -32,7 +32,7 @@ export const getPatients = () => {
 
 export const getAppointments = () => {
     return async(dispatch) => {
-        const response = await axios.get(`proyectofisiosport-production.up.railway.app/appointment/all`,)
+        const response = await axios.get(`https://proyectofisiosport-production.up.railway.app/appointment/all`,)
         return dispatch({
             type: GET_ALL_APPOINTMENTS,
             payload: response.data
@@ -42,7 +42,7 @@ export const getAppointments = () => {
 
 export const getMedicalHistory = () => {
     return async(dispatch) => {
-        const response = await axios.get(`proyectofisiosport-production.up.railway.app/history`,)
+        const response = await axios.get(`https://proyectofisiosport-production.up.railway.app/history`,)
         return dispatch({
             type: GET_ALL_MEDICAL_HISTORIES,
             payload: response.data
@@ -81,7 +81,7 @@ export const savePatientInfo = (data) => {
 
 export const getPatientInfo = (userId) => {
     return async(dispatch) => {
-        const response = await axios.get(`proyectofisiosport-production.up.railway.app/patient/info/${userId}`)
+        const response = await axios.get(`https://proyectofisiosport-production.up.railway.app/patient/info/${userId}`)
         console.log(response.data);
         return dispatch({
             type: GET_PATIENT_INFO,
@@ -92,7 +92,7 @@ export const getPatientInfo = (userId) => {
 
 export const updatePatientInfo = (patientId, patient) => {
     return async(dispatch) => {
-        const response = await axios.put(`proyectofisiosport-production.up.railway.app/patient/${patientId}`, {patient})
+        const response = await axios.put(`https://proyectofisiosport-production.up.railway.app/patient/${patientId}`, {patient})
         return dispatch({
             type: UPDATE_PATIENT_INFO,
             payload: response.data
