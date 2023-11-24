@@ -20,7 +20,7 @@ const ContactPage = () => {
     }
 
     const sendMessage = async () => {
-        const response = await axios.post(`http://localhost:3001/fisiosport/contact`, { data: message })
+        const response = await axios.post(`proyectofisiosport-production.up.railway.app/contact`, { data: message })
         console.log(response.data);
         setMessage({
             name: '',
