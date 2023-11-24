@@ -2,6 +2,7 @@ import './AppointmentPage.css'
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import axios from 'axios'
+import { useSelector } from 'react-redux';
 
 
 const AppointmentPage = () => {
@@ -9,6 +10,7 @@ const AppointmentPage = () => {
     const [date, setDate] = useState(null);
     const [hour, setHour] = useState('')
     const [disponibility, setDisponibility] = useState([])
+    const patientInfo = useSelector(state => state.patientInfo)
 
     
     // deshabilitar los dias que ya pasaron
@@ -36,7 +38,7 @@ const AppointmentPage = () => {
         const response = await axios.post('https://proyectofisiosport-production.up.railway.app/fisiosport/appointment', {
             date,
             hour,
-            id_patient: 1
+            id_patient: patientInfo?.id_patient
         })
         console.log(response.data);
     }
