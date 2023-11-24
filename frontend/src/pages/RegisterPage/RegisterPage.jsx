@@ -24,7 +24,7 @@ const RegisterPage = () => {
         event.preventDefault()
         const errors = Object.values(user)
         if(errors.includes('')) return
-        const response = await axios.post('http://localhost:3001/fisiosport/user/register', user)
+        const response = await axios.post('https://proyectofisiosport-production.up.railway.app/user/register', user)
         
 
         navigate('/login')
@@ -33,9 +33,16 @@ const RegisterPage = () => {
     return (
         <div className='containerRegister'>
 
+        <div className='containerTittle'>
+            <h1> ¡Bienvenido a tu inicio de Sesión! </h1>
+            <p> Registrate y sé parte </p>
+        </div>
+
         <div className='containerFormRegister'>
 
             <form onSubmit={login} className='formRegister'>
+
+                <h1 className='registerTittle'> Registrarse </h1>
 
                 <input placeholder='Email' type="text" name="email" onChange={onChangeHandler} value={user.email} />
 
@@ -43,7 +50,7 @@ const RegisterPage = () => {
 
                 <button className='buttonRegister' type="submit">Registrarse</button>
 
-                <p>¿Ya tienes una cuenta?</p>
+                <p className='noAccount'>¿Ya tienes una cuenta?</p>
 
                 <Link to='/login'><button className='buttonLogin' type='button'>Iniciar Sesion</button></Link>
 

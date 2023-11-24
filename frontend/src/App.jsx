@@ -9,15 +9,21 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import AdminPage from './pages/AdminPage/AdminPage'
 import AppointmentPage from './pages/AppointmentPage/AppointmentPage'
 import AboutPage from './pages/AboutPage/AboutPage'
+import NavBar from './components/NavBar/NavBar'
+import Footer from './components/Footer/Footer'
 import RegisterPage from './pages/RegisterPage/RegisterPage'
-import Nav from './components/NavBar/Nav'
 import PatientInfo from './pages/PatientInfo/PatientInfo'
 
 function App() {
 
+  const location = useLocation()
+
   return (
     <div className='app'>
-      <Nav />
+      {location.pathname !== '/admin' &&
+      location.pathname !== '/login' &&
+      location.pathname !== '/register' &&
+      <NavBar/>}
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/contacto' element={<ContactPage />} />
@@ -28,8 +34,12 @@ function App() {
         <Route path='/about' element={<AboutPage />} />
         <Route path='/info' element={<PatientInfo />} />
       </Routes>
-    </div>
-  )
+      {location.pathname !== '/admin' &&
+      location.pathname !== '/login' &&
+      location.pathname !== '/register' && <Footer/>
+      }
+    </div> 
+  )  
 }
 
 export default App

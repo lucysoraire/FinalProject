@@ -1,0 +1,132 @@
+.containerPatients {   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.titlePatients {
+    width: 95%;
+    height: 60px;
+    background-color: #465BA6;
+    display: flex;
+    border-radius: 8px;
+    justify-content: left;
+    align-items: center;
+    padding-left: 3%;
+}
+.titlePatients p {
+    margin: 0;
+    font-size: 30px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.containerFilterPatients {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    width: 95%;
+    padding: 10px;
+    height: 50px;
+    gap: 10px;
+}
+
+.containerFilterPatients p {
+    margin: 0;
+}
+
+.containerFilterPatients input{
+    width: 230px;
+    height: 30px;
+    padding-left: 5px;
+    border: none;
+    border-radius: 8px;
+    background-color: #A9D0D5;
+    outline: none;
+    color: white;
+}
+
+.containerFilterPatients input:hover {
+    background-color: #F08C30;
+}
+
+.containerFilterPatients input::placeholder {
+    color: white;
+}
+
+.containerTablePatients {
+    width: 95%;
+}
+
+.containerOptionsNavigation {
+    width: 95%;
+}
+
+.containerButtonsNavigation {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.buttonNavigationPage {
+    width: 90px;
+    border-radius: 8px;
+    border: none;
+    background-color:  #465BA6;
+    color: white;
+    cursor: pointer;
+}
+
+.buttonNavigationPage:hover {
+    background-color: #F08C30;
+}
+
+.buttonsArrowsPage {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    border-radius: 50%;
+}
+
+.arrowIcon {
+    width: 25px;
+    height: 25px;
+}
+
+.buttonsArrowsPage:hover {
+    background-color: #F08C30;
+    color: white;
+    cursor: pointer;;
+}
+
+.numberOfPage {
+    width: 95%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+}
+
+.table th,
+.table td{
+    
+}
+
+.table th {
+    background-color:  #465BA6;
+    color: white;
+}
+
+.table tr:hover {
+    background-color: red !important;
+   
+}   
