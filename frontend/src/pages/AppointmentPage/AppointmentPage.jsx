@@ -91,8 +91,8 @@ const AppointmentPage = () => {
                     <p className='appointmentDetail-title'>Detalles del turno</p>
                     <div className='containerDetail'>
                         <p><span>Direccion:</span> Álvarez Condarco 1205, altura Av. Coronel Suárez 1200</p>
-                        <p><span>Telefono:</span> </p>
-                        <p><span>Email:</span> </p>
+                        <p><span>Telefono:</span> 3813545337</p>
+                        <p><span>Email:</span> kinchristianfabian@gmail.com</p>
                         <p><span>Fecha:</span> {date && date.toLocaleDateString()}</p>
                         <p><span>Hora:</span> {date && hour}</p>
                     </div>
