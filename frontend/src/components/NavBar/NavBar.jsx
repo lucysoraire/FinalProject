@@ -41,7 +41,7 @@ const NavBar = () => {
                                 userAuth.authenticated && !userAuth.isAdmin && <li><NavLink to="/info" activeClassName="active"><i class="fa-solid fa-user"></i>Informacion Personal</NavLink></li>
                             }
                             {   
-                                userAuth.isAdmin && <li><NavLink to="/admin" activeClassName="active"><MdOutlineDashboard className='react-icon-nav' />Dashboard</NavLink></li>
+                                userAuth.isAdmin && <li><i class="fa-solid fa-table"></i><NavLink to="/admin" activeClassName="active">Dashboard</NavLink></li>
                             }
                             
                         </div>

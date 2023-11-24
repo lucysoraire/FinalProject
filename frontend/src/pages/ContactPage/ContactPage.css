@@ -55,7 +55,7 @@
     padding: 20px;
     
     overflow: hidden;
-    border: solid 1px #E4E2DD;
+    border: solid 3px #F08C30;
     
     
     
@@ -88,16 +88,19 @@
     .botonenviar {
         width: 80%;
         border-radius: 50px;
-        background-color: #051e6aa6;
+        background-color: #465BA6;
         font-weight: 600;
         letter-spacing: 2px;
+        color: white;
     
     }
     .botonenviar:hover {
-        background-color: #051e6aa6;
+        background-color: #F08C30;
     } 
 #pcontact {
         font-size: 50px;
         font-weight: 200px;
         font-family: Arial, Helvetica, sans-serif;
+        color: #F08C30;
+        text-shadow: 0 0 5px rgb(94, 94, 94);
     } 

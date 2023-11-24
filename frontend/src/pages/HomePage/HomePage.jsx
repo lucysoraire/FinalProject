@@ -20,7 +20,7 @@ const HomePage = () => {
 
 <div className="titulovideo">
       <video src={Intro} className="videointro" autoPlay loop />
-      <Link to="/turnos" className="titulosobrevideo"><h1>Solicite su turno</h1></Link>
+      <Link to="/turno" className="titulosobrevideo"><h1>Solicite su turno</h1></Link>
       </div>
 
       <div className="container1">

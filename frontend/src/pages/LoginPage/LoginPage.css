@@ -71,8 +71,10 @@
     height: 40px;
     width: 100% ;
     background-color: #E4E2DD;
-    color: #0d2d6e; 
+    color: #465BA6; 
     outline: none;
+    border-radius: 8px;
+    padding-left: 10px;
 }
 .formLogin input:focus {
     border: 2px solid #0b92a7bb;
@@ -88,15 +90,18 @@
 .buttonLogin {
     width: 100%;
     border-radius: 50px;
-    background-color: #0b92a7bb;
+    background-color: #465BA6;
     font-weight: 600;
     letter-spacing: 2px;
+    color: white;
+    height: 40px;
 }
 .buttonLogin:hover {
-    background-color: #0b92a7bb;
+    background-color: #F08C30;
 } 
 .noAccount {
     margin:0;
+    color: white;
 }
 .pprincipal {
     border: none;

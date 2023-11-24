@@ -50,7 +50,7 @@ const RegisterPage = () => {
 
                 <button className='buttonRegister' type="submit">Registrarse</button>
 
-                <p>¿Ya tienes una cuenta?</p>
+                <p className='noAccount'>¿Ya tienes una cuenta?</p>
 
                 <Link to='/login'><button className='buttonLogin' type='button'>Iniciar Sesion</button></Link>
 
