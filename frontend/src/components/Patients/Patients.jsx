@@ -1,43 +1,80 @@
 import React, { useEffect, useState } from 'react';
 import { useTable, usePagination } from 'react-table';
 import { useDispatch, useSelector } from "react-redux"
-import { filterByDNIOrEmail } from '../../Redux/Actions/Actions';
+import { deletePatientInfo, filterByDNIOrEmail } from '../../Redux/Actions/Actions';
 import './Patients.css'
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
+import EditPatient from '../../modals/EditPatient/EditPatient';
+import EditMedicalHistory from '../../modals/EditMedicalHistory/EditMedicalHistory';
+import ConfirmDelete from '../../modals/ConfirmDelete/ConfirmDelete';
+import { IoMdCloseCircle } from "react-icons/io";
+import { IoIosSettings } from "react-icons/io";
 
 const Patients = () => {
 
     const dispatch = useDispatch()
 
     const patients = useSelector(state => state.patients)
+    const [modalEditPatientShow, setModalEditPatientShow] = useState(false);
+    const [modalMedicalHistoryShow, setMedicalHistoryShow] = useState(false);
+    const [modalDeleteShow, setDeleteShow] = useState(false);
+    
+    const [selectedPatient, setSelectedPatient] = useState(null);
+
+    const handleEditClick = (patient, column) => {
+        console.log(patient);
+        setSelectedPatient(patient);
+        if(column === 'medicalHistory') setMedicalHistoryShow(true)
+        if(column === 'editPatient') setModalEditPatientShow(true);
+        if(column === 'deletePatient') setDeleteShow(true)
+
+    };
+
 
     const columns = React.useMemo(
         () => [
             {
+                Header: '#',
+                accessor: 'id_patient',
+            },
+            {
                 Header: 'DNI',
-                accessor: 'dni', // Reemplaza con el nombre correcto de tu propiedad DNI
+                accessor: 'dni',
             },
             {
                 Header: 'Nombre',
-                accessor: 'name', // Reemplaza con el nombre correcto de tu propiedad Nombre
+                accessor: 'name',
             },
             {
                 Header: 'Apellido',
-                accessor: 'lastname', // Reemplaza con el nombre correcto de tu propiedad Apellido
+                accessor: 'lastname',
             },
             {
                 Header: 'Email',
-                accessor: 'email', // Reemplaza con el nombre correcto de tu propiedad Email
+                accessor: 'email',
             },
             {
                 Header: 'Teléfono',
-                accessor: 'phone', // Reemplaza con el nombre correcto de tu propiedad Teléfono
+                accessor: 'phone',
             },
             {
                 Header: 'Historial Médico',
-                accessor: 'historial_medico', // Reemplaza con el nombre correcto de tu propiedad Historial Médico
+                accessor: 'historial_medico',
+                Cell: ({ row }) => (
+                    <button onClick={() => handleEditClick(row.original, 'medicalHistory')}>Ver</button>
+                )
             },
-            // Puedes agregar más columnas según tus necesidades
+            {
+                Header: 'Acciones',
+                accessor: 'actions',
+                Cell: ({ row }) => (
+                    <div className='containerButtonsActions'>
+                        <button onClick={() => handleEditClick(row.original, 'editPatient')}><IoIosSettings className='iconActionEdit'/></button>
+                        <button onClick={() => handleEditClick(row.original, 'deletePatient')}><IoMdCloseCircle className='iconActionDelete'/></button>
+                    </div>
+                ),
+            }
+
         ],
         []
     );
@@ -92,9 +129,9 @@ const Patients = () => {
                         {page.map((row) => {
                             prepareRow(row);
                             return (
-                                <tr {...row.getRowProps()}>
+                                <tr key={row.id} {...row.getRowProps()}>
                                     {row.cells.map((cell) => (
-                                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                        <td key={cell.column.id} {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                     ))}
                                 </tr>
                             );
@@ -127,6 +164,21 @@ const Patients = () => {
                     </div>
                 </div>
             </div>
+            <EditPatient
+                show={modalEditPatientShow}
+                onHide={() => setModalEditPatientShow(false)}
+                patient={selectedPatient}
+            />
+            <EditMedicalHistory
+                show={modalMedicalHistoryShow}
+                onHide={() => setMedicalHistoryShow(false)}
+                patient={selectedPatient}
+            />
+            <ConfirmDelete
+                show={modalDeleteShow}
+                onHide={() => setDeleteShow(false)}
+                patient={selectedPatient}
+            />
         </div>
     )
 }

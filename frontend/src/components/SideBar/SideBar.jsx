@@ -21,7 +21,6 @@ const SideBar = ({ setCurrentSelection }) => {
                 <ul className='ulMenu'>
                     <li onClick={() => setCurrentSelection('Dashboard')}><MdOutlineDashboard className='react-icons' />Dashboard</li>
                     <li onClick={() => setCurrentSelection('Patients')}><IoPersonOutline className='react-icons' />Pacientes</li>
-                    <li onClick={() => setCurrentSelection('MedicalHistory')}><RiFolderHistoryLine className='react-icons' />Historial Clinico</li>
                     <li onClick={() => setCurrentSelection('Appointments')}><BsCalendar2Date className='react-icons' />Turnos</li>
                     <li onClick={() => navigate('/')}><IoHomeOutline className='react-icons' />Inicio</li>
 

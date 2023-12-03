@@ -34,6 +34,7 @@ const updateAppointment = async (req, res) => {
     try {
         const { appointmentId } = req.params
         const { data } = req.body
+
         const appointmentUpdated = await updateAppointmentCtrl(data, appointmentId)
             res.status(200).json(appointmentUpdated)
     } catch (error) {

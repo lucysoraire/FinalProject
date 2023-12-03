@@ -39,7 +39,7 @@ const PatientInfo = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const response = await axios.post(
-            'https://proyectofisiosport-production.up.railway.app/fisiosport/patient',
+            'http://localhost:3001/fisiosport/patient',
             formData
         );
         dispatch(savePatientInfo(response.data));

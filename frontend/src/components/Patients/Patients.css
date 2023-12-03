@@ -130,3 +130,37 @@
     background-color: red !important;
    
 }   
+
+.containerButtonsActions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.containerButtonsActions button {
+    border: none;
+    background: none;
+}
+
+.iconActionDelete {
+    width: 27px;
+    height: 27px;
+    color: rgb(172, 68, 68);
+}
+
+.iconActionDelete:hover {
+    transform: scale(1.1);
+    transition: 0.1s ease;
+}
+
+.iconActionEdit {
+    width: 27px;
+    height: 27px;
+    color: #447DBF;
+}
+
+.iconActionEdit:hover {
+    transform: scale(1.1);
+    transition: 0.1s ease;
+}

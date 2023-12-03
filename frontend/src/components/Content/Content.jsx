@@ -10,8 +10,6 @@ const Content = ({ currentSelection }) => {
     switch (currentSelection) {
       case 'Patients':
         return <Patients />;
-      case 'MedicalHistory':
-        return <MedicalHistory />;
       case 'Appointments':
         return <Appointments />
       case 'Dashboard':

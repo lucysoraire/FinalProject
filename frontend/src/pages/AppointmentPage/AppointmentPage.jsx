@@ -22,7 +22,7 @@ const AppointmentPage = () => {
     // Cambiar la fecha 
     const onChange = async (newDate) => {
         setDate(newDate);
-        const response = await axios.post('https://proyectofisiosport-production.up.railway.app/fisiosport/appointment/disponibility', {
+        const response = await axios.post('http://localhost:3001/fisiosport/appointment/disponibility', {
             selectedDate: newDate
         })
         setDisponibility(response.data)
@@ -35,7 +35,7 @@ const AppointmentPage = () => {
     }
 
     const reserveAppointment = async () => {
-        const response = await axios.post('https://proyectofisiosport-production.up.railway.app/fisiosport/appointment', {
+        const response = await axios.post('http://localhost:3001/fisiosport/appointment', {
             date,
             hour,
             id_patient: patientInfo?.id_patient

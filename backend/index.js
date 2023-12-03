@@ -17,13 +17,13 @@ app.use('/fisiosport', router)
 
 sequelize.sync({ alter: true }).then(async() => {  
     const admin = await User.findOne({ where: { email: 'admin@gmail.com' } });
-        if (!admin) {
+        if (!admin) { 
             const passwordEncrypt = await encrypt(process.env.ADMIN_PASSWORD)
             await User.create({
                 email: 'admin@gmail.com',
                 password: passwordEncrypt,
                 isAdmin: true
-            }); 
+            });  
         }
     app.listen(PORT, () => { 
         console.log('server on port 3001');

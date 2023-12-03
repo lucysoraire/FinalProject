@@ -24,7 +24,7 @@ const RegisterPage = () => {
         event.preventDefault()
         const errors = Object.values(user)
         if(errors.includes('')) return
-        const response = await axios.post('https://proyectofisiosport-production.up.railway.app/fisiosport/user/register', user)
+        const response = await axios.post('http://localhost:3001/fisiosport/user/register', user)
         
 
         navigate('/login')

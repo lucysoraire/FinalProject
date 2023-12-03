@@ -7,15 +7,36 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
+import ConfirmDelete from '../../modals/ConfirmDelete/ConfirmDelete';
+import EditAppointment from '../../modals/EditAppointment/EditAppointment';
+import { IoMdCloseCircle } from "react-icons/io";
+import { IoIosSettings } from "react-icons/io";
 
 const Appointments = () => {
 
     const dispatch = useDispatch()
 
     const appointments = useSelector(state => state.appointments)
-    console.log(appointments);
+
+    const [modalEditAppointmentShow, setModalEditAppointmentShow] = useState(false);
+    const [modalDeleteShow, setDeleteShow] = useState(false);
+
+    const [selectedAppointment, setSelectedAppointment] = useState(null);
+
+    const handleEditClick = (appointment, column) => {
+        console.log(appointment);
+        setSelectedAppointment(appointment);
+        if (column === 'editAppointment') setModalEditAppointmentShow(true);
+        if (column === 'deleteAppointment') setDeleteShow(true)
+
+    };
+
     const columns = React.useMemo(
         () => [
+            {
+                Header: '#',
+                accessor: 'Patient.id_patient',
+            },
             {
                 Header: 'DNI',
                 accessor: 'Patient.dni',
@@ -40,7 +61,17 @@ const Appointments = () => {
                 Header: 'Hora',
                 accessor: 'hour',
             },
-            // Puedes agregar más columnas según tus necesidades
+            {
+                Header: 'Acciones',
+                accesor: 'actions',
+                Cell: ({ row }) => (
+                    <div className='containerButtonsActions'>
+                        <button onClick={() => handleEditClick(row.original, 'editAppointment')}><IoIosSettings className='iconActionEdit'/></button>
+                        <button onClick={() => handleEditClick(row.original, 'deleteAppointment')}><IoMdCloseCircle className='iconActionDelete'/></button>
+                    </div>
+                ),
+            }
+
         ],
         []
     );
@@ -163,9 +194,9 @@ const Appointments = () => {
                         {page.map((row) => {
                             prepareRow(row);
                             return (
-                                <tr {...row.getRowProps()}>
+                                <tr key={row.id} {...row.getRowProps()}>
                                     {row.cells.map((cell) => (
-                                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                        <td key={cell.column.id} {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                     ))}
                                 </tr>
                             );
@@ -197,7 +228,16 @@ const Appointments = () => {
                     </div>
                 </div>
             </div>
-
+            <ConfirmDelete
+                show={modalDeleteShow}
+                onHide={() => setDeleteShow(false)}
+                appointment={selectedAppointment}
+            />
+            <EditAppointment
+                show={modalEditAppointmentShow}
+                onHide={() => setModalEditAppointmentShow(false)}
+                appointment={selectedAppointment}
+            />
         </div>
     )
 }

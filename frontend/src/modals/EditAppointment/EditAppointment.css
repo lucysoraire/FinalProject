@@ -1,0 +1,10 @@
+
+.containerModalCalendar {
+    display: flex;
+    height: 320px;
+    justify-content: center;
+}
+
+.react-calendar__navigation {
+    text-align: center;
+}

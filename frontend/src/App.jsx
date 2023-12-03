@@ -33,6 +33,7 @@ function App() {
         <Route path='/turno' element={<AppointmentPage />} />
         <Route path='/about' element={<AboutPage />} />
         <Route path='/info' element={<PatientInfo />} />
+
       </Routes>
       {location.pathname !== '/admin' &&
       location.pathname !== '/login' &&
