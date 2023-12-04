@@ -5,13 +5,14 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { updatePatientInfo } from '../../Redux/Actions/Actions';
 import './EditPatient.css'
+import Swal from 'sweetalert2'
 
 const EditPatient = (props) => {
 
     const dispatch = useDispatch()
 
     const [patient, setPatient] = useState({})
-    
+
     const handleChange = (e) => {
         setPatient({
             ...patient,
@@ -20,7 +21,43 @@ const EditPatient = (props) => {
     }
 
     const saveChanges = async () => {
-        dispatch(updatePatientInfo(props.patient.id_patient, patient))
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "¿Estas seguro?",
+            text: "Esta acción no se puede deshacer!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Si, guardar!",
+            cancelButtonText: "No, cancelar!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire({
+                    title: "Guardado!",
+                    text: "Los cambios fueron guardados.",
+                    icon: "success"
+                });
+                dispatch(updatePatientInfo(props.patient.id_patient, patient))
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelado",
+                    text: "Los cambios no se guardaron.",
+                    icon: "error"
+                });
+
+            }
+        })
+
+
     }
 
     return (
@@ -55,7 +92,7 @@ const EditPatient = (props) => {
                     </div>
                     <div className='inputsAndLabesModal'>
                         <label htmlFor="email">Email:</label>
-                        <input type="text" id="email" name='email' defaultValue={props?.patient?.email} onChange={handleChange} />
+                        <input type="text" id="email" name='email' defaultValue={props?.patient?.email} readOnly onChange={handleChange} />
                     </div>
                     <div className='inputsAndLabesModal'>
                         <label htmlFor="telefono">Teléfono:</label>

@@ -1,0 +1,79 @@
+.containerInfoPatientMedicalHistory {
+    display: flex;
+
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.containerPatientName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerPatientName p {
+    font-size: 25px;
+    margin: 0;
+}
+
+.iconPatientName {
+    width: 40px;
+    height: 40px;
+    margin-right: 18px;
+}
+
+.containerPatientContact {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 42%;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 0 5px rgb(94, 94, 94);
+}
+
+.containerPatientContact p{
+    margin: 0;
+
+}
+
+.containerMedicalHistory {
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.containerMedicalHistory div {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerMedicalHistory div input {
+    background-color: rgb(241, 241, 241);
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 8px;
+    outline-color: #447DBF;
+    min-height: 40px;
+    padding-left: 10px;
+    height: fit-content;
+}
+
+.containerMedicalHistory div label {
+    font-weight: 600;
+}
+
+.containerMedicalHistory div textarea {
+    width: 100%;
+    resize: none;
+    overflow-y: hidden;
+    min-height: 30px !important;
+    height: fit-content;
+    background-color: rgb(241, 241, 241);
+   border: 1px solid rgb(150, 150, 150);
+   border-radius: 8px;
+   outline-color: #447DBF;
+}

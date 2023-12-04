@@ -12,11 +12,23 @@ module.exports = (sequelize) => {
             diagnostic: {
                 type: DataTypes.STRING,
             },
-            notes: {
-                type: DataTypes.STRING
+            emergencyContact: {
+                type: DataTypes.STRING,
             },
-            background: {
-                type: DataTypes.STRING
+            medicationAllergies: {
+                type: DataTypes.TEXT,
+            },
+            currentMedications: {
+                type: DataTypes.TEXT,
+            },
+            previusInjuries: {
+                type: DataTypes.TEXT,
+            },
+            currentSymptoms: {
+                type: DataTypes.TEXT,
+            },
+            notes: {
+                type: DataTypes.TEXT
             }
         }
     )

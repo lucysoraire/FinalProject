@@ -21,6 +21,9 @@ module.exports = (sequelize) => {
             dni: {
                 type: DataTypes.STRING,
             },
+            age: {
+                type: DataTypes.INTEGER
+            },
             isAdmin: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: false

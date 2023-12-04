@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateAppointment, updatePatientInfo } from '../../Redux/Actions/Actions';
 import Calendar from 'react-calendar';
 import './EditAppointment.css'
+import Swal from 'sweetalert2'
 
 const EditAppointment = (props) => {
 
@@ -49,7 +50,42 @@ const EditAppointment = (props) => {
 
     // GUARDAR LOS CAMBIOS HECHOS EN EL TURNO
     const saveChanges = async () => {
-        dispatch(updateAppointment(props.appointment.id_appointment, { date, hour }))
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "¿Estas seguro?",
+            text: "Esta acción no se puede deshacer!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Si, guardar!",
+            cancelButtonText: "No, cancelar!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire({
+                    title: "Guardado!",
+                    text: "Los cambios fueron guardados.",
+                    icon: "success"
+                });
+                dispatch(updateAppointment(props.appointment.id_appointment, { date, hour }))
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelado",
+                    text: "Los cambios no se guardaron.",
+                    icon: "error"
+                });
+                
+            }
+        })
+        
     }
 
     // CANCELAR LOS CAMBIOS QUE SE YA SE HABIAN SELECCIONADO
@@ -68,7 +104,7 @@ const EditAppointment = (props) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter" className='containerHeaderModal'>
-                    Editar Paciente
+                    Editar Turno
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className='containerBodyEditPatient'>
@@ -76,27 +112,24 @@ const EditAppointment = (props) => {
                     <h2 className='titleModal'>{`Editando el turno de: ${props?.appointment?.Patient?.name + ' ' + props?.appointment?.Patient?.lastname}`}</h2>
                 </div>
                 <div>
-                    <div>
-                    <div>
-                        <label htmlFor="nombre">Nombre:</label>
-                        <p>{props?.appointment?.Patient?.name}</p>
-                    </div>
-                    <div>
-                        <label htmlFor="apellido">Apellido:</label>
-                        <p>{props?.appointment?.Patient?.lastname}</p>
-                    </div>
-                        
-                    </div>
-                    <div>
+                    <div className='containerInfoAppointmentPatient'>
+                        <div>
+                            <label htmlFor="nombre">Paciente:</label>
+                            <p>{props?.appointment?.Patient?.name + ' ' + props?.appointment?.Patient?.lastname}</p>
+                        </div>
 
-                    </div>
-                    <div>
-                        <label htmlFor="dni">DNI:</label>
-                        <p>{props?.appointment?.Patient?.dni}</p>
-                    </div>
-                    <div>
-                        <label htmlFor="email">Email:</label>
-                        <p>{props?.appointment?.Patient?.email}</p>
+                        <div>
+                            <label htmlFor="dni">DNI:</label>
+                            <p>{props?.appointment?.Patient?.dni}</p>
+                        </div>
+                        <div>
+                            <label htmlFor="email">Email:</label>
+                            <p>{props?.appointment?.Patient?.email}</p>
+                        </div>
+                        <div>
+                            <label htmlFor="email">Telefono:</label>
+                            <p>{props?.appointment?.Patient?.phone}</p>
+                        </div>
                     </div>
                     <div className='containerModalCalendar'>
 
@@ -131,7 +164,7 @@ const EditAppointment = (props) => {
                                 ))}
                             </div>
                         </div>
-                        <div>
+                        <div className='infoAppointmentModal'>
                             <p><b>Fecha: </b>{date ? date.toLocaleDateString() : props?.appointment?.date}</p>
                             <p><b>Hora: </b>{hour ? hour : props?.appointment?.hour}</p>
                             <button onClick={cancelAppointment}>Cancelar</button>

@@ -22,9 +22,9 @@ const getPatientById = async (req, res) => {
 
 const createDataPatient = async (req, res) => {
     try {
-        const { name, lastname, phone, dni, email } = req.body
+        const { name, lastname, phone, dni, email, age, gender } = req.body
         console.log(name, email);
-        const dataCreated = await createData({ name, lastname, phone, dni, email })
+        const dataCreated = await createData({ name, lastname, phone, dni, email, age, gender })
         res.status(200).json(dataCreated)
     } catch (error) {
         res.status(400).json({ error: error.message })

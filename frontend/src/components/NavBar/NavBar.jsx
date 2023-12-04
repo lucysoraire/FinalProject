@@ -27,9 +27,9 @@ const NavBar = () => {
                         <li>
                             <i class="fa-solid fa-house "></i><NavLink to="/"> Inicio</NavLink>
                         </li>
-                        <li>
+                        { userAuth.authenticated && <li>
                             <i class="fa-solid fa-calendar-days"></i> <NavLink to="/turno"> Turnos</NavLink>
-                        </li>
+                        </li>}
                         <li>
                             <NavLink to="/contacto"><i class="fa-solid fa-phone"></i> Contacto</NavLink>
                         </li>

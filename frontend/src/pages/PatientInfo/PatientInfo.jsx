@@ -14,7 +14,8 @@ const PatientInfo = () => {
             lastname: patientInfo?.lastname,
             phone: patientInfo?.phone,
             dni: patientInfo?.dni,
-            email: patientInfo?.email
+            email: patientInfo?.email,
+            age: patientInfo?.age
         })
     }, [patientInfo])
 
@@ -24,7 +25,8 @@ const PatientInfo = () => {
         lastname: '',
         phone: '',
         dni: '',
-        email: ''
+        email: '',
+        age: ''
     });
     const [edit, setEdit] = useState(false)
 
@@ -98,6 +100,16 @@ const PatientInfo = () => {
                                 />
                             </div>
                             <div className='labelsAndInputs'>
+                                <label htmlFor="age">Edad</label>
+                                <input
+                                    type="number"
+                                    name="age"
+                                    id="age"
+                                    value={formData?.age}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className='labelsAndInputs'>
                                 <label htmlFor="phone">Teléfono</label>
                                 <input
                                     type="text"
@@ -140,6 +152,7 @@ const PatientInfo = () => {
                                         <div className='patientInfoLoged'>
                                             <p><b>Nombre: </b>{patientInfo?.name}</p>
                                             <p><b>Apellido: </b>{patientInfo?.lastname}</p>
+                                            <p><b>Edad: </b>{patientInfo?.age}</p>
                                             <p><b>Telefono: </b>{patientInfo?.phone}</p>
                                             <p><b>DNI: </b>{patientInfo?.dni}</p>
                                             <p><b>Email: </b>{patientInfo?.email}</p>
@@ -149,6 +162,7 @@ const PatientInfo = () => {
                                             <div className='labelsAndInputsLoged'>
                                                 <input type='text' name='name' value={formData?.name} onChange={handleChange} />
                                                 <input type='text' name='lastname' value={formData?.lastname} onChange={handleChange} />
+                                                <input type='text' name='age' value={formData?.age} onChange={handleChange} />
                                                 <input type='text' name='phone' value={formData?.phone} onChange={handleChange} />
                                                 <input type='text' name='dni' value={formData?.dni} onChange={handleChange} />
                                                 {/*<input type='text' name='email' value={formData.email} onChange={handleChange}/>*/}

@@ -1,4 +1,4 @@
-const { Patient, User, Appointment } = require('../../db')
+const { Patient, User, Appointment, MedicalHistory } = require('../../db')
 
 const allPatients = async () => {
     const patients = await Patient.findAll({ order: [['id_patient', 'ASC']] })
@@ -13,13 +13,14 @@ const getPatient = async (userId) => {
     return patient;
 };
 
-const createData = async ({ name, lastname, phone, dni, email }) => {
+const createData = async ({ name, lastname, phone, dni, email, age }) => {
     const dataCreated = await Patient.create({
         name,
         lastname,
         phone,
         dni,
-        email
+        email,
+        age
     })
     console.log(createData);
     return dataCreated 
@@ -38,7 +39,9 @@ const updateData = async (patient, patientId) => {
 const deleteData = async (patientId) => {
     console.log(patientId);
     const deleteAppointments = await Appointment.destroy({where: {id_patient: patientId}, returning: true})
+    const deleteMedicalHistory = await MedicalHistory.destroy({where: {id_patient: patientId}, returning: true}) 
     const dataDeleted = await Patient.destroy({where: {id_patient: patientId}, returning: true})
+
     return dataDeleted
 }
 

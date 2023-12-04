@@ -1,67 +1,68 @@
-import { useNavigate } from 'react-router-dom';
-import './LoginPage.css'
-import { useState } from 'react';
-import axios from 'axios'
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux'
+import { useNavigate, Link } from 'react-router-dom';
+import './LoginPage.css';
+import { useDispatch } from 'react-redux';
 import { getPatientInfo, userAuth } from '../../Redux/Actions/Actions';
-
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const dispatch = useDispatch()
+  const initialValues = {
+    email: '',
+    password: ''
+  };
 
-    const navigate = useNavigate();
+  const validationSchema = Yup.object({
+    email: Yup.string().email('Correo electrónico no válido').required('El correo electrónico es obligatorio'),
+    password: Yup.string().required('La contraseña es obligatoria')
+  });
 
-    const [user, setUser] = useState({
-        email: '',
-        password: ''
-    })
+  const onSubmit = (values, { setSubmitting }) => {
+    // Lógica de envío del formulario
+    dispatch(userAuth(values));
+    dispatch(getPatientInfo(values.email));
+    navigate('/');
+    setSubmitting(false);
+  };
 
-    const onChangeHandler = (event) => {
-        setUser({
-            ...user,
-            [event.target.name]: event.target.value
-        })
-    }
+  return (
+    <div className="containerLogin">
+      <div className="messageLogin">
+        <h1>¡Bienvenido a tu inicio de Sesión!</h1>
+        <p>Regístrate y sé parte</p>
+      </div>
 
-    const login = (event) => {
+      <div className="containerFormLogin">
+        <p className="pprincipal">Iniciar Sesion</p>
 
-        event.preventDefault()
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+          <Form className="formLogin">
+            <Field type="text" name="email" placeholder="Email" />
 
-        const errors = Object.values(user)
-        if(errors.includes('')) return
-        dispatch(userAuth(user))
-        dispatch(getPatientInfo(user.email))
-        navigate('/')
-    }
+            <ErrorMessage name="email" component="div" className="error" />
 
-    return (
-        <div className='containerLogin'>
-            <div className='messageLogin'>
-                <h1>¡Bienvenido a tu inicio de Sesión!</h1>
-                <p>Regístrate y sé parte</p>
-            </div>
+            <Field type="password" name="password" placeholder="Contraseña" />
 
-        <div className='containerFormLogin'>
-        <p className='pprincipal'>Iniciar Sesion</p> 
+            <ErrorMessage name="password" component="div" className="error" />
 
-            <form onSubmit={login} className='formLogin'>
+            <button className="buttonLogin" type="submit">
+              Iniciar Sesión
+            </button>
 
-                <input placeholder='Email' type="text" name="email" onChange={onChangeHandler} value={user.email} />
+            <p className="noAccount">¿Aún no tienes una cuenta?</p>
 
-                <input placeholder='Contraseña' type="password" name="password" onChange={onChangeHandler} value={user.password} />
-
-                <button className='buttonLogin' type="submit">Iniciar Sesión</button>
-
-                <p className='noAccount'>¿Aún no tienes una cuenta?</p>
-
-                <Link to='/register'><button className='buttonLogin' type='button'>Registrarse</button></Link>
-
-            </form>
-        </div>
+            <Link to="/register">
+              <button className="buttonLogin" type="button">
+                Registrarse
+              </button>
+            </Link>
+          </Form>
+        </Formik>
+      </div>
     </div>
-    )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

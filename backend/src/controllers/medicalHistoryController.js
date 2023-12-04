@@ -13,14 +13,53 @@ const allMedicalHistories = async () => {
     return medicalHistories
 }
 
-const createMedicalHistory = async ({ diagnostic, notes, background, id_patient }) => {
-    const medicalHistoryCreated = await MedicalHistory.create({
-        diagnostic,
-        notes,
-        background,
-        id_patient
-    })
-    return medicalHistoryCreated
+const medicalHistoryByPatientId = async (patientId) => {
+    const medicalHistories = await MedicalHistory.findAll(
+        {
+            where: {id_patient: patientId},
+            include: [{
+                model: Patient,
+                as: 'Patient'
+            }]
+        }
+    )
+    return medicalHistories
+}
+
+const createMedicalHistory = async ({ diagnostic, notes, background, id_patient, emergencyContact, medicationAllergies, currentMedications, previusInjuries, currentSymptoms  }) => {
+    const medicalHistory = await MedicalHistory.findByPk(id_patient)
+    if(!medicalHistory.id_medicalhistory)
+    {
+        console.log('entre a crear');
+        const medicalHistoryCreated = await MedicalHistory.create({
+            diagnostic,
+            notes,
+            background,
+            id_patient,
+            emergencyContact, 
+            medicationAllergies, 
+            currentMedications, 
+            previusInjuries, 
+            currentSymptoms 
+        })
+        return medicalHistoryCreated
+    }
+    else
+    {
+        console.log('entre a actualizar');
+        data = {
+            diagnostic,
+            notes,
+            background,
+            id_patient,
+            emergencyContact, 
+            medicationAllergies, 
+            currentMedications, 
+            previusInjuries, 
+            currentSymptoms 
+        }
+        updateHistory(data, medicalHistory.id_medicalhistory)
+    }
 }
 
 const updateHistory = async (data, historyId) => {
@@ -41,5 +80,6 @@ module.exports = {
     allMedicalHistories,
     createMedicalHistory,
     updateHistory,
-    deleteHistory
+    deleteHistory,
+    medicalHistoryByPatientId
 }

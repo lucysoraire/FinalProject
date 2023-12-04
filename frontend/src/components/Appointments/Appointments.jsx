@@ -2,15 +2,16 @@ import './Appointments.css'
 import React, { useState } from 'react';
 import { useTable, usePagination } from 'react-table';
 import { useDispatch, useSelector } from "react-redux"
-import { filterByDNIOrEmail, orderByDate } from '../../Redux/Actions/Actions';
+import { deleteAppointment, filterByDNIOrEmail, orderByDate } from '../../Redux/Actions/Actions';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
-import ConfirmDelete from '../../modals/ConfirmDelete/ConfirmDelete';
 import EditAppointment from '../../modals/EditAppointment/EditAppointment';
 import { IoMdCloseCircle } from "react-icons/io";
 import { IoIosSettings } from "react-icons/io";
+
+import Swal from 'sweetalert2'
 
 const Appointments = () => {
 
@@ -27,7 +28,44 @@ const Appointments = () => {
         console.log(appointment);
         setSelectedAppointment(appointment);
         if (column === 'editAppointment') setModalEditAppointmentShow(true);
-        if (column === 'deleteAppointment') setDeleteShow(true)
+        if (column === 'deleteAppointment') {
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+            swalWithBootstrapButtons.fire({
+                title: "¿Estas seguro?",
+                text: "Esta acción no se puede deshacer!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Si, Eliminar!",
+                cancelButtonText: "No, cancelar!",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Eliminado!",
+                        text: "El turno fue eliminado.",
+                        icon: "success"
+                    });
+                    dispatch(deleteAppointment(appointment.id_appointment))
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Cancelado",
+                        text: "El turno no se eliminó :)",
+                        icon: "error"
+                    });
+                }
+            })
+
+        }
 
     };
 
@@ -66,8 +104,8 @@ const Appointments = () => {
                 accesor: 'actions',
                 Cell: ({ row }) => (
                     <div className='containerButtonsActions'>
-                        <button onClick={() => handleEditClick(row.original, 'editAppointment')}><IoIosSettings className='iconActionEdit'/></button>
-                        <button onClick={() => handleEditClick(row.original, 'deleteAppointment')}><IoMdCloseCircle className='iconActionDelete'/></button>
+                        <button onClick={() => handleEditClick(row.original, 'editAppointment')}><IoIosSettings className='iconActionEdit' /></button>
+                        <button onClick={() => handleEditClick(row.original, 'deleteAppointment')}><IoMdCloseCircle className='iconActionDelete' /></button>
                     </div>
                 ),
             }
@@ -228,11 +266,6 @@ const Appointments = () => {
                     </div>
                 </div>
             </div>
-            <ConfirmDelete
-                show={modalDeleteShow}
-                onHide={() => setDeleteShow(false)}
-                appointment={selectedAppointment}
-            />
             <EditAppointment
                 show={modalEditAppointmentShow}
                 onHide={() => setModalEditAppointmentShow(false)}

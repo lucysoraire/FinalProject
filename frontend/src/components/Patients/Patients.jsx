@@ -6,9 +6,10 @@ import './Patients.css'
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from "react-icons/md";
 import EditPatient from '../../modals/EditPatient/EditPatient';
 import EditMedicalHistory from '../../modals/EditMedicalHistory/EditMedicalHistory';
-import ConfirmDelete from '../../modals/ConfirmDelete/ConfirmDelete';
 import { IoMdCloseCircle } from "react-icons/io";
 import { IoIosSettings } from "react-icons/io";
+import { FaEye } from "react-icons/fa";
+import Swal from 'sweetalert2'
 
 const Patients = () => {
 
@@ -18,15 +19,53 @@ const Patients = () => {
     const [modalEditPatientShow, setModalEditPatientShow] = useState(false);
     const [modalMedicalHistoryShow, setMedicalHistoryShow] = useState(false);
     const [modalDeleteShow, setDeleteShow] = useState(false);
-    
+
     const [selectedPatient, setSelectedPatient] = useState(null);
 
     const handleEditClick = (patient, column) => {
-        console.log(patient);
+
         setSelectedPatient(patient);
-        if(column === 'medicalHistory') setMedicalHistoryShow(true)
-        if(column === 'editPatient') setModalEditPatientShow(true);
-        if(column === 'deletePatient') setDeleteShow(true)
+        if (column === 'medicalHistory') setMedicalHistoryShow(true)
+        if (column === 'editPatient') setModalEditPatientShow(true);
+        if (column === 'deletePatient') {
+            {
+                console.log(patient);
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: "btn btn-success",
+                        cancelButton: "btn btn-danger"
+                    },
+                    buttonsStyling: false
+                });
+                swalWithBootstrapButtons.fire({
+                    title: "¿Estas seguro?",
+                    text: "Esta acción no se puede deshacer!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Si, Eliminar!",
+                    cancelButtonText: "No, cancelar!",
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        swalWithBootstrapButtons.fire({
+                            title: "Eliminado!",
+                            text: "El paciente fue eliminado.",
+                            icon: "success"
+                        });
+                        dispatch(deletePatientInfo(patient.id_patient))
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        swalWithBootstrapButtons.fire({
+                            title: "Cancelado",
+                            text: "El paciente no se eliminó :)",
+                            icon: "error"
+                        });
+                    }
+                })
+            }
+        }
 
     };
 
@@ -61,7 +100,7 @@ const Patients = () => {
                 Header: 'Historial Médico',
                 accessor: 'historial_medico',
                 Cell: ({ row }) => (
-                    <button onClick={() => handleEditClick(row.original, 'medicalHistory')}>Ver</button>
+                    <button onClick={() => handleEditClick(row.original, 'medicalHistory')} className='buttonViewMedicalHistory'>Ver</button>
                 )
             },
             {
@@ -69,8 +108,8 @@ const Patients = () => {
                 accessor: 'actions',
                 Cell: ({ row }) => (
                     <div className='containerButtonsActions'>
-                        <button onClick={() => handleEditClick(row.original, 'editPatient')}><IoIosSettings className='iconActionEdit'/></button>
-                        <button onClick={() => handleEditClick(row.original, 'deletePatient')}><IoMdCloseCircle className='iconActionDelete'/></button>
+                        <button onClick={() => handleEditClick(row.original, 'editPatient')}><IoIosSettings className='iconActionEdit' /></button>
+                        <button onClick={() => handleEditClick(row.original, 'deletePatient')}><IoMdCloseCircle className='iconActionDelete' /></button>
                     </div>
                 ),
             }
@@ -174,11 +213,7 @@ const Patients = () => {
                 onHide={() => setMedicalHistoryShow(false)}
                 patient={selectedPatient}
             />
-            <ConfirmDelete
-                show={modalDeleteShow}
-                onHide={() => setDeleteShow(false)}
-                patient={selectedPatient}
-            />
+
         </div>
     )
 }

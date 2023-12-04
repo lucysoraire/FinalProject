@@ -164,3 +164,19 @@
     transform: scale(1.1);
     transition: 0.1s ease;
 }
+
+.buttonViewMedicalHistory {
+    background-color: #447DBF;
+    color: white;
+    width: 70px;
+    border-radius: 8px;
+    border: none;
+    letter-spacing: 1px;
+    margin-top: 2px;
+
+}
+
+.buttonViewMedicalHistory:hover {
+    background-color: #F08C30;
+    transition: 0.3s ease;
+}

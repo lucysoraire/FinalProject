@@ -2,7 +2,6 @@ import './ContactPage.css'
 import { useState } from "react";
 import axios from 'axios'
 
-
 const ContactPage = () => {
 
     const [message, setMessage] = useState({
@@ -11,6 +10,7 @@ const ContactPage = () => {
         email: '',
         asunto: ''
     })
+    
 
     const onChangeHandle = (event) => {
         setMessage({

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import axios from 'axios'
 import { useSelector } from 'react-redux';
-
+import Swal from 'sweetalert2'
 
 const AppointmentPage = () => {
 
@@ -12,7 +12,7 @@ const AppointmentPage = () => {
     const [disponibility, setDisponibility] = useState([])
     const patientInfo = useSelector(state => state.patientInfo)
 
-    
+
     // deshabilitar los dias que ya pasaron
     const today = new Date();
 
@@ -35,12 +35,26 @@ const AppointmentPage = () => {
     }
 
     const reserveAppointment = async () => {
-        const response = await axios.post('http://localhost:3001/fisiosport/appointment', {
-            date,
-            hour,
-            id_patient: patientInfo?.id_patient
-        })
-        console.log(response.data);
+        if (date !== null && hour !== '') {
+            const response = await axios.post('http://localhost:3001/fisiosport/appointment', {
+                date,
+                hour,
+                id_patient: patientInfo?.id_patient
+            })
+
+            response.data && Swal.fire({
+                title: "Turno reservado!",
+                text: "Te esperamos!",
+                icon: "success"
+            });
+        }
+        else
+        {   
+            if(!patientInfo.id_patient) Swal.fire("Tienes que ingresar tu informacion personal!");
+            else if(date === null && hour === '') Swal.fire("Tienes que seleccionar una fecha y una hora!");
+            else if(hour === '') Swal.fire("Tienes que seleccionar una hora!");
+            else Swal.fire("Tienes que seleccionar una fecha!")     
+        }
     }
 
     const cancelAppointment = () => {

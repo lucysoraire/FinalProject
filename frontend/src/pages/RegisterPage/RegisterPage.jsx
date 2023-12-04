@@ -1,63 +1,71 @@
-import './RegisterPage.css'
-import { useState } from 'react';
-import axios from 'axios'
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const initialValues = {
+    email: '',
+    password: ''
+  };
 
-    const [user, setUser] = useState({
-        email: '',
-        password: ''
-    })
+  const validationSchema = Yup.object({
+    email: Yup.string().email('Correo electrónico no válido').required('El correo electrónico es obligatorio'),
+    password: Yup.string().required('La contraseña es obligatoria')
+  });
 
-    const onChangeHandler = (event) => {
-        setUser({
-            ...user,
-            [event.target.name]: event.target.value
-        })
+  const onSubmit = async (values) => {
+    try {
+      // Realizar la solicitud de registro utilizando axios
+      const response = await axios.post('http://localhost:3001/fisiosport/user/register', values);
+      console.log(response.data); // Puedes manejar la respuesta según tus necesidades
+
+      // Redirigir al usuario a la página de inicio de sesión después del registro
+      navigate('/login');
+    } catch (error) {
+      console.error('Error al registrar al usuario:', error);
     }
+  };
 
-    const login = async(event) => {
-        event.preventDefault()
-        const errors = Object.values(user)
-        if(errors.includes('')) return
-        const response = await axios.post('http://localhost:3001/fisiosport/user/register', user)
-        
+  return (
+    <div className='containerRegister'>
+      <div className='containerTittle'>
+        <h1>¡Bienvenido a tu inicio de Sesión!</h1>
+        <p>Regístrate y sé parte</p>
+      </div>
 
-        navigate('/login')
-    }
+      <div className='containerFormRegister'>
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+          <Form className='formRegister'>
+            <h1 className='registerTittle'>Registrarse</h1>
 
-    return (
-        <div className='containerRegister'>
+            <Field type='text' name='email' placeholder='Email' />
 
-        <div className='containerTittle'>
-            <h1> ¡Bienvenido a tu inicio de Sesión! </h1>
-            <p> Registrate y sé parte </p>
-        </div>
+            <ErrorMessage name='email' component='div' className='error' />
 
-        <div className='containerFormRegister'>
+            <Field type='password' name='password' placeholder='Contraseña' />
 
-            <form onSubmit={login} className='formRegister'>
+            <ErrorMessage name='password' component='div' className='error' />
 
-                <h1 className='registerTittle'> Registrarse </h1>
+            <button className='buttonRegister' type='submit'>
+              Registrarse
+            </button>
 
-                <input placeholder='Email' type="text" name="email" onChange={onChangeHandler} value={user.email} />
+            <p className='noAccount'>¿Ya tienes una cuenta?</p>
 
-                <input placeholder='Contraseña' type="password" name="password" onChange={onChangeHandler} value={user.password} />
-
-                <button className='buttonRegister' type="submit">Registrarse</button>
-
-                <p className='noAccount'>¿Ya tienes una cuenta?</p>
-
-                <Link to='/login'><button className='buttonLogin' type='button'>Iniciar Sesion</button></Link>
-
-            </form>
-        </div>
+            <Link to='/login'>
+              <button className='buttonLogin' type='button'>
+                Iniciar Sesión
+              </button>
+            </Link>
+          </Form>
+        </Formik>
+      </div>
     </div>
-    )
-}
+  );
+};
 
-export default RegisterPage
+export default RegisterPage;
