@@ -1,22 +1,24 @@
+
+
 footer {
-    background-image: url(../../assets/background8.jpg);
-    color: #f1f1f1;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+  background-image: url(../../assets/background8.jpg);
+  color: #f1f1f1;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  #iconfooter{
-    font-size: 30px;
-padding: 10px;
-margin: 20px;
+}
 
-  }
+#iconfooter {
+  font-size: 30px;
+  padding: 10px;
+  margin: 20px;
+}
 
-  #iconfooter:hover{
-    background-color: #f1f1f1;
-    border-radius: 50%;
-    transform: scale(1.1);
-  }
+#iconfooter:hover {
+  background-color: #f1f1f1;
+  border-radius: 50%;
+  transform: scale(1.1);
+}

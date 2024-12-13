@@ -10,6 +10,8 @@ const getPatient = async (userId) => {
         where: { email: userId }
     });
     console.log(patient);
+    console.log("lala");
+    
     return patient;
 };
 

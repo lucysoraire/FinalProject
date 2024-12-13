@@ -14,6 +14,8 @@ const allAppointments = async () => {
             ]
         }
     )
+
+    
     const appointmentsClean = appointments.map(appointment => {
         // Copiar el objeto original
         const nuevoAppointment = { ...appointment.dataValues };

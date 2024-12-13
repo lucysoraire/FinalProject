@@ -44,11 +44,15 @@ const PatientInfo = () => {
             'http://localhost:3001/fisiosport/patient',
             formData
         );
+        console.log(response.data);
+        
         dispatch(savePatientInfo(response.data));
     };
 
     const updatePatient = () => {
         dispatch(updatePatientInfo(patientInfo?.id_patient, formData))
+        setEdit(false)
+        
     }
 
     return (

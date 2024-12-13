@@ -20,6 +20,8 @@ const RegisterPage = () => {
   const onSubmit = async (values) => {
     try {
       // Realizar la solicitud de registro utilizando axios
+      console.log("hola");
+      
       const response = await axios.post('http://localhost:3001/fisiosport/user/register', values);
       console.log(response.data); // Puedes manejar la respuesta según tus necesidades
 
@@ -31,40 +33,40 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className='containerRegister'>
-      <div className='containerTittle'>
-        <h1>¡Bienvenido a tu inicio de Sesión!</h1>
-        <p>Regístrate y sé parte</p>
+    <>
+      <div className="container-de-todo-login">
+        <div className="containerLogin">
+          <div className="containerFormLogin">
+          <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+              <Form className="formLogin">
+                <div className="fisio">
+                  <h1>Bienvenido</h1>
+                </div>
+                <div className="field">
+                  <div className="field-1">
+                  <Field type='text' name='email' placeholder='Email' />
+                  </div>
+                  <div className="field-2">
+                  <Field type='password' name='password' placeholder='Contraseña' />
+                  </div>
+                </div>
+
+                <div className="buttonLogin">
+                  <button type="submit">Registrarse</button>
+                </div>
+
+                <div className="new-account">
+                  <p className="noAccount">
+                    ¿Ya tienes una cuenta?{" "}
+                    <Link to="/login">Iniciar Sesión</Link>
+                  </p>
+                </div>
+              </Form>
+            </Formik>
+          </div>
+        </div>
       </div>
-
-      <div className='containerFormRegister'>
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-          <Form className='formRegister'>
-            <h1 className='registerTittle'>Registrarse</h1>
-
-            <Field type='text' name='email' placeholder='Email' />
-
-            <ErrorMessage name='email' component='div' className='error' />
-
-            <Field type='password' name='password' placeholder='Contraseña' />
-
-            <ErrorMessage name='password' component='div' className='error' />
-
-            <button className='buttonRegister' type='submit'>
-              Registrarse
-            </button>
-
-            <p className='noAccount'>¿Ya tienes una cuenta?</p>
-
-            <Link to='/login'>
-              <button className='buttonLogin' type='button'>
-                Iniciar Sesión
-              </button>
-            </Link>
-          </Form>
-        </Formik>
-      </div>
-    </div>
+    </>
   );
 };
 
