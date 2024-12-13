@@ -15,7 +15,7 @@ app.use(morgan('dev'))
 
 app.use('/fisiosport', router) 
 
-sequelize.sync({ alter: true }).then(async() => {  
+sequelize.sync({ force: true }).then(async() => {  
     const admin = await User.findOne({ where: { email: 'admin@gmail.com' } });
         if (!admin) { 
             const passwordEncrypt = await encrypt("admin")

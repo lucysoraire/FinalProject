@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Logo from "./../../assets/logo.png";
+import Logo from "./../../assets/logoazul.png";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import { MdOutlineDashboard } from "react-icons/md";
@@ -31,56 +31,39 @@ const NavBar = () => {
         <a href="#">
           <img src={Logo} alt="" className="logo" />
         </a>
-        <div>
-          <ul id="navbar" className={clicked ? "#navbar active" : "#navbar"}>
-            <li>
-              <i className="fa-solid fa-house "></i>
-              <NavLink to="/"> Inicio</NavLink>
-            </li>
-            {userAuth.authenticated && (
-              <li>
-                <i className="fa-solid fa-calendar-days"></i>{" "}
-                <NavLink to="/turno"> Turnos</NavLink>
-              </li>
-            )}
-            <li>
-              <NavLink to="/contacto">
-                <i className="fa-solid fa-phone"></i> Contacto
-              </NavLink>
-            </li>
-            <div>
-              {!userAuth.authenticated && (
-                <li>
-                  <NavLink to="/login">
-                    <i className="fa-solid fa-user"></i> Iniciar Sesión
-                  </NavLink>
-                </li>
-              )}
-              {userAuth.authenticated && (
-                <li>
-                  <button onClick={handleLogout}>
-                    <i className="fa-solid fa-sign-out-alt"></i> Cerrar Sesión
-                  </button>
-                </li>
-              )}
-              {userAuth.authenticated && !userAuth.isAdmin && (
-                <li>
-                  <NavLink to="/info">
-                    <i className="fa-solid fa-user"></i> Información Personal
-                  </NavLink>
-                </li>
-              )}
-              {userAuth.isAdmin && (
-                <li>
-                  <i className="fa-solid fa-table"></i>
-                  <NavLink to="/admin">
-                    Dashboard
-                  </NavLink>
-                </li>
-              )}
-            </div>
-          </ul>
-        </div>
+        <div className="itemsnavbar">
+                    <ul id='navbar' className={clicked ? "#navbar active" : "#navbar"}>
+                        <li className="itemnavbar">
+                        <NavLink to="/#"><i class="fa-solid fa-house "></i><NavLink to="/"> Inicio</NavLink></NavLink>
+                        </li>
+                        { userAuth.authenticated && <li className="itemnavbar">
+                            <i class="fa-solid fa-calendar"></i> <NavLink to="/turno"> Turnos</NavLink>
+                        </li>}
+                        <li className="itemnavbar">
+                            <NavLink to="/contacto"><i class="fa-solid fa-phone"></i> Contacto</NavLink>
+                        </li>
+                     
+                       
+                      
+                        {   
+                                userAuth.authenticated && !userAuth.isAdmin && <li className="itemnavbar"><i class="fa-solid fa-circle-info"></i><NavLink to="/info" activeClassName="active">Información Personal</NavLink></li>
+                            }
+                            {   
+                                userAuth.isAdmin && <li className="itemnavbar">
+                                    <i class="fa-solid fa-table"></i> <NavLink to="/admin" activeClassName="active">Dashboard</NavLink>
+                            </li>}
+                            {
+                               !userAuth.authenticated 
+                               ? <li className="itemnavbar"><NavLink to="/login" activeClassName="active"><i class="fa-solid fa-user"></i> Iniciar Sesión</NavLink></li>              
+                                : <li className="itemnavbar" id="cerrarsesion" onClick={handleLogout}>
+                                <NavLink to="/login" ><i class="fa-solid fa-user"></i> Cerrar Sesión</NavLink>
+                              </li>       
+                            }
+                            
+                       
+
+                    </ul>
+                </div>
         <div id="mobile" onClick={handleClick}>
           <i id="bar" className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
         </div>
@@ -90,3 +73,5 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+
