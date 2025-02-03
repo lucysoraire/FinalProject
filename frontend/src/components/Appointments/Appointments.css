@@ -1,58 +1,158 @@
+/* Contenedor de filtro de citas */
 .containerFilterAppointment {
-    width: 95%;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 10px;
-    padding-right: 10px;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
+/* Contenedor de los inputs para filtrar */
 .containerInputsAppointment {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    height: 50px;
-    gap: 10px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 50px;
+  gap: 10px;
 }
 
+/* Estilo de los textos dentro de los inputs */
 .containerInputsAppointment p {
-    margin: 0;
+  margin: 0;
+  font-size: 15px;
 }
 
+/* Estilos para los inputs */
 .containerInputsAppointment input {
-    width: 180px;
-    height: 30px;
-    padding-left: 5px;
+  width: 180px;
+  height: 30px;
+  padding-left: 5px;
+  border: none;
+  border-radius: 8px;
+  background-color: #a9d0d5;
+  outline: none;
+  color: white;
+}
+
+/* Estilos al pasar el cursor por encima de los inputs */
+.containerInputsAppointment input:hover {
+  background-color: #f08c30;
+}
+
+/* Estilo de los placeholders dentro de los inputs */
+.containerInputsAppointment input::placeholder {
+  color: white;
+}
+
+/* Contenedor de los dropdowns */
+.containerDropAppointment {
+  width: 30%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 10px;
+}
+
+.containerDropAppointment p {
+  margin: 0;
+  font-size: 15px;
+}
+
+/* Estilos para el botón del dropdown */
+#dropdown-item-button {
+  background-color: #a9d0d5;
+  border: none;
+}
+
+/* Estilos al pasar el cursor por encima del dropdown */
+#dropdown-item-button:hover {
+  background-color: #f08c30;
+}
+
+/* Media query para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  /* Ajustar contenedor del filtro para que los inputs y dropdown se apilen */
+  .containerFilterAppointment {
+    margin: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 30px; /* Espacio entre los elementos */
+  }
+
+  /* Ajustar los inputs dentro del contenedor de filtro */
+  .containerInputsAppointment {
+    justify-content: flex-start;
+    flex-direction: column; /* Apilar los elementos en columna */
+    gap: 10px; /* Espacio entre los elementos */
+    width: 300px; /* Aseguramos que no se desborden */
+    margin-bottom: 50px;
+  }
+
+  /* Estilos para los textos de los inputs (labels) */
+  .containerInputsAppointment p {
+    margin: 0;
+    font-size: 15px; /* Tamaño de fuente mayor */
+    font-weight: bold; /* Hacer el texto en negrita */
+    color: #333; /* Color negro para un mejor contraste */
+    text-align: center; /* Centrar el texto */
+  }
+
+  /* Ajuste de estilo para los inputs */
+  .containerInputsAppointment input {
+    width: 100%; /* Los inputs ocuparán todo el ancho disponible */
+    max-width: 250px; /* Ancho máximo de los inputs */
+    height: 40px; /* Aumentar la altura de los inputs */
+    padding-left: 10px; /* Espacio en el lado izquierdo */
     border: none;
     border-radius: 8px;
-    background-color: #A9D0D5;
+    background-color: #a9d0d5;
     outline: none;
     color: white;
-}
+  }
 
-.containerInputsAppointment input:hover {
-    background-color: #F08C30;
-}
+  /* Efecto hover en los inputs */
+  .containerInputsAppointment input:hover {
+    background-color: #f08c30;
+  }
 
-.containerInputsAppointment input::placeholder {
+  /* Estilo para el placeholder dentro de los inputs */
+  .containerInputsAppointment input::placeholder {
     color: white;
-}
+  }
 
-.containerDropAppointment {
-    width: 30%;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    gap: 10px;
-}
-.containerDropAppointment p {
+  /* Ajustar el contenedor de los dropdowns */
+  .containerDropAppointment {
+    justify-content: flex-start;
+    flex-direction: column; /* Apilar los elementos en columna */
+    gap: 10px; /* Espacio entre los elementos */
+    width: 300px; /* Aseguramos que no se desborden */
+    margin-top: 20px; /* Espacio entre el último input y los dropdowns */
+  }
+
+  /* Estilos para el texto de "Ordenar por" */
+  .containerDropAppointment p {
     margin: 0;
-}
+    font-size: 15px;
+    text-align: left; /* Alineamos el texto a la izquierda */
+    font-weight: bold; /* Lo hacemos negrita para resaltar */
+  }
 
-#dropdown-item-button {
-    background-color: #A9D0D5 ;
-    border: none;
-}
+  /* Estilos para los botones de dropdown */
+  .containerDropAppointment .dropDown {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Hacer que los botones de dropdown ocupen el 100% del ancho */
+    max-width: 250px; /* Limitar el ancho máximo de los botones */
+    height: 40px; /* Ajustar la altura de los botones */
+    margin-bottom: 5px; /* Espacio entre los botones */
+  }
 
-#dropdown-item-button:hover {
-    background-color: #F08C30;
+  /* Botón dropdown */
+  #dropdown-item-button {
+    width: 50%; /* Hacer el botón de dropdown 100% ancho */
+    max-width: 250px; /* No más ancho que 250px */
+    height: 40px; /* Ajustar el tamaño del botón */
+  }
 }

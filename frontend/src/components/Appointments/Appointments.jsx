@@ -205,18 +205,18 @@ const Appointments = () => {
                 <div className='containerDropAppointment'>
                     <p>Ordenar por: </p>
                     <DropdownButton id="dropdown-item-button" title="Fecha" onSelect={(eventKey) => handleOrderChange(eventKey, 'date')} className='dropDown'>
-                        <Dropdown.Item as="button">Ordenar por</Dropdown.Item>
                         <Dropdown.Item as="button" eventKey='proximo'>Mas proximos</Dropdown.Item>
                         <Dropdown.Item as="button" eventKey='lejano'>Mas lejanos</Dropdown.Item>
                     </DropdownButton>
 
                     <DropdownButton id="dropdown-item-button" title="Horario" onSelect={(eventKey) => handleOrderChange(eventKey, 'hour')} className='dropDown'>
-                        <Dropdown.Item as="button">Ordenar por</Dropdown.Item>
                         <Dropdown.Item as="button" eventKey='proximo'>Mas proximos</Dropdown.Item>
                         <Dropdown.Item as="button" eventKey='lejano'>Mas lejanos</Dropdown.Item>
                     </DropdownButton>
                 </div>
             </div>
+
+
             <div className='containerTablePatients'>
                 <table {...getTableProps()} className="table">
                     <thead>

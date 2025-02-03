@@ -1,20 +1,12 @@
 .containerPatients {   
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
 }
 
-.titlePatients {
-    width: 95%;
-    height: 60px;
-    background-color: #465BA6;
-    display: flex;
-    border-radius: 8px;
-    justify-content: left;
-    align-items: center;
-    padding-left: 3%;
-}
+
 .titlePatients p {
     margin: 0;
     font-size: 30px;
@@ -26,11 +18,11 @@
     display: flex;
     justify-content: left;
     align-items: center;
-
     width: 95%;
     padding: 10px;
     height: 50px;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
 .containerFilterPatients p {

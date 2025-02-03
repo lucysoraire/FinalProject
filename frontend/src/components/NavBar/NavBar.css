@@ -2,101 +2,90 @@ nav {
   display: flex;
   align-items: center;
 
-  justify-content:space-between;
+  justify-content: space-between;
   background-color: rgb(255, 255, 255);
   position: fixed;
   padding: 10px;
   top: 0;
-          left: 0;
-          right: 0;
-          z-index: 5;
-          font-weight: 600;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  font-weight: 600;
   border-radius: 0px 0px 30px 30px;
-
-
 }
 
-
-.navbar{
-display: flex;
-align-items: center;
-justify-content: center;
-
-
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #navbar {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   letter-spacing: 1px;
-margin-bottom:0;
+  margin-bottom: 0;
   text-transform: uppercase;
 }
 
-img.logo{
-
-  max-width:80px;
+img.logo {
+  max-width: 80px;
   height: auto;
   padding: 0;
   margin-left: 40px;
 }
 
-i{
-  color: #F08C30;
+i {
+  color: #f08c30;
 }
 #navbar .itemnavbar {
   list-style: none;
   padding: 00px 0px 0px 20px;
   position: relative;
-
 }
-.itemsnavbar{
-margin-right: 40px;
+.itemsnavbar {
+  margin-right: 40px;
 }
-i{
+i {
   padding: 0px 5px;
 }
-
 
 #navbar .itemnavbar a {
   text-decoration: none;
   font-size: 1rem;
- margin-right: 1em;
+  margin-right: 1em;
   color: #404dbb;
   transition: 0.3s ease-in-out;
 }
 
-#navbar .itemnavbar a:hover::after
-{
+#navbar .itemnavbar a:hover::after {
   content: "";
   width: 40%;
   height: 2px;
-  background: #F08C30;
+  background: #f08c30;
   position: absolute;
   bottom: -4px;
   left: 20px;
 }
 
 #navbar .itemnavbar a.active:not(#cerrarsesion)::after {
-content: "";
-width: 40%;
-height: 2px;
-background: #F08C30;
-position: absolute;
-bottom: -4px;
-left: 20px;
+  content: "";
+  width: 40%;
+  height: 2px;
+  background: #f08c30;
+  position: absolute;
+  bottom: -4px;
+  left: 20px;
 }
-#navbar .itemnavbar a.active::after
-{
-content: "";
-width: 0%;
-height: 2px;
-background: #F08C30;
-position: absolute;
-bottom: -4px;
-left: 20px;
+#navbar .itemnavbar a.active::after {
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: #f08c30;
+  position: absolute;
+  bottom: -4px;
+  left: 20px;
 }
-
 
 #navbar li p {
   cursor: pointer;
@@ -106,14 +95,14 @@ left: 20px;
 }
 
 #navbar li p i:hover {
-  color: #F08C30;
+  color: #f08c30;
 }
 
 #navbar li p:hover::after {
   content: "";
   width: 40%;
   height: 2px;
-  background: #F08C30;
+  background: #f08c30;
   position: absolute;
   bottom: -4px;
   left: 20px;
@@ -124,35 +113,33 @@ left: 20px;
 }
 
 #mobile i {
-color: #F08C30;
+  color: #f08c30;
   align-items: center;
 }
-
 
 @media screen and (max-width: 769px) {
   #navbar {
     display: flex;
     flex-direction: column;
-    align-items:start;
+    align-items: start;
     justify-content: center;
     position: fixed;
     top: 55px;
-    
+
     right: -900px;
     width: 100%;
     height: auto;
-    background-color: rgb(255, 255, 255);;
+    background-color: rgb(255, 255, 255);
     padding: 80px 0px 30px 40px;
 
     transition: 0.3s ease-in-out;
     z-index: -1;
-
   }
 
-  nav{
+  nav {
     border-radius: 0px;
   }
-  .itemsnavbar{
+  .itemsnavbar {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,7 +149,6 @@ color: #F08C30;
   #navbar.active {
     left: 50%;
     transform: translateX(-50%);
-
   }
 
   #navbar .itemnavbar {
@@ -179,9 +165,9 @@ color: #F08C30;
   }
 
   .react-icon-nav {
-    color: #F08C30;
+    color: #f08c30;
   }
- #navbar.active{
+  #navbar.active {
     margin-top: 0px;
   }
 }

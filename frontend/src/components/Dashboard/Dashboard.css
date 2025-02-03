@@ -1,146 +1,182 @@
+/* Contenedor principal del Dashboard */
 .containerDashboard {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 10px;
+  margin-top: 74px;
+  height: 100%;
+  display: flex;
+  flex-direction: row; /* Asegura que los contenedores estén en fila en pantallas grandes */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten cuando no haya suficiente espacio */
+  justify-content: flex-start; /* Alinea los elementos al inicio */
 }
 
-.titleDashboard {
-    width: 95%;
-    height: 60px;
-    background-color: #465BA6;
-    display: flex;
-    border-radius: 8px;
-    justify-content: left;
-    align-items: center;
-    padding-left: 3%;
-}
-
-.titleDashboard p {
-    margin: 0;
-    font-size: 30px;
-    color: white;
-    letter-spacing: 1px;
-}
-
+/* Contenedor de bienvenida */
 .containerWelcomeDashboard {
-    width: 95%;
-    height: 210px;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    gap: 10px;
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  height: 210px; /* Altura consistente */
+  display: flex;
+  justify-content: space-around; /* Espacio entre los contenedores */
+  margin: 10px;
+  gap: 15px;
+  box-sizing: border-box;
 }
 
 .welcomeDashboard {
-    width: 55%;
-    height: 100%;
-    background-color: #465BA6;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row-reverse;
+  width: 100%;
+  max-width: 400px; /* Máximo ancho de 300px */
+  height: 210px; /* Altura consistente */
+  background-color: #465ba6;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  padding: 15px;
 }
 
 .welcomeDashboard img {
-    height: 100%;
-    margin: 0;
+  width: 100px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 15px;
 }
 
 .welcomeDashboard div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-    height: 100%;
-    max-height: 100%;
-    padding-left: 10px;
-    padding-right: 50px;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  height: 100%;
 }
 
 .welcomeDashboard p {
-    color: #ff932d;
-    font-weight: 700;
-    font-size: 24px;
+  font-size: 18px;
+  color: #ff932d;
+  margin: 0;
 }
 
 .welcomeDashboard b {
-    color: white;
-    font-size: 24px;
+  color: white;
+  font-size: 22px;
 }
 
+/* Contenedor de estadísticas */
 .stats {
-    width: 25%;
-    background-color: #465BA6;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
-.statsInfo {
-    width: 130px;
-    text-align: left;
-    padding-left: 5px;
-    margin-left: 10px;
+  width: 100%;
+  max-width: 400px; /* Máximo ancho de 300px */
+  height: 210px; /* Altura consistente */
+  background-color: #465ba6;
+  border-radius: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  margin: 10px 0;
 }
 
 .containerIconsDashboardStats {
-    height:50px;
-    width: 50px;
-    background-color: rgba(253, 125, 5, 0.4);
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(253, 125, 5, 0.4);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .containerIconsDashboardStats .iconsDashboardStats {
-    /* Estilos específicos para el icono dentro del contenedor */
-    color: #ff932d; /* Puedes ajustar el color del icono según tus necesidades */
+  color: #ff932d;
+  width: 35px;
+  height: 35px;
 }
 
-
-.iconsDashboardStats {
-    width: 40px;
-    height: 40px;
-    
+.statsInfo {
+  width: 130px;
+  text-align: left;
+  padding-left: 5px;
+  margin-left: 10px;
 }
 
 .titleStat {
-    color: white;
-    font-size: 17px;
-    margin: 0;
+  color: white;
+  font-size: 17px;
 }
 
 .stat {
-    color: #F08C30;
-    font-size: 40px;
-    margin: 0;
-    display: flex;
-    justify-content: top;
+  color: #f08c30;
+  font-size: 30px;
+  margin: 0;
 }
 
+/* Contenedor de gráficos */
 .containerChart {
-    width: 95%;
-    height: 400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  max-width: 800px; /* Aumentamos el max-width para hacerlo más grande */
+  max-height: 600px; /* Aumentamos el max-height */
+  height: 380px; /* Aumentamos la altura a 350px */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .containerChart p {
-    margin: 0;
-    font-size: 25px;
-    letter-spacing: 1px;
-    color: #465BA6;
+  margin: 0;
+  font-size: 40px;
+  letter-spacing: 1px;
+  color: #465ba6;
 }
 
-.barChart{
-    height: 360px !important;
+.barChart {
+  height: 100% !important; /* Ajusta la altura de la barra */
+  width: 100%; /* Asegura que la barra ocupe todo el ancho disponible */
+}
+
+/* Media query para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  /* Contenedor principal se apila en columna en pantallas pequeñas */
+  .containerDashboard {
+    flex-direction: column; /* Apilan los contenedores en columna */
+    align-items: center; /* Centra los contenedores */
+  }
+
+  .containerWelcomeDashboard {
+    flex-direction: column; /* Apilar los contenedores dentro de la sección de bienvenida */
+    gap: 10px; /* Espacio entre los contenedores */
+  }
+
+  .welcomeDashboard,
+  .stats,
+  .containerChart {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 100%; /* No excede el ancho de la pantalla */
+    height: 210px; /* Altura consistente */
+    margin-bottom: 15px; /* Espacio entre los contenedores */
+  }
+
+  /* Asegura que la imagen no desborde */
+  .welcomeDashboard img {
+    width: 90px; /* Ajusta el tamaño de la imagen */
+    height: 110px; /* Ajusta el tamaño de la imagen */
+    margin-right: 15px; /* Mantiene el espacio entre la imagen y el texto */
+  }
+
+  /* Ajustes para el contenedor de gráficos */
+  .containerChart {
+    margin-top: 300px;
+    max-width: 90%; /* Deja que el contenedor ocupe un 90% del ancho disponible */
+    height: 250px; /* Ajusta la altura para que no sea demasiado grande */
+  }
+
+  .containerChart p {
+    font-weight: 500; /* Hacemos que el texto sea más grueso */
+    font-size: 23px; /* Reducimos el tamaño de la fuente del título */
+  }
+
+  .barChart {
+    height: 100% !important; /* Asegura que la barra ocupe todo el espacio disponible */
+    width: 100%; /* Asegura que la barra ocupe todo el ancho disponible */
+  }
 }

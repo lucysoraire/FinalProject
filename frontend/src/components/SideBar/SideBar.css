@@ -1,75 +1,239 @@
+/* Contenedor principal que incluye el sidebar y el contenido */
+.containMain {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh; /* Asegura que el contenedor principal ocupe toda la altura de la ventana */
+}
+
+/* Estilos para el Sidebar */
 .containerSideBar {
-    width:15%;
-    height: 100vh;
-    background: url(./../../assets/background8.jpg);
-    background-size: cover; 
-    background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alineamos el contenedor a la parte superior */
+  align-items: flex-start; /* Alineamos todo el contenedor a la izquierda */
+  width: 15%;
+  background: url(./../../assets/background8.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 74px; /* Ajustamos para que no se solape con el navbar */
+  position: relative;
+  min-height: calc(100vh - 74px); /* Hacemos que el sidebar ocupe el 100% menos el navbar */
+  max-width: 300px; /* Agregamos un valor máximo para que no crezca demasiado */
 }
 
 .containerLogo {
+  width: 100%;
+  height: auto; /* El logo debe adaptarse al tamaño disponible */
+  max-height: 120px; /* Establecemos un valor máximo para evitar que se haga muy grande */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin-top: 20px;
+}
+
+.logoSideBar {
+  width: 100%;
+  max-width: 250px; /* Limitamos el tamaño máximo del logo */
+  padding-bottom: 5px;
+  border-bottom: 1px solid white;
+}
+
+.containerOptionsMenu {
+  margin-top: 20px;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.ulMenu {
+  min-height: 150px;
+  height: fit-content;
+  padding-left: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-left: auto;
+}
+
+/* Estilos para los ítems de menú */
+.ulMenu li {
+  list-style: none;
+  text-align: left;
+  height: 50px;
+  display: flex;
+  margin-bottom: 30px;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 25px;
+  padding-right: 60px;
+  color: rgb(255, 255, 255);
+  border-radius: 10px 0 0 10px;
+  position: relative;
+  letter-spacing: 1px;
+  gap: 20px;
+  width: 100%;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.ulMenu li:hover {
+  background-color: rgb(255, 255, 255);
+  color: #465ba6;
+  cursor: pointer;
+  justify-content: flex-start;
+}
+
+.ulMenu li a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+.react-icons {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.ulMenu li:hover .react-icons {
+  transform: scale(1.3);
+}
+
+.ulMenu li {
+  font-size: 25px;
+}
+
+.ulMenu li a {
+  font-size: 25px;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+.ulMenu li a:hover {
+  text-decoration: none;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media screen and (max-width: 769px) {
+  .containerSideBar {
+    width: 100%;
+    margin-top: 74px;
+    height: 100%; /* Ocupa todo el alto disponible */
+    min-height: 100vh; /* Asegura que el sidebar ocupe toda la altura */
+  }
+
+  .containerLogo {
     width: 100%;
     height: 13%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 5px;
-}
+    margin-top: 20px;
+  }
 
-.logoSideBar {
-    width: 100%;
-    padding-bottom: 5px;
-    border-bottom: 1px solid white;
-}
+  .ulMenu {
+    padding-left: 0px;
+    align-items: flex-start;
+  }
 
-.containerOptionsMenu {
-    width: 100%;
-    height: 86%;
-    display: flex;
-    flex-direction: column;
-    justify-content:space-between;
-}
-
-.ulMenu {
-
-    min-height: 150px;
-    height: fit-content;
-    padding-left:9px;
-}
-
-
-.ulMenu li, .ulLogout li {
+  .ulMenu li {
     list-style: none;
     text-align: left;
-    height: 40px;
+    height: 50px;
     display: flex;
-    justify-content: left;
+    margin-bottom: 30px;
+    justify-content: flex-start;
     align-items: center;
-    padding-left: 9px;
+    padding-left: 25px;
+    padding-right: 20px;
     color: white;
     border-radius: 10px 0 0 10px;
     position: relative;
     letter-spacing: 1px;
-    gap: 5px;
-    
-}
+    gap: 20px;
+    width: 100%;
+    transition: background-color 0.3s ease-in-out;
+    margin-right: 15px;
+  }
 
-.ulMenu li a {
-    text-decoration: none;
-    color: white;
-}
-
-
-.ulMenu li:hover, .ulLogout li:hover {
-    background-color: white;
-    color: #465BA6;
+  .ulMenu li:hover {
+    background-color: rgb(255, 255, 255);
+    color: #465ba6;
     cursor: pointer;
+    justify-content: flex-start;
+    padding-top: 12px;
+    padding-left: 10px;
+  }
+
+  .ulMenu li {
+    margin-bottom: 10px;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding-left: 15px;
+    padding-right: 8px;
+    padding-bottom: 15px;
+  }
+
+  .react-icons {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ulMenu li:hover .react-icons {
+    transform: scale(1.0);
+  }
+
+  .ulMenu li {
+    font-size: 14px;
+  }
+
+  .ulMenu li a {
+    font-size: 14px;
+    font-weight: 600;
+    outline: none;
+    border: none;
+  }
 }
 
-.ulLogout {
-    padding-left:9px;
-}
+/* Ajustes para pantallas grandes */
+@media screen and (min-width: 770px) {
+  .containerSideBar {
+    width: 100%; /* Ajustamos el sidebar a un 20% para pantallas más grandes */
+    margin-top: 74px;
+    height: 100%;
+    min-height: 100vh;
+    max-width: 320px; /* Maximizamos el ancho del sidebar */
+  }
 
-.react-icons {
-    width: 20px;
-    height: 20px;
+  .containerLogo {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 20px;
+  }
+
+  .logoSideBar {
+    width: 100%;
+    max-width: 250px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid white;
+  }
 }

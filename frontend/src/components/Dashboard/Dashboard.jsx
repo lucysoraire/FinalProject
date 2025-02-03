@@ -71,45 +71,42 @@ const Dashboard = () => {
 
     return (
         <div className="containerDashboard">
-            <div className='titleDashboard'>
-                <p>Dashboard</p>
-            </div>
-            <div className='containerWelcomeDashboard'>
-                <div className='welcomeDashboard'>
+            <div className="containerWelcomeDashboard">
+                <div className="welcomeDashboard">
                     <div>
                         <b>Bienvenido,</b>
                         <p>Christian Fabián Núñez Coso</p>
                     </div>
                     <div>
                         <img src="https://stg.fundacionsantafedebogota.com/sites/default/files/styles/large/public/2022-10/dr-home.png?itok=j0px4kRI" alt="" />
-
                     </div>
                 </div>
-                <div className='stats'>
-                    <div className='containerIconsDashboardStats'>
-                        <FaUsers className='iconsDashboardStats' />
+                <div className="stats">
+                    <div className="containerIconsDashboardStats">
+                        <FaUsers className="iconsDashboardStats" />
                     </div>
-                    <div className='statsInfo'>
-                        <p className='titleStat'>Pacientes</p>
-                        <p className='stat'>{patients.length}</p>
+                    <div className="statsInfo">
+                        <p className="titleStat">Pacientes</p>
+                        <p className="stat">{patients.length}</p>
                     </div>
                 </div>
-                <div className='stats'>
-                    <div className='containerIconsDashboardStats'>
-                        <IoCalendarNumberSharp className='iconsDashboardStats' />
+                <div className="stats">
+                    <div className="containerIconsDashboardStats">
+                        <IoCalendarNumberSharp className="iconsDashboardStats" />
                     </div>
-                    <div className='statsInfo'>
-                        <p className='titleStat'>Turnos</p>
-                        <p className='stat'>{appointments.length}</p>
+                    <div className="statsInfo">
+                        <p className="titleStat">Turnos</p>
+                        <p className="stat">{appointments.length}</p>
                     </div>
                 </div>
             </div>
-            <div className='containerChart'>
+            <div className="containerChart">
                 <p>Turnos de la semana</p>
-                {<Bar data={data} className='barChart' />}
+                <Bar data={data} className="barChart" />
             </div>
         </div>
-    )
+    );
+    
 }
 
 export default Dashboard
