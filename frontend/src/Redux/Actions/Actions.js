@@ -11,6 +11,8 @@ export const UPDATE_PATIENT_INFO = "UPDATE_PATIENT_INFO";
 export const DELETE_PATIENT_INFO = "DELETE_PATIENT_INFO";
 export const DELETE_APPOINTMENT = "DELETE_APPOINTMENT";
 export const UPDATE_APPOINTMENT = "UPDATE_APPOINTMENT";
+export const SEND_CONTACT_MESSAGE = "SEND_CONTACT_MESSAGE";
+
 
 export const userAuth = (user) => {
   return async (dispatch) => {
@@ -158,6 +160,27 @@ export const deleteAppointment = (appointmentId) => {
     }
   };
 };
+
+//Aquiii el envio de contacto
+export const sendContactMessage = (messageData) => async (dispatch) => {
+  try {
+      const response = await axios.post(
+          "http://localhost:3001/fisiosport/contact",
+          { data: messageData }
+      );
+
+      dispatch({
+          type: SEND_CONTACT_MESSAGE,
+          payload: response.data,
+      });
+
+      return response.data;
+  } catch (error) {
+      console.error("Error enviando el mensaje de contacto:", error);
+      return { success: false, error: error.message };
+  }
+};
+
 
 export const logout = () => {
   return {

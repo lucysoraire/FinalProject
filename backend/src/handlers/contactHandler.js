@@ -1,16 +1,25 @@
-const { sendMessageController } = require('../controllers/contactController')
+//se cambio todo para obtener los datos de contacto
+
+const { sendMessageController } = require('../controllers/contactController');
 
 const sendMessageHandler = async (req, res) => {
     try {
-        const { data } = req.body
-        console.log(data);
-        const messageSend = await sendMessageController(data)
-        res.status(200).json(messageSend)
+        const { data } = req.body;
+
+        console.log("Datos recibidos en el backend:", data); // DEBUG
+
+        if (!data || !data.name || !data.lastname || !data.email || !data.asunto) {
+            return res.status(400).json({ success: false, error: "Faltan datos en la solicitud" });
+        }
+
+        const messageSend = await sendMessageController(data);
+        res.status(200).json({ success: true, message: "Correo enviado correctamente" });
     } catch (error) {
-        res.status(400).json({ error: error.message })
+        console.error("Error en sendMessageHandler:", error);
+        res.status(400).json({ success: false, error: error.message });
     }
-}
+};
 
 module.exports = {
     sendMessageHandler
-}
+};

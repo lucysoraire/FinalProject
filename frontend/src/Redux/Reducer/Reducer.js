@@ -11,6 +11,7 @@ import {
   UPDATE_APPOINTMENT,
   UPDATE_PATIENT_INFO,
   USER_AUTH,
+  SEND_CONTACT_MESSAGE,
 } from "../Actions/Actions";
 
 const initialState = {
@@ -29,6 +30,8 @@ const initialState = {
     medicalHistoryToFilter: [],
     appointmentsToFilter: [],
   },
+  //Aqui el envio de contacto
+  contactMessage: null, // Nuevo estado para almacenar la respuesta del mensaje de contacto
 };
 
 const reducer = (state = initialState, action) => {
@@ -151,6 +154,14 @@ const reducer = (state = initialState, action) => {
             ? action.payload
             : appointment
         ),
+      };
+    }
+
+    //aquí el envío del formulario
+    case SEND_CONTACT_MESSAGE: {
+      return {
+        ...state,
+        contactMessage: action.payload, // Guardamos la respuesta del backend
       };
     }
 
