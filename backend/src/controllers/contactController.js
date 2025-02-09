@@ -1,47 +1,43 @@
-const nodemailer = require('nodemailer')
+//Se cambio todo para recibir el contacto del cliente
+
+const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 const sendMessageController = async (user) => {
-    const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: {
-            user: 'practiceapplications0@gmail.com',
-            pass: process.env.pass,
-        },
-    });
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.email,
+      pass: process.env.pass,
+    },
+  });
 
-    const mailOptions = {
-        from: 'Remitente <practiceapplications0@gmail.com>',
-        to: user.email,
-        subject: `¡Alguien se quiere poner en contacto contigo!`,
-        html: `
-            <html>
-            <body>
-            <p>Hola ${user.name},</p>
-            <p>¡Hemos recibido un mensaje de alguien interesado en contactarte! Por favor, revisa tus detalles de contacto y responde lo antes posible.</p>
-            <p>Detalles de contacto:</p>
-            <ul>
-                <li>Nombre: ${user.name + ' ' + user.lastname}</li>
-                <li>Correo electrónico: ${user.email}</li>
-            </ul>
-            <p>Mensaje:</p>
-            <p>${user.asunto}</p>
-            <p>¡Gracias!</p>
+  const mailOptions = {
+    from: "<practiceapplications0@gmail.com>", // Nombre personalizado del remitente
+    to: process.env.email, // Correo del administrador
+    replyTo: user.email, // Al responder, se enviará al usuario
+    subject: "Kinesiología - Nueva Consulta", // Asunto por defecto
+    html: `
+        <html>
+        <body>
+        <p><strong>Nombre del paciente:</strong> ${user.name} ${user.lastname}</p>
+        <p><strong>Correo del paciente:</strong> ${user.email}</p>
+        <p><strong>Mensaje:</strong></p>
+        <p>${user.asunto}</p>
         </body>
-            </html>`
+        </html>`,
+  };
 
-
-    };
-
-    try {
-        const info = await transporter.sendMail(mailOptions);
-        console.log('Correo enviado:', info.response);
-    } catch (error) {
-        console.error('Error al enviar el correo al cliente:', error);
-    }
-}
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Correo enviado:", info.response);
+  } catch (error) {
+    console.error("Error al enviar el correo:", error);
+  }
+};
 
 module.exports = {
-    sendMessageController
-}
+  sendMessageController,
+};
