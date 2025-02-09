@@ -32,30 +32,19 @@ const Footer = () => {
                                 <li><a href="#">Boreal</a></li>
                             </ul>
                         </div>
-                        <div className="newsletter">
-                            <h3>NEWSLETTER</h3>
-                            <form>
-                                <input
-                                    type="email"
-                                    name="newsletter_email"
-                                    id="newsletter_email"
-                                    placeholder="Email"
-                                />
-                                <input type="button" value="Enviar" />
-                            </form>
-                        </div>
-                    </div>
-                    <div className="social">
+                        <div className="social">
                         <i className="fab fa-github"></i>
                         <i className="fab fa-facebook"></i>
                         <i className="fab fa-instagram"></i>
                         <i className="fab fa-google"></i>
                     </div>
+                    </div>
+                    
                     <div className="info">
                         <div className="legal">
                             <a href="#">Términos y Condiciones</a><a href="#">Política de Privacidad</a>
                         </div>
-                        <div className="copyright">2024 &copy; Tesis Soraire, Lucía - Romano, Ramiro</div>
+                        <div className="copyright">2024 &copy; Tesis Soraire - Romano</div>
                     </div>
                 </footer>
             </div>

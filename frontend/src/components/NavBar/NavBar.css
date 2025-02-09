@@ -3,9 +3,10 @@ nav {
   align-items: center;
 
   justify-content: space-between;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0);
   position: fixed;
-  padding: 10px;
+  padding-top: 14px;
+   padding-bottom: 14px;  
   top: 0;
   left: 0;
   right: 0;
@@ -14,25 +15,34 @@ nav {
   border-radius: 0px 0px 30px 30px;
 }
 
+nav.scrolled {
+  background-color: #000;
+  transition: background-color 0.3s;
+}
+
 .navbar {
+  
   display: flex;
   align-items: center;
   justify-content: center;
 }
 #navbar {
+  
   display: flex;
   align-items: center;
   justify-content: center;
   letter-spacing: 1px;
   margin-bottom: 0;
   text-transform: uppercase;
+  font-weight: 400;
+  margin-right: 100px;
 }
 
 img.logo {
   max-width: 80px;
   height: auto;
   padding: 0;
-  margin-left: 40px;
+  margin-left: 100px;
 }
 
 i {
@@ -54,7 +64,8 @@ i {
   text-decoration: none;
   font-size: 1rem;
   margin-right: 1em;
-  color: #404dbb;
+  /*color: #404dbb;*/
+  color: rgb(255, 255, 255);
   transition: 0.3s ease-in-out;
 }
 
@@ -90,7 +101,8 @@ i {
 #navbar li p {
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  color: #404dbb;
+  /*color: #404dbb;*/
+  color: rgb(255, 255, 255);
   margin: 0;
 }
 
@@ -122,28 +134,35 @@ i {
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: center;
+    justify-content: start;
     position: fixed;
     top: 55px;
 
     right: -900px;
     width: 100%;
-    height: auto;
-    background-color: rgb(255, 255, 255);
-    padding: 80px 0px 30px 40px;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    padding: 80px 0px 30px 30px;
 
     transition: 0.3s ease-in-out;
     z-index: -1;
   }
 
+  #navbar .itemnavbar a{
+    font-size:  24px;
+  }
+  img.logo {
+
+    margin-left: 30px;
+  }
   nav {
     border-radius: 0px;
+    background-color: rgb(0, 0, 0);
   }
   .itemsnavbar {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 20px;
   }
 
   #navbar.active {
@@ -157,10 +176,11 @@ i {
 
   #mobile {
     display: block;
+    margin-right: 30px;
   }
 
   #mobile i {
-    font-size: 24px;
+    font-size: 36px;
     cursor: pointer;
   }
 
@@ -170,4 +190,9 @@ i {
   #navbar.active {
     margin-top: 0px;
   }
+
+  #navbar .itemnavbar{
+    padding-left: 0px;
+  }
+
 }

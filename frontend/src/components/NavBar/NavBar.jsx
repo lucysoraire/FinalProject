@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Logo from "./../../assets/logoazul.png";
+import Logo from "./../../assets/logoblanco2.png";
 import { Navigate, NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import { MdOutlineDashboard } from "react-icons/md";
@@ -27,9 +27,18 @@ const NavBar = () => {
     setClicked(!clicked);
   };
 
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolling(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
   return (
     <>
-      <nav>
+      <nav className={scrolling ? "scrolled" : ""}>
         <a href="#">
           <img src={Logo} alt="" className="logo" />
         </a>

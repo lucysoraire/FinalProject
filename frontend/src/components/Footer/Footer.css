@@ -1,7 +1,7 @@
 
 
 footer {
-  background: #404dbb;
+  background: #000000;
   color: #ffffff;
   overflow-x: hidden;
   position: sticky;
@@ -14,7 +14,7 @@ footer .info {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #404dbb;
+  background: #000000;
 }
 
 footer .info .legal {
@@ -27,14 +27,11 @@ footer .info .legal > a {
 }
 
 footer .social {
-  padding: 1.5rem 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
+  justify-content: start;
   position: relative;
-  border-top: 1px solid #ffffff27;
-  border-bottom: 1px solid #ffffff27;
-  background-color: #404dbb;
+  background-color: #000000;
 }
 
 a {
@@ -51,18 +48,6 @@ input {
   height: 100%;
 }
 
-input[type="email"] {
-  padding: 7px 8px;
-  border: 2px solid #f08c30;
-}
-input[type="button"] {
-  border: none;
-  padding: 7px 12px;
-  background: #f08c30;
-  color: rgb(255, 255, 255);
-  border: 3px solid #f08c30;
-  cursor: pointer;
-}
 h3 {
   font-size: 1.4em;
   text-transform: uppercase;
@@ -89,12 +74,18 @@ footer .social:before {
   transform: translateX(-50%);
 }
 
+.pages ul{
+  padding-left: 0px;
+}
+
 footer .top {
-  padding: 2rem 0;
+  
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  margin: 30px 100px;
+  align-items: start;
+  justify-content: space-between;
   flex-direction: row;
+
 }
 
 footer .top .pages {
@@ -103,33 +94,25 @@ footer .top .pages {
 }
 
 footer .top .pages ul {
-  margin: 20px;
-  padding-right: 32px;
-}
+padding-right: 60px;
+display: flex;
+flex-direction: column;
+align-items: start;
+justify-content: start;}
 
 footer .top .pages ul li {
   margin: 5px;
 }
 
-footer .newsletter h3 {
-  margin-bottom: 10px;
-}
-footer .newsletter form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 @media screen and (max-width: 768px) {
   footer .top {
     flex-direction: column;
+    margin: 0px 30px;
   }
-  footer .top .newsletter {
-    padding-top: 1rem;
-  }
-  footer .top .pages ul {
-    margin: 10px;
-  }
+
+
+
 }
 
 @media screen and (max-width: 600px) {
@@ -140,11 +123,30 @@ footer .newsletter form {
 
   footer .info {
     flex-direction: column;
-  }
+    margin: 0px 30px 20px 30px;
+    padding: 0px 0px;
+    gap: 10px;
+    align-items: start;
+    justify-content: start;
 
-  footer .info > .copyright {
-    margin-top: 10px;
   }
+  .social{
+display: flex;
+align-items: start;
+justify-content: start;    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+ .legal{
+  display: flex;
+  gap: 10px;
+ }
+ .legal a{
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  text-align: start;
+ }
+
 }
 
 @media screen and (max-width: 450px) {
@@ -159,7 +161,6 @@ footer .newsletter form {
 
   footer .info .legal a {
     margin: 0;
-    text-align: center;
   }
   h3 {
     margin-top: 30px;
