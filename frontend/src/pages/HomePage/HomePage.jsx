@@ -20,19 +20,12 @@ import omint from "./../../assets/omint.png";
 import bramed from "./../../assets/bramed.png";
 import prevencion from "./../../assets/prevencion.png";
 import subsidio from "./../../assets/subsidio.png";
-
-
-
-
-
-
-
-
-
-
+import { ReactGoogleReviews } from "react-google-reviews";
+import "react-google-reviews/dist/index.css";
 const HomePage = () => {
+  const featurableWidgetId = "05c2bf91-e5c4-4b8f-872d-f05e7e70d502";
   return (
-    <section>
+    <section className="container-principal">
     <div className="home">
       <div className="titulovideo">
         <video src={Intro} className="videointro" autoPlay loop />
@@ -71,13 +64,6 @@ const HomePage = () => {
           <img src={bramed} />
           <img src={prevencion} />
           <img src={subsidio} />
-
-
-
-
-
-
-
         </div>
         <div class="logos-slide">
           <img src={osde} />
@@ -99,17 +85,14 @@ const HomePage = () => {
           <img src={bramed} />
           <img src={prevencion} />
           <img src={subsidio} />
-
-
-
-
-
-
-
-
         </div>
 
       </div>
+      <div className="reviews"> 
+      <ReactGoogleReviews className="reviews"layout="carousel" theme="dark" reviewVariant="testimonial" logoVariant="none"  featurableId={featurableWidgetId} />
+      
+  
+    </div>
       </section>
 
   );
