@@ -42,27 +42,72 @@ const PatientInfo = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await axios.post(
-      "http://localhost:3001/fisiosport/patient",
-      formData
-    );
-    console.log(response.data);
-
-    dispatch(savePatientInfo(response.data));
+  
+    try {
+      // Enviar los datos al backend
+      const response = await axios.post(
+        "http://localhost:3001/fisiosport/patient",
+        formData
+      );
+      console.log("Respuesta del backend:", response.data);
+  
+      // Guardar los datos en Redux
+      dispatch(savePatientInfo(response.data));
+  
+      // Guardar los datos en localStorage para persistencia
+      localStorage.setItem('patientInfo', JSON.stringify(response.data));
+    } catch (error) {
+      console.error("Error al guardar los datos:", error);
+    }
   };
+
+  useEffect(() => {
+    // Primero, revisamos si hay datos en Redux
+    if (patientInfo && Object.keys(patientInfo).length > 0) {
+      setFormData({
+        name: patientInfo?.name,
+        lastname: patientInfo?.lastname,
+        phone: patientInfo?.phone,
+        dni: patientInfo?.dni,
+        email: patientInfo?.email,
+        age: patientInfo?.age,
+      });
+    } else {
+      // Si no hay datos en Redux, buscamos en localStorage
+      const storedPatientInfo = localStorage.getItem('patientInfo');
+      if (storedPatientInfo) {
+        const parsedPatientInfo = JSON.parse(storedPatientInfo);
+        // Si hay datos en localStorage, cargamos los datos en el estado del formulario
+        setFormData({
+          name: parsedPatientInfo?.name || '',
+          lastname: parsedPatientInfo?.lastname || '',
+          phone: parsedPatientInfo?.phone || '',
+          dni: parsedPatientInfo?.dni || '',
+          email: parsedPatientInfo?.email || '',
+          age: parsedPatientInfo?.age || '',
+        });
+      }
+    }
+  }, [patientInfo]);
 
   const updatePatient = () => {
+    // Actualizar los datos en Redux
     dispatch(updatePatientInfo(patientInfo?.id_patient, formData));
+    
+    // Guardar los datos actualizados en localStorage
+    localStorage.setItem('patientInfo', JSON.stringify(formData));
+  
+    // Desactivar el modo de edición
     setEdit(false);
   };
-
+  
   return (
     <div className="containerPatientInfo">
       <div className="textPatientInfo">
         <h2>Información y Privacidad</h2>
         <div className="containerInfo">
           <ul>
-            <li >
+            <li>
               <p>
                 Para poder reservar turnos, es necesario completar todos los
                 campos de información personal. Asegúrate de proporcionar
@@ -90,13 +135,14 @@ const PatientInfo = () => {
           </ul>
         </div>
       </div>
+  
       <div className="containerFormPatientInfo">
         <div className="formPatientInfo">
-          {!patientInfo?.email ? (
+          {/* Si no se tiene la información, se muestra el formulario */}
+          {!patientInfo?.email && !localStorage.getItem('patientInfo') ? (
             <form onSubmit={handleSubmit} className="formInfo">
               <p>Datos Personales</p>
               <div className="labelsAndInputs">
-                {/* <label htmlFor="name">Nombre</label> */}
                 <input
                   type="text"
                   name="name"
@@ -107,7 +153,6 @@ const PatientInfo = () => {
                 />
               </div>
               <div className="labelsAndInputs">
-                {/* <label htmlFor="lastname">Apellido</label> */}
                 <input
                   type="text"
                   name="lastname"
@@ -118,7 +163,6 @@ const PatientInfo = () => {
                 />
               </div>
               <div className="labelsAndInputs">
-                {/* <label htmlFor="age">Edad</label> */}
                 <input
                   type="number"
                   name="age"
@@ -129,7 +173,6 @@ const PatientInfo = () => {
                 />
               </div>
               <div className="labelsAndInputs">
-                {/* <label htmlFor="phone">Teléfono</label> */}
                 <input
                   type="text"
                   name="phone"
@@ -140,7 +183,6 @@ const PatientInfo = () => {
                 />
               </div>
               <div className="labelsAndInputs">
-                {/* <label htmlFor="dni">DNI</label> */}
                 <input
                   type="text"
                   name="dni"
@@ -151,7 +193,6 @@ const PatientInfo = () => {
                 />
               </div>
               <div className="labelsAndInputs">
-                {/* <label htmlFor="email">Correo electrónico</label> */}
                 <input
                   type="email"
                   name="email"
@@ -168,31 +209,32 @@ const PatientInfo = () => {
           ) : (
             <div className="containerInfoPatient">
               <p className="titleInfoPatient">Datos Personales</p>
+              {/* Si no está en modo edición, mostrar los datos del paciente */}
               {!edit ? (
                 <div className="patientInfoLoged">
                   <p>
                     <b>Nombre: </b>
-                    {patientInfo?.name}
+                    {patientInfo?.name || JSON.parse(localStorage.getItem('patientInfo'))?.name}
                   </p>
                   <p>
                     <b>Apellido: </b>
-                    {patientInfo?.lastname}
+                    {patientInfo?.lastname || JSON.parse(localStorage.getItem('patientInfo'))?.lastname}
                   </p>
                   <p>
                     <b>Edad: </b>
-                    {patientInfo?.age}
+                    {patientInfo?.age || JSON.parse(localStorage.getItem('patientInfo'))?.age}
                   </p>
                   <p>
                     <b>Telefono: </b>
-                    {patientInfo?.phone}
+                    {patientInfo?.phone || JSON.parse(localStorage.getItem('patientInfo'))?.phone}
                   </p>
                   <p>
                     <b>DNI: </b>
-                    {patientInfo?.dni}
+                    {patientInfo?.dni || JSON.parse(localStorage.getItem('patientInfo'))?.dni}
                   </p>
                   <p>
                     <b>Email: </b>
-                    {patientInfo?.email}
+                    {patientInfo?.email || JSON.parse(localStorage.getItem('patientInfo'))?.email}
                   </p>
                 </div>
               ) : (
@@ -227,13 +269,12 @@ const PatientInfo = () => {
                     value={formData?.dni}
                     onChange={handleChange}
                   />
-                  {/*<input type='text' name='email' value={formData.email} onChange={handleChange}/>*/}
                   <div className="containerButtonSubmit">
                     <button onClick={updatePatient}>Guardar</button>
                   </div>
                 </div>
               )}
-
+  
               <button
                 className="buttonEditOrCancel"
                 onClick={() => setEdit(!edit)}
@@ -246,6 +287,7 @@ const PatientInfo = () => {
       </div>
     </div>
   );
+  
 };
 
 export default PatientInfo;
