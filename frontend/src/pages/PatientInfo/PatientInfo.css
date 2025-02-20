@@ -1,174 +1,207 @@
-.containerPatientInfo { 
-    height: 84vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.containerPatientInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #1e3a5f, #243b55);
 }
 
-
 .containerFormPatientInfo {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .formPatientInfo {
-    width: 70%;
-    height: 90%;
-    box-shadow: 0px 0px 8px rgb(124, 124, 124);
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  width: 70%;
+  height: 90%;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
 }
 
 .formInfo {
-    width: 80%;
-    height: 85%;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap:15px;
-}   
-
-.formInfo p {
-    font-size: 25px;
-    color: #F08C30;
-    font-weight: 600;
-    letter-spacing: 1px;
+  width: 80%;
+  height: 85%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
+.formInfo p {
+  font-size: 25px;
+  color: #ff9f43;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+
+
+
+
 .labelsAndInputs {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .labelsAndInputs input {
+    padding: 10px;
+    font-size: 14px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     outline: none;
-    border: 1px solid #bebebe;
-    padding-left: 9px;
-    height: 30px;
+    font-size: 1rem;
+    transition: border 0.3s ease-in-out;
+}
+
+.labelsAndInputs input:focus{
+    border-color: #ff9f43;
+    outline: none;
+}
+.labelsAndInputs input::placeholder{
+    color: rgb(197, 197, 197);
 }
 
 .containerButtonSubmit {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
 }
 
 .containerButtonSubmit button {
-    width: 50%;
-    height: 30px;
-    border-radius: 8px;
-    background-color: #465BA6;
-    border: none;
-    color: white;
-    font-weight: 600;
-    letter-spacing: 1px;
+  width: 50%;
+  height: 38px;
+  border-radius: 8px;
+  background-color: #ff9f43;
+  border: none;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: background 0.3s ease-in-out;
+
 }
 
 .containerButtonSubmit button:hover {
-    background-color:#F08C30;
+  background-color: #e88b30;
+}
+
+.containerInfoPatient p {
+  color: white;
 }
 
 .textPatientInfo {
-    width: 35%;
-
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    padding-top: 35px;
-    align-items: center;
-    gap: 10px;
+  width: 35%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 35px;
+  align-items: center;
+  gap: 10px;
 }
 
 .textPatientInfo h2 {
-    color: #F08C30;
-    font-weight: 600;
-    letter-spacing: 1px;
+  color: #ff9f43;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .containerInfo {
-    text-align: left;
+  text-align: left;
 }
 
 .containerInfo ul {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    font-size: 20px;
-    list-style-type: disc; /* Estilo del punto (puedes usar 'circle' o 'square' también) */
-    color: #F08C30;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 20px;
+  list-style-type: disc; /* Estilo del punto (puedes usar 'circle' o 'square' también) */
+  color: #ff9f43;
 }
 
-
-.containerInfo ul li p{
-    color: black;
-    font-size: 20px;
+.containerInfo ul li p {
+  color: white;
+  font-size: 20px;
 }
 
 .containerInfoPatient {
-
-    width: 80%;
-    height: 85%;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap:15px;
+  width: 80%;
+  height: 85%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.titleInfoPatient {
-    font-size: 25px;
-    color: #F08C30;
-    font-weight: 600;
-    letter-spacing: 1px;
+.containerInfoPatient .titleInfoPatient {
+  font-size: 30px;
+  color: #ff9f43;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5); /* Sombra negra suave */
 }
+
 
 .patientInfoLoged {
-
-    width: 90%;
-    height: 50%;
+  width: 90%;
+  height: 50%;
+  
 }
 
 .patientInfoLoged p {
-    font-size: 20px;
+  font-size: 20px;
+
 }
 
 .patientInfoLoged p b {
-    color: #F08C30;
+  color: #ff9f43;
 }
 
 .buttonEditOrCancel {
-    width: 50%;
-    height: 35px;
-    background-color: #465BA6;
-    color: white;
-    border-radius: 8px;
-    border: none;
+  width: 50%;
+  height: 38px;
+  border-radius: 8px;
+  background-color: #ff9f43;
+  border: none;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: background 0.3s ease-in-out;
 }
 
 .buttonEditOrCancel:hover {
-    background-color:#F08C30 ;
+  background-color: #e88b30;
 }
 
 .labelsAndInputsLoged {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.labelsAndInputsLoged input{
-    border-radius: 8px;
-    outline: none;
-    border: 1px solid #bebebe;
-    padding-left: 9px;
-    height: 30px;
+.labelsAndInputsLoged input {
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #bebebe;
+  padding-left: 9px;
+  height: 30px;
 }
+
+
