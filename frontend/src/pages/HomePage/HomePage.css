@@ -77,6 +77,24 @@
       margin-left: 100px;    margin-right: 100px;
     }
     
+    .buttonn {
+
+      position: relative;
+      overflow: hidden;
+      height: 3.5rem;
+      padding: 0 2rem;
+      font-weight: 700;
+      border-radius: 1.5rem;
+      background: rgba(240, 140, 48, 1);
+      background-size: 400%;
+      font-size: 24px;
+
+      color: #fff;
+      border: none;
+      cursor: pointer;
+ 
+      margin-left: 100px;    margin-right: 100px;
+    }
     .button:hover::before {
       transform: scaleX(1);
     }
@@ -89,6 +107,7 @@
 .reviews{
   background-color: black;
 }
+
 
 .css-qnun6a{
   background-color: black !important;
@@ -146,6 +165,98 @@
       transition: all 0.475s;
     }
     
+
+    .about-us {
+      display: flex;
+      justify-content: center;
+      color: #fff;
+      background-color: #f08c30;
+
+      
+    }
+    
+    .about-us-container {
+     margin: 100px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+justify-content: space-between;      max-width: 1200px;
+      width: 100%;
+    }
+    
+    .about-us-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+    
+    .about-us-text {
+      max-width: 600px;
+      font-size: 40px;
+      
+
+    }
+    
+    .about-us-text h2 {
+      font-size: 2rem;      font-family: "Oswald", sans-serif;
+
+      margin-bottom: 1rem;
+    }
+    
+    .about-us-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    div.about-us-text{
+      text-align: start;
+    }
+
+    #contactar{
+      align-items: start;
+      margin-left: 0px;
+      margin-top: 40px;
+      background-color: #fff;
+      color: #f08c30;
+    }
+    button.button{
+      text-align: start;
+      font-size: 20px;
+
+    }
+
+
+
+    
+    @media (max-width: 768px) {
+
+      section .about-us{
+        width: 100vw;
+
+
+      }
+      .about-us-container {
+        flex-direction: column;
+        text-align: center;
+        width: 100vw;
+        margin-left: 30px;
+        margin-right: 30px;
+
+      }
+
+    
+      .about-us-image img {
+        width: 100%;
+        margin-bottom: 40px;
+
+
+      }
+    
+      .about-us-text {
+        max-width: 100%;
+      }
+    }
+    
     @keyframes slide {
         from {
           transform: translateX(0);
@@ -198,12 +309,12 @@
       }
       
   @media screen and (max-width: 433px){
-  .kinesiologo {
-      margin-top:  -4px;
+  .kinesiologo, section .about-us, .about-us-container,  .about-us-text {
+
       font-size: 1.2em;
-      margin-left: 30px;
-      margin-right: 30px;
+
   }
+  
   .kinesiologiayfisioterapia{
       font-size: 1.5em;
       margin-left: 30px;
