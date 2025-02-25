@@ -12,6 +12,7 @@ import red from "./../../assets/Red.png";
 import tvsalud from "./../../assets/TV Salud.png";
 import osseg from "./../../assets/osseg.png";
 import sancor from "./../../assets/sancor.png";
+import kinechris from "./../../assets/KineChris.jpeg";
 import osjera from "./../../assets/osjera.png";
 import ospf from "./../../assets/ospf.png";
 import ospe from "./../../assets/ospe.png";
@@ -88,11 +89,34 @@ const HomePage = () => {
         </div>
 
       </div>
+      <section className="about-us">
+      <div className="about-us-container">
+        <div className="about-us-image">
+        <img src={kinechris} alt="Kinesiologo Christian Nuñez Coso" />
+        </div>
+        <div className="about-us-text">
+          <h2>HOLA</h2>
+          <p>
+          Soy Christian, kinesiólogo especializado en lesiones deportivas, con un postgrado en Deportología de Alto Rendimiento. Desde 2016, me he enfocado en la prevención y tratamiento de lesiones, trabajando con equipos de alto rendimiento, incluyendo el plantel superior de rugby de Club Cardenales desde hace más de 6 años. En 2020, abrí mi propio consultorio en Parque Centenario, brindando atención personalizada de calidad.
+
+
+          </p>
+          <Link to="/turno">
+            <button className="buttonn" id="contactar">
+              <span>Contactar</span>
+            </button>
+          </Link>
+        </div>
+        
+      </div>
+    </section>
       <div className="reviews"> 
+        
       <ReactGoogleReviews className="reviews"layout="carousel" theme="dark" reviewVariant="testimonial" logoVariant="none"  featurableId={featurableWidgetId} />
       
   
     </div>
+    
       </section>
 
   );
