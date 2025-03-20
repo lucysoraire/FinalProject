@@ -4,6 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
+
 const LoginPage = () => {
   const navigate = useNavigate();
 
@@ -62,12 +63,16 @@ const LoginPage = () => {
       alert("Error al iniciar sesión. Por favor, verifica tus credenciales.");
     }
   };
-  
-  
 
   return (
     <>
       <div className="container-de-todo-login">
+        {/* Contenedor de la imagen */}
+        <div className="containerImage">
+
+        </div>
+
+        {/* Contenedor del formulario */}
         <div className="containerLogin">
           <div className="containerFormLogin">
             <Formik
@@ -77,7 +82,7 @@ const LoginPage = () => {
             >
               <Form className="formLogin">
                 <div className="fisio">
-                  <h1>Iniciar</h1>
+                  <h1>INICIAR SESIÓN</h1>
                 </div>
                 <div className="field">
                   <div className="field-1">
@@ -100,9 +105,10 @@ const LoginPage = () => {
                   </div>
                 </div>
 
-                <div className="buttonLogin">
-                  <button type="submit">Iniciar Sesión</button>
-                </div>
+                <button className="button btnlogin" type="submit">
+                  
+                  <span className='button-content'>Ingresar</span>
+                </button>
 
                 <div className="new-account">
                   <p className="noAccount">
