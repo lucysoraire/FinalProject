@@ -12,7 +12,6 @@ const AppointmentPage = () => {
   const [disponibility, setDisponibility] = useState([])
   const patientInfo = useSelector(state => state.patientInfo)
 
-
   // deshabilitar los dias que ya pasaron
   const today = new Date();
 
@@ -40,6 +39,11 @@ const AppointmentPage = () => {
   }
 
   const reserveAppointment = async () => {
+      if (!patientInfo.id_patient || !patientInfo.email || !patientInfo.dni || !patientInfo.age || !patientInfo.lastname || !patientInfo.name || !patientInfo.phone) {
+          Swal.fire("Tienes que ingresar tu información personal completa!");
+          return;
+      }
+      
       if (date !== null && hour !== '') {
           const response = await axios.post('http://localhost:3001/fisiosport/appointment', {
               date,
@@ -53,10 +57,8 @@ const AppointmentPage = () => {
               icon: "success"
           });
       }
-      else
-      {   
-          if(!patientInfo.id_patient) Swal.fire("Tienes que ingresar tu informacion personal!");
-          else if(date === null && hour === '') Swal.fire("Tienes que seleccionar una fecha y una hora!");
+      else {   
+          if(date === null && hour === '') Swal.fire("Tienes que seleccionar una fecha y una hora!");
           else if(hour === '') Swal.fire("Tienes que seleccionar una hora!");
           else Swal.fire("Tienes que seleccionar una fecha!")     
       }
@@ -88,7 +90,6 @@ const AppointmentPage = () => {
                             }
                         }
                     }}
-
                 />
                 <div className='containerTime'>
                     <div className='titleTime'>
@@ -127,7 +128,6 @@ const AppointmentPage = () => {
                     <p><span>Fecha:</span> {date && date.toLocaleDateString()}</p>
                     <p><span>Hora:</span> {date && hour}</p>
                 </div>
-
             </div>}
         </div>
         {/* CONTENEDOR BOTONES PARA RESERVAR O CANCELAR EL TURNO */}
@@ -136,7 +136,7 @@ const AppointmentPage = () => {
             <button onClick={cancelAppointment}>Cancelar turno</button>
         </div>
     </div>
-)
+  )
 };
 
 export default AppointmentPage;
