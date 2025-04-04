@@ -1,180 +1,247 @@
 .containerAppointment {
-    height: 450px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #1e3a5f, #243b55);
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    height: auto;
+    min-height: 90vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .containerCalendarAndInfo {
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.containerCalendarAndInfo {
-    width: 100%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 100px;
-}
-/*----- texto con informacion del turno  --------*/
-.appointmentDetail {
-
-    width: 20%;
-    height: 85%;
-}
-
-.containerDetail {
+    gap: 20px;
+    margin-top: 80px; /* Mayor margen para que no se superponga con el navbar */
+  }
+  
+  .appointmentDetail {
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .containerDetail {
     display: flex;
     flex-direction: column;
     text-align: left;
-}
-
-.containerDetail p span {
-    color: #F08C30;
+  }
+  
+  .containerDetail p span {
+    color: #f08c30;
     letter-spacing: 1px;
-}
-
-.appointmentDetail-title {
+  }
+  
+  .appointmentDetail-title {
     font-weight: 600;
     letter-spacing: 2px;
     font-size: 18px;
-    color: #465BA6;
-}
-
-.containerCalendar {
+    color: #97adff;
+  }
+  
+  .containerCalendar {
     display: flex;
-    height: 90%;
-    width: 40%;
-    padding: 15px;
-    padding-right: 1px;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
     box-sizing: border-box;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgb(34, 34, 34);
-}
-
-.calendar {
-    width:480px;
-
-}
-
-/* ---------- BOTONES DE LOS DIAS  ---------------*/
-
-.react-calendar__tile {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    margin-top: 40px; /* Asegura que quede centrado */
+    position: relative;
+  }
+  
+  .calendar {
+    width: 100%;
+    margin-right: 10px;
+  }
+  
+  .react-calendar__tile {
     border: none;
-    width:5px;
+    width: auto;
     height: 50px;
     background: none;
-    font-weight:500;
-}
-
-.react-calendar__tile.disabled {
-    background: none;
-}
-
-.react-calendar__tile--active {
-    background-color: #465BA6;
-    border-radius: 50%;
+    font-weight: 500;
     color: white;
-}
-
-/* ---------- PARA LOS DIAS DESHABILITADOS --------------*/
-
-.disabled {
-background-color: gray;
-    color: #ccc; 
+  }
+  
+  .react-calendar__tile.disabled {
+    background: none;
+  }
+  
+  .react-calendar__tile--active {
+    background-color: #d88639;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+  }
+  
+  .disabled {
+    background-color: gray;
+    color: #7c7c7c;
     pointer-events: none;
-}
-
-/*------------- HORAS ------------------*/
-
-.containerTime {
+  }
+  
+  .titulohorario {
+    font-weight: 400;
+    font-size: 20px;
+  }
+  
+  .containerTime {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 150px;
-    
-}
-
-.containerHours {
-    max-height: 500px; /* altura maxima */
-    overflow-y: auto; /* Añade un scroll*/
-
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding-right: 5px;
-}
-
-
-.hours {
-    display: flex;
-    flex-direction: column;
+    margin-top: 30px;
+  }
+  
+  .containerHours {
+    max-height: 150px;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    padding-right: 5px;
+    overflow-y: auto;
+  }
+  
+  .hours {
+    display: flex;
+    width: 80px;
     justify-content: center;
     align-items: center;
-    border: 1px solid #465BA6;
+    border-color: #ff9f43;
     border-radius: 5px;
     background: none;
-    height: 500px !important;
+    height: 40px;
     cursor: pointer;
-}
-
-.hours:hover {
-    background-color: #465BA6;
     color: white;
-}
-
-/*----- TITULO DEL MES --------*/
-.react-calendar__navigation__label {
-    width: 200px;
+  }
+  
+  .hours:hover {
+    background-color: #ce7d2c;
+    color: white;
+  }
+  
+  /* Ajuste para los botones de navegación del calendario */
+  .react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .react-calendar__navigation__label {
+    width: auto;
     height: 30px;
     border: none;
     background: none;
     font-weight: 600;
     font-size: 18px;
-    color: #465BA6;
-}
-/*----- BOTONES PARA CAMBIAR DE MES  --------*/
-.react-calendar__navigation__arrow {
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .react-calendar__navigation__arrow {
     width: 30px;
     border: none;
     background: none;
     font-size: 20px;
     font-weight: 700;
-    
-}
-
-.react-calendar__navigation__arrow:hover {
-    background-color: #F08C30;
+  }
+  
+  .react-calendar__navigation__arrow:hover {
+    background-color: #ff7b00;
     border-radius: 50%;
     color: white;
-}
-
-/*----- texto de cada dia  --------*/
-.react-calendar__month-view__weekdays div abbr{
-    color: #465BA6;
+  }
+  
+  /* Mantiene los días de la semana alineados */
+  .react-calendar__month-view__weekdays div abbr {
+    color: #ffffff;
     text-decoration: none;
-}
-
-.react-calendar__month-view__weekdays {
-    border-bottom: 1px solid #F08C30;
-}
-
-/*----- botones para confirmar o cancelar  --------*/
-.containerButtonsCalendar {
+  }
+  
+  .react-calendar__month-view__weekdays {
+    border-bottom: 1px solid #f08c30;
+  }
+  
+  .containerButtonsCalendar {
     display: flex;
-    justify-content: center;
-    gap: 30px;
-}
-
-.containerButtonsCalendar button {
-    width: 200px;
-    height: 35px;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    align-items: center;
+    margin-top: 40px;
+  }
+  
+  .containerButtonsCalendar button {
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    font-size: 16px;
     border-radius: 5px;
     text-align: center;
     border: none;
-    background-color: #465BA6;
-    color: white;
-    font-size: 18px;
+    background-color: #e68d3b;
+    color: rgb(255, 255, 255);
     letter-spacing: 1px;
-}
+  }
+  
+  .containerButtonsCalendar button:hover {
+    background-color: #ce7d2c;
+  }
+  
+  /* MEDIA QUERIES */
+  
+  @media (min-width: 480px) {
+    .containerCalendarAndInfo {
+      margin-top: 80px;
+    }
+  
+    .containerCalendar {
+      margin-top: 50px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .containerCalendarAndInfo {
+      flex-direction: row;
+      gap: 50px;
+    }
+  
+    .appointmentDetail {
+      width: 40%;
+    }
+  
+    .containerCalendar {
+      width: 50%;
+    }
+  
+    .containerButtonsCalendar {
+      flex-direction: row;
+      justify-content: center;
+    }
+  
+    .react-calendar__month-view__weekdays div abbr {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 18px;
+    }
+  }
+  
