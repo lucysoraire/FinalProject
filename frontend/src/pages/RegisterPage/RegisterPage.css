@@ -1,180 +1,233 @@
 /* Estilos generales */
 * {
-    box-sizing: border-box;
-  }
-  
+  box-sizing: border-box;
+}
+
+.container-de-todo-login {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    135deg,
+    #000000,
+    #000000
+  ); /* Fondo azul medio oscuro */
+  color: #ffffff; /* Texto blanco para mayor contraste */
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor principal */
+.container-de-todo-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row; /* Alineación horizontal de la imagen y el formulario */
+  min-height: 83vh;
+    padding: 100px;
+  width: 100%;
+  gap: 0px; /* Espacio entre la imagen y el formulario */
+}
+
+/* Contenedor para la imagen */
+.containerImage {
+  flex: 1;
+  background-image: url('./../../assets/register.jpg'); /* Cambia esta URL por la imagen que quieras usar */
+  background-size: cover;
+  background-position: center;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px 0px 0px 16px;
+}
+.containerImage2 {
+  flex: 1;
+  background-image: url(./../../assets/login.png); /* Cambia esta URL por la imagen que quieras usar */
+  background-size: cover;
+  background-position: center;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px 0px 0px 16px;
+}
+
+
+/* Contenedor del formulario */
+.containerLogin {
+  background: black;
+  border: solid 1px rgba(255, 255, 255, 0.263)  ;
+
+  border-radius: 0px 16px 16px 0px;
+height: 80%;
+  color: #fff;
+  flex: 1; /* El formulario toma el resto del espacio disponible */
+  justify-content: space-between;
+}
+
+button.button.btnlogin{
+  margin: 0px;
+  text-align: center;
+  height: 50px;
+}
+/* Formulario */
+.formLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  gap: 10px;
+}
+
+.fisio h1 {
+  font-size: 24px;
+  color: #ffffff;
+  font-family: "Oswald", sans-serif;
+  width: 100%;
+}
+
+.formLogin .field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 15px;
+  width: 100%;
+  height: 150px;
+}
+
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-wrap: wrap; /* Permite que los mensajes de error se ajusten sin afectar el input */
+}
+
+
+.field input {
+  padding: 10px;
+  font-size: 14px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  outline: none;
+  width: 100%;
+  transition: all 0.3s ease;
+  height: 40px;
+}
+
+.error {
+  color: #ff6b6b; /* Color rojo para el mensaje de error */
+  font-size: 12px;
+  margin-top: 5px;
+  width: 100%; /* Asegura que el mensaje ocupe todo el ancho del campo */
+}
+
+.field input::placeholder {
+  color: rgb(228, 228, 228);
+}
+
+.field input:focus {
+  background: rgba(255, 153, 0, 0.2);
+  border-color: rgba(255, 123, 0, 0.8);
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.9);
+}
+
+
+.new-account {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+.noAccount {
+  font-weight: normal;
+}
+
+.noAccount a {
+  color: rgb(255, 115, 0);
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.noAccount a:hover {
+  text-decoration: none;
+}
+
+.noAccount a:active {
+  color: #007dc5;
+}
+
+
+
+/* Media Queries */
+@media (max-width: 768px) {
   .container-de-todo-login {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(
-      135deg,
-      #1e3a5f,
-      #243b55
-    ); /* Fondo azul medio oscuro */
-    color: #ffffff; /* Texto blanco para mayor contraste */
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    display: flex;
+    flex-direction: column; /* En pantallas pequeñas, el formulario y la imagen se apilan verticalmente */
     align-items: center;
-    justify-content: center;
+    padding: 0px 20px;
+    height: 400px;
   }
-  
-  .container-de-todo-login {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    min-height: 83vh; /* Ajusta para ocupar toda la pantalla */
-    padding: 20px; /* Espaciado lateral en pantallas más pequeñas */
-  }
-  
-  .containerLogin {
-    background: rgba(255, 255, 255, 0.10); /* Reduce la transparencia */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+
+  .containerImage {
+    width: 100%; /* La imagen ocupa todo el ancho */
+    height: 100px; /* Tamaño reducido para pantallas pequeñas */
+    margin-bottom: 20px; /* Espacio entre la imagen y el formulario */
     border-radius: 16px;
-    padding: 40px 20px;
-    color: #fff; /* Asegura contraste */
+    margin-top: 100px;
   }
-  
-  .formLogin {
+
+  .containerLogin {
+    width: 100%; /* El formulario ocupa todo el ancho */
+    padding: 40px 30px;
+    border-radius: 16px;
+flex: 0;
+  }
+  .field{
+    height: auto !important;
+  }
+  .formLogin{
+    height: 350px ;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
   }
-  
+
+
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .containerLogin {
+    max-width: 100%;
+    padding: 50px 30px;
+    height: auto !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .containerLogin {
+    max-width: 100%;
+    padding: 60px 40px;
+  }
+}
+
+@media (min-width: 1366px) {
+  .containerLogin {
+    max-width: 50%;
+    padding: 70px 50px;
+  }
+
   .fisio h1 {
-    margin: 0 0 30px 0; /* Ajusta el espaciado superior */
-    font-size: 24px; /* Tamaño del título */
-    color: #ffffff; /* Texto blanco */
-  }
-  
-  .formLogin .field {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    font-size: 28px;
     margin-bottom: 20px;
   }
-  
-  .field .field-1 {
-    margin: 10px;
-  }
-  
-  .field input {
-    width: 100%;
-    max-width: 400px;
-    padding: 10px;
-    font-size: 14px;
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
-    /* (255, 255, 255, 0.2) */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde sutil */
-    border-radius: 8px;
-    outline: none;
-    transition: all 0.3s ease;
-  }
-  
-  .field input::placeholder {
-    color: rgb(228, 228, 228);
-  }
-  
-  .field input:focus {
-    background: rgba(255, 153, 0, 0.2); /* Fondo más claro al enfocar */
-    /* (255, 255, 255, 0.3) */
-    border-color: rgba(255, 123, 0, 0.8); /* Resalta el borde */
-    /* (255, 255, 255, 0.5) */
-    box-shadow: 0 0 10px rgba(255, 123, 0, 0.9); /* Efecto brillante */
-    /* rgba(255, 255, 255, 0.2) */
-  }
-  
-  .formLogin .buttonLogin button {
-    margin-top: 4px;
-  }
-  
-  .new-account {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px; /* Espaciado superior */
-    font-size: 14px; /* Tamaño de fuente similar */
-    color: #e0e0e0; /* Color gris claro */
-  }
-  
-  .noAccount {
-    font-weight: normal; /* Peso del texto */
-  }
-  
-  .noAccount a {
-    color: #0095f6; /* Azul de Instagram para enlaces */
-    text-decoration: none; /* Elimina el subrayado por defecto */
-    font-weight: bold; /* Negrita para destacar el enlace */
-    margin-left: 5px; /* Separación entre texto y enlace */
-  }
-  
-  .noAccount a:hover {
-    text-decoration: none; /* Subrayado al pasar el cursor */
-  }
-  
-  .noAccount a:active {
-    color: #007dc5; /* Azul más oscuro al hacer clic */
-  }
-  
-  .buttonLogin button {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    max-width: 400px; /* Ancho máximo */
-    padding: 10px; /* Espaciado interno */
-    font-size: 13px; /* Tamaño de fuente */
-    color: white; /* Texto blanco */
-    text-align: center; /* Centra el texto */
-    background-color: #0095f6; /* Color azul de Instagram */
-    border: none; /* Sin borde */
-    border-radius: 10px; /* Bordes ligeramente redondeados */
-    cursor: pointer; /* Icono de mano al pasar el cursor */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones suaves */
-  }
-  
-  .buttonLogin:hover button {
-    background-color: #007ac1; /* Azul más oscuro al pasar el cursor */
-  }
-  
-  .buttonLogin:active button {
-    transform: scale(0.97); /* Reduce ligeramente al hacer clic */
-  }
-  
-  /* Media Queries */
-  @media (max-width: 768px) {
-    .containerLogin {
-      padding: 30px 20px;
-    }
-    .fisio h1 {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-  }
-  
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .containerLogin {
-      max-width: 700px; /* Ancho mayor en tablets */
-      padding: 50px 30px; /* Más espacio interno */
-    }
-  }
-  
-  @media (min-width: 1024px) and (max-width: 1366px) {
-    .containerLogin {
-      max-width: 800px; /* Ancho mayor para iPad Pro y Surface */
-      padding: 60px 40px; /* Más espacio interno */
-    }
-  }
-  
-  @media (min-width: 1366px) {
-    .containerLogin {
-      max-width: 900px; /* Ancho mayor en dispositivos grandes */
-      padding: 70px 50px; /* Más espacio interno */
-    }
-    .fisio h1 {
-      font-size: 28px; /* Título más grande en pantallas grandes */
-      margin-bottom: 20px; /* Ajusta el espacio del título */
-    }
-  }
-  
+}

@@ -93,7 +93,7 @@ const AppointmentPage = () => {
                 />
                 <div className='containerTime'>
                     <div className='titleTime'>
-                        <p>Horarios</p>
+                        <p className="horarios">Horarios</p>
                     </div>
                     <div className='containerHours'>
                         {horarios.map((horario, index) => (
@@ -120,21 +120,23 @@ const AppointmentPage = () => {
                 </div>
             </div>
             {<div className='appointmentDetail'>
-                <p className='appointmentDetail-title'>Detalles del turno</p>
+                <p className='appointmentDetail-title'>DETALLES DEL TURNO</p>
                 <div className='containerDetail'>
-                    <p><span>Direccion:</span> Álvarez Condarco 1205, altura Av. Coronel Suárez 1200</p>
-                    <p><span>Telefono:</span> 3813545337</p>
-                    <p><span>Email:</span> kinchristianfabian@gmail.com</p>
-                    <p><span>Fecha:</span> {date && date.toLocaleDateString()}</p>
-                    <p><span>Hora:</span> {date && hour}</p>
+                    <p><b><span>Direccion:</span></b> Álvarez Condarco 1205, altura Av. Coronel Suárez 1200</p>
+                    <p><b><span>Telefono:</span> </b> 3813545337</p>
+                    <p><b><span>Email:</span> </b> kinchristianfabian@gmail.com</p>
+                    <p><b><span>Fecha:</span> </b> {date && date.toLocaleDateString()}</p>
+                    <p><b><span>Hora:</span> </b> {date && hour}</p>
                 </div>
+                <div className='containerButtonsCalendar'>
+                <button className="button btnlogin firstbutton"  onClick={cancelAppointment}><span className='button-content'>Cancelar</span></button>
+            <button className="button btnlogin " onClick={reserveAppointment}><span className='button-content'>Confirmar</span></button>
+     
+        </div>
             </div>}
         </div>
         {/* CONTENEDOR BOTONES PARA RESERVAR O CANCELAR EL TURNO */}
-        <div className='containerButtonsCalendar'>
-            <button onClick={reserveAppointment}>Confirmar turno</button>
-            <button onClick={cancelAppointment}>Cancelar turno</button>
-        </div>
+    
     </div>
   )
 };

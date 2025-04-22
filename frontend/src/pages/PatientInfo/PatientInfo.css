@@ -1,48 +1,51 @@
 .containerPatientInfo {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f0f4f8;
-  margin: 0;
-  padding: 20px;
-  background: linear-gradient(135deg, #1e3a5f, #243b55);
+
+  align-items: start;
+height: auto;
+margin: 100px 0px;
+  background-color: black;
+  padding: 0px 100px;
+  gap: 100px;
 }
 
 .containerFormPatientInfo {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
+  background: black;
+  border: solid 1px rgba(255, 255, 255, 0.263)  ;
+width: 100%;
+padding: 40px;
+  border-radius: 16px;
+height: 80%;
+  color: #fff;
+  justify-content: space-between;
+
 }
 
 .formPatientInfo {
-  width: 70%;
-  height: 90%;
-  background: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: 100%;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   flex-direction: column;
-  padding: 50px;
+  
 }
 
 .formInfo {
-  width: 80%;
+  width: 100%;
   height: 85%;
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  
 }
 
 .formInfo p {
   font-size: 25px;
-  color: #ff9f43;
+  color: #ff7b00;
   font-weight: 600;
   letter-spacing: 1px;
 }
@@ -58,15 +61,17 @@
 }
 
 .labelsAndInputs input {
-    padding: 10px;
-    font-size: 14px;
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    outline: none;
-    font-size: 1rem;
-    transition: border 0.3s ease-in-out;
+    
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+  height: auto;
 }
 
 .labelsAndInputs input:focus{
@@ -80,118 +85,116 @@
 .containerButtonSubmit {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
 }
+
+.button.btnlogin.firstbutton{
+  background-color: white;
+  color: #ff7b00;
+}
+
+.button.btnlogin.firstbutton:hover{
+  color: #ffffff;
+}
+
+
+
+
+
 
 .containerButtonSubmit button {
   width: 50%;
   height: 38px;
   border-radius: 8px;
-  background-color: #ff9f43;
+  background-color: #ff7b00;
   border: none;
   color: white;
   font-weight: 600;
   letter-spacing: 1px;
-  transition: background 0.3s ease-in-out;
+
 
 }
 
-.containerButtonSubmit button:hover {
-  background-color: #e88b30;
-}
+
 
 
 .containerInfoPatient p {
+  color: rgb(255, 255, 255);
+}
+.textInfo{
   color: white;
 }
-
 .textPatientInfo {
-  width: 35%;
+  width: 100%;
   height: 90%;
   display: flex;
   flex-direction: column;
-  padding-top: 35px;
-  align-items: center;
+  align-items: left;
   gap: 10px;
-  margin-bottom: 15px;
+
+
 }
 
-.textPatientInfo h2 {
-  color: #ff9f43;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
 
 .containerInfo {
   text-align: left;
 }
 
-.containerInfo ul {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  font-size: 20px;
-  list-style-type: disc; /* Estilo del punto (puedes usar 'circle' o 'square' también) */
-  color: #ff9f43;
-}
 
-.containerInfo ul li p {
-  color: white;
-  font-size: 20px;
-}
+
 
 .containerInfoPatient {
-  width: 80%;
+  width: 100%;
   height: 85%;
   text-align: left;
   display: flex;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
   gap: 15px;
 }
 
+.titleInfo{
+  font-size: 26px;
+  color: #ffffff;
+  font-family: "Oswald", sans-serif;
+  width: 100%;
+  text-align: left;
+}
+
+p.datos-personales{
+  font-size: 26px;
+  color: #ffffff;
+  font-family: "Oswald", sans-serif;
+  width: 100%;
+}
+
 .containerInfoPatient .titleInfoPatient {
-  font-size: 30px;
-  color: #ff9f43;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5); /* Sombra negra suave */
+  font-size: 26px;
+  color: #ffffff;
+  font-family: "Oswald", sans-serif;
+  width: 100%;
 }
 
 
 .patientInfoLoged {
-  width: 90%;
+  width: 100%;
   height: 50%;
   
 }
 
 .patientInfoLoged p {
-  font-size: 20px;
+  font-size: 16px;
 
 }
 
 .patientInfoLoged p b {
-  color: #ff9f43;
+  color: #ff7b00;
 }
 
-.buttonEditOrCancel {
-  width: 50%;
-  height: 38px;
-  border-radius: 8px;
-  background-color: #ff9f43;
-  border: none;
-  color: white;
-  font-weight: 600;
-  letter-spacing: 1px;
-  transition: background 0.3s ease-in-out;
-  margin-top: 13px;
-}
 
-.buttonEditOrCancel:hover {
-  background-color: #e88b30;
-}
 
 .labelsAndInputsLoged {
   width: 100%;
@@ -204,7 +207,7 @@
   border-radius: 8px;
   outline: none;
   border: 1px solid #bebebe;
-  padding-left: 9px;
+
   height: 30px;
 }
 
@@ -219,20 +222,24 @@
   .containerPatientInfo {
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 80px; /* Espacio para el navbar */
+
     min-height: auto;
-    margin-bottom: 30px;
+    padding: 0px 30px;
+    margin: 120px 0px 30px 0px;
+    gap: 30px;
+    
   }
 
   .containerFormPatientInfo {
-    width: 90%;
+    width: 100%;
     height: auto;
+    padding: 30px;
   }
 
   .formPatientInfo {
     width: 100%;
     height: auto;
-    padding: 30px;
+    
   }
 
   .formInfo {
@@ -242,7 +249,6 @@
   .textPatientInfo {
     width: 100%;
     height: auto;
-    padding-top: 20px;
     text-align: center;
   }
 
@@ -251,8 +257,8 @@
     gap: 15px;
   }
 
-  .containerButtonSubmit button,
-  .buttonEditOrCancel {
+  .containerButtonSubmit {
     width: 100%;
+    gap: 10px;
   }
 }
