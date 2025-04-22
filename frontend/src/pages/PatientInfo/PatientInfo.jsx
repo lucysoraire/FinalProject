@@ -76,30 +76,24 @@ const PatientInfo = () => {
   return (
     <div className="containerPatientInfo">
       <div className="textPatientInfo">
-        <h2>Información y Privacidad</h2>
+        <h2 className="titleInfo">INFORMACIÓN PERSONAL</h2>
         <div className="containerInfo">
-          <ul>
-            <li>
-              <p>
+              <p className="textInfo">
                 Para reservar turnos, completa todos los campos con información
                 precisa y actualizada.
               </p>
-            </li>
-            <li>
-              <p>
+
+              <p className="textInfo">
                 Tus datos serán tratados de forma confidencial y solo se usarán
                 para brindarte un servicio personalizado, cumpliendo con las
                 normativas de seguridad.
               </p>
-            </li>
-            <li>
-              <p>
+
+              <p className="textInfo">
                 Puedes actualizar tu información en cualquier momento desde la
                 sección "Información Personal". Si necesitas modificar algo, estamos aquí
                 para ayudarte.
               </p>
-            </li>
-          </ul>
         </div>
       </div>
 
@@ -107,7 +101,7 @@ const PatientInfo = () => {
         <div className="formPatientInfo">
           {!edit ? (
             <div className="containerInfoPatient">
-              <p className="titleInfoPatient">Datos Personales</p>
+              <p className="titleInfoPatient">DATOS PERSONALES</p>
               <div className="patientInfoLoged">
                 <p>
                   <b>Nombre: </b>
@@ -134,16 +128,14 @@ const PatientInfo = () => {
                   {formData?.email}
                 </p>
               </div>
-              <button
-                className="buttonEditOrCancel"
-                onClick={() => setEdit(true)}
-              >
-                Editar
+              <button className="button btnlogin" onClick={() => setEdit(true)}>
+                <span className='button-content'>Editar</span>
               </button>
+
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="formInfo">
-              <p>Datos Personales</p>
+              <p className="datos-personales">DATOS PERSONALES</p>
               <div className="labelsAndInputs">
                 <input
                   type="text"
@@ -186,7 +178,7 @@ const PatientInfo = () => {
                   name="dni"
                   value={formData?.dni}
                   onChange={handleChange}
-                  placeholder="Dni"
+                  placeholder="DNI"
                 />
               </div>
               <div className="labelsAndInputs">
@@ -201,13 +193,18 @@ const PatientInfo = () => {
                 />
               </div>
               <div className="containerButtonSubmit">
-                <button type="submit">Guardar</button>
-                <button
-                  className="buttonEditOrCancel"
+              <button className="button btnlogin firstbutton">
+                <span
+                  className="buttonEditOrCancel button-content"
                   onClick={() => setEdit(false)}
                 >
                   Cancelar
+                </span>
                 </button>
+              <button className="button btnlogin" type="submit">
+                <span className='button-content'>Guardar</span>
+              </button>
+      
               </div>
             </form>
           )}

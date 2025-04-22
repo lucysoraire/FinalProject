@@ -22,7 +22,7 @@
 /* Contenedor principal */
 .container-de-todo-login {
   display: flex;
-  align-items: starat;
+  align-items: center;
   justify-content: center;
   flex-direction: row; /* Alineación horizontal de la imagen y el formulario */
   min-height: 83vh;
@@ -34,7 +34,7 @@
 /* Contenedor para la imagen */
 .containerImage {
   flex: 1;
-  background-image: url('https://images.unsplash.com/photo-1489648022186-8f49310909a0?q=80&w=3010&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Cambia esta URL por la imagen que quieras usar */
+  background-image: url('./../../assets/register.jpg'); /* Cambia esta URL por la imagen que quieras usar */
   background-size: cover;
   background-position: center;
   height: 80%;
@@ -43,6 +43,18 @@
   align-items: center;
   border-radius: 16px 0px 0px 16px;
 }
+.containerImage2 {
+  flex: 1;
+  background-image: url(./../../assets/login.png); /* Cambia esta URL por la imagen que quieras usar */
+  background-size: cover;
+  background-position: center;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px 0px 0px 16px;
+}
+
 
 /* Contenedor del formulario */
 .containerLogin {
@@ -53,6 +65,7 @@
 height: 80%;
   color: #fff;
   flex: 1; /* El formulario toma el resto del espacio disponible */
+  justify-content: space-between;
 }
 
 button.button.btnlogin{
@@ -170,12 +183,21 @@ button.button.btnlogin{
     height: 100px; /* Tamaño reducido para pantallas pequeñas */
     margin-bottom: 20px; /* Espacio entre la imagen y el formulario */
     border-radius: 16px;
+    margin-top: 100px;
+  }
+  .containerImage2 {
+    width: 100%; /* La imagen ocupa todo el ancho */
+    height: 100px; /* Tamaño reducido para pantallas pequeñas */
+    margin-bottom: 20px; /* Espacio entre la imagen y el formulario */
+    border-radius: 16px;
+    margin-top: 100px;
   }
 
   .containerLogin {
     width: 100%; /* El formulario ocupa todo el ancho */
-    padding: 40px 30px;
+    padding: 50px 30px;
     border-radius: 16px;
+flex: 0;
   }
   .field{
     height: auto !important;

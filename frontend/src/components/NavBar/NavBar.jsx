@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Logo from "./../../assets/logoblanco2.png";
-import { Navigate, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import { MdOutlineDashboard } from "react-icons/md";
 
@@ -9,8 +9,9 @@ const NavBar = () => {
   const location = useLocation();
 
   const [clicked, setClicked] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
+
   const [userAuth, setUserAuth] = useState(() => {
-    // Obtén el estado del usuario desde el localStorage
     const storedUser = localStorage.getItem("user");
     return storedUser
       ? JSON.parse(storedUser)
@@ -18,16 +19,20 @@ const NavBar = () => {
   });
 
   const handleLogout = () => {
-    localStorage.removeItem("user"); // Elimina los datos del usuario
-    setUserAuth({ authenticated: false, isAdmin: false }); // Actualiza el estado local
-    window.location.href = "/"; // Redirige al inicio
+    localStorage.removeItem("user");
+    setUserAuth({ authenticated: false, isAdmin: false });
+    window.location.href = "/";
   };
 
   const handleClick = () => {
-    setClicked(!clicked);
+    setClicked((prev) => !prev);
   };
 
-  const [scrolling, setScrolling] = useState(false);
+  const handleNavLinkClick = () => {
+    if (window.innerWidth <= 768) {
+      setClicked(false);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolling(window.scrollY > 50);
@@ -35,35 +40,32 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
   return (
     <>
       <nav className={scrolling ? "scrolled" : ""}>
         <a href="#">
-          <img src={Logo} alt="" className="logo" />
+          <img src={Logo} alt="Logo" className="logo" />
         </a>
         <div className="itemsnavbar">
-          <ul id="navbar" className={clicked ? "#navbar active" : "#navbar"}>
-            {/* Solo mostrar el botón "Inicio" si no es un admin */}
+          <ul id="navbar" className={clicked ? "active" : ""}>
             {!userAuth.isAdmin && (
-              <li className="itemnavbar">
-                <NavLink to="/#">
-                  <i className="fa-solid fa-house"></i>
-                  <NavLink to="/"> Inicio</NavLink>
+              <li className="itemnavbar" onClick={handleNavLinkClick}>
+                <NavLink to="/">
+                  <i className="fa-solid fa-house"></i> Inicio
                 </NavLink>
               </li>
             )}
 
             {userAuth.authenticated && !userAuth.isAdmin && (
-              <li className="itemnavbar">
-                <i className="fa-solid fa-calendar"></i>
-                <NavLink to="/turno"> Turnos</NavLink>
+              <li className="itemnavbar" onClick={handleNavLinkClick}>
+                <NavLink to="/turno">
+                  <i className="fa-solid fa-calendar"></i> Turnos
+                </NavLink>
               </li>
             )}
 
-            {/* No mostramos el botón de "Contacto" ni para admin ni cuando el usuario no está logueado */}
             {!userAuth.isAdmin && (
-              <li className="itemnavbar">
+              <li className="itemnavbar" onClick={handleNavLinkClick}>
                 <NavLink to="/contacto">
                   <i className="fa-solid fa-phone"></i> Contacto
                 </NavLink>
@@ -71,23 +73,16 @@ const NavBar = () => {
             )}
 
             {userAuth.authenticated && !userAuth.isAdmin && (
-              <li className="itemnavbar">
-                <i className="fa-solid fa-circle-info"></i>
-                <NavLink to="/info" activeClassName="active">
-                  Información Personal
+              <li className="itemnavbar" onClick={handleNavLinkClick}>
+                <NavLink to="/info">
+                  <i className="fa-solid fa-circle-info"></i> Información Personal
                 </NavLink>
               </li>
             )}
 
-            {userAuth.isAdmin && (
-              <Navigate to="/admin" activeClassName="active">
-                Dashboard
-              </Navigate>
-            )}
-
             {!userAuth.authenticated && !userAuth.isAdmin && (
-              <li className="itemnavbar">
-                <NavLink to="/login" activeClassName="active">
+              <li className="itemnavbar" onClick={handleNavLinkClick}>
+                <NavLink to="/login">
                   <i className="fa-solid fa-user"></i> Iniciar Sesión
                 </NavLink>
               </li>
@@ -97,7 +92,10 @@ const NavBar = () => {
               <li
                 className="itemnavbar"
                 id="cerrarsesion"
-                onClick={handleLogout}
+                onClick={() => {
+                  handleLogout();
+                  handleNavLinkClick(); // Cierra menú en mobile al cerrar sesión
+                }}
               >
                 <NavLink to="/login">
                   <i className="fa-solid fa-user"></i> Cerrar Sesión

@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
 const RegisterPage = () => {
   const navigate = useNavigate();
 
@@ -35,12 +36,16 @@ const RegisterPage = () => {
   return (
     <>
       <div className="container-de-todo-login">
+        {/* Contenedor de la imagen */}
+        <div className="containerImage2">
+
+        </div>
         <div className="containerLogin">
           <div className="containerFormLogin">
           <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
               <Form className="formLogin">
                 <div className="fisio">
-                  <h1>Bienvenido</h1>
+                  <h1>REGISTRO</h1>
                 </div>
                 <div className="field">
                   <div className="field-1">
@@ -51,14 +56,15 @@ const RegisterPage = () => {
                   </div>
                 </div>
 
-                <div className="buttonLogin">
-                  <button type="submit">Registrarse</button>
-                </div>
+                <button className="button btnlogin" type="submit">
+                  
+                  <span className='button-content'>Crear cuenta</span>
+                </button>
 
                 <div className="new-account">
                   <p className="noAccount">
                     ¿Ya tienes una cuenta?{" "}
-                    <Link to="/login">Iniciar Sesión</Link>
+                    <Link to="/login">Iniciar sesión</Link>
                   </p>
                 </div>
               </Form>

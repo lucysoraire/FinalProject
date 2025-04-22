@@ -2,14 +2,12 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #1e3a5f, #243b55);
+    background: black;
     color: #ffffff;
-    font-family: Arial, sans-serif;
-    height: auto;
-    min-height: 90vh;
+    min-height: 100vh;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
+    justify-content: start;
+
     box-sizing: border-box;
   }
   
@@ -18,15 +16,16 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: start;
     gap: 20px;
-    margin-top: 80px; /* Mayor margen para que no se superponga con el navbar */
+    margin-top: 100px; 
+    padding: 0px 70px;
+    
   }
   
   .appointmentDetail {
-    width: 90%;
-    max-width: 400px;
+    width: 100%;
     height: auto;
     text-align: center;
     margin-top: 15px;
@@ -44,24 +43,23 @@
   }
   
   .appointmentDetail-title {
-    font-weight: 600;
-    letter-spacing: 2px;
-    font-size: 18px;
-    color: #97adff;
+    font-size: 26px;
+    color: #ffffff;
+    font-family: "Oswald", sans-serif;
+    width: 100%;
+    text-align: left;
   }
   
   .containerCalendar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
-    max-width: 500px;
-    padding: 20px;
+    width: 100%;
+    padding: 30px;
     box-sizing: border-box;
-    border-radius: 5px;
+    border-radius: 24px;
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    margin-top: 40px; /* Asegura que quede centrado */
     position: relative;
   }
   
@@ -98,6 +96,7 @@
   .titulohorario {
     font-weight: 400;
     font-size: 20px;
+    
   }
   
   .containerTime {
@@ -113,15 +112,22 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-    padding-right: 5px;
+    justify-content: start;
+    gap:10px 22px;
     overflow-y: auto;
+
   }
   
+  .horarios{
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform:uppercase ;
+    color: #ffffff;
+  }
   .hours {
     display: flex;
-    width: 80px;
+    width: 30%;
     justify-content: center;
     align-items: center;
     border-color: #ff9f43;
@@ -133,7 +139,7 @@
   }
   
   .hours:hover {
-    background-color: #ce7d2c;
+    background-color: #ff8c00;
     color: white;
   }
   
@@ -141,19 +147,22 @@
   .react-calendar__navigation {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start; 
     width: 100%;
+    height: auto;
   }
   
   .react-calendar__navigation__label {
     width: auto;
     height: 30px;
     border: none;
+    margin-bottom: 30px;
     background: none;
     font-weight: 600;
     font-size: 18px;
     color: #ffffff;
     text-align: center;
+    text-transform:uppercase  ;
   }
   
   .react-calendar__navigation__arrow {
@@ -198,7 +207,7 @@
     border-radius: 5px;
     text-align: center;
     border: none;
-    background-color: #e68d3b;
+    background-color: #ff7b00;
     color: rgb(255, 255, 255);
     letter-spacing: 1px;
   }
@@ -206,23 +215,24 @@
   .containerButtonsCalendar button:hover {
     background-color: #ce7d2c;
   }
-  
+  .react-calendar__navigation__arrow{
+    color: white;
+  }
+  .button.btnlogin.firstbutton{
+    background-color: white;
+    color: #ff7b00;
+  }
+
+  .button.btnlogin.firstbutton:hover{
+    color: white;
+  }
   /* MEDIA QUERIES */
   
-  @media (min-width: 480px) {
-    .containerCalendarAndInfo {
-      margin-top: 80px;
-    }
-  
-    .containerCalendar {
-      margin-top: 50px;
-    }
-  }
-  
+
   @media (min-width: 768px) {
     .containerCalendarAndInfo {
       flex-direction: row;
-      gap: 50px;
+      gap: 40px;
     }
   
     .appointmentDetail {
@@ -243,5 +253,44 @@
       text-decoration: none;
       margin: 18px;
     }
+
+
+  }
+  
+  @media (max-width: 768px) {
+    .containerCalendarAndInfo {
+      flex-direction: colum;
+      padding: 30px 30px;
+    }
+  
+    .appointmentDetail {
+      width: 100%;
+    }
+  
+    .containerCalendar {
+      width: 100%;
+    }
+  
+    .containerButtonsCalendar {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .react-calendar__month-view__weekdays div abbr {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .containerHours {
+      max-height: 150px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: start;
+      gap:10px 10px;
+      overflow-y: auto;
+  
+    }
+
+    
   }
   
