@@ -7,6 +7,18 @@ import {
   updatePatientInfo,
 } from "../../Redux/Actions/Actions";
 
+const getPatientInfoFromLocalStorage = () => {
+  const user = JSON.parse(localStorage.getItem('user')); // usuario logueado
+  const allPatients = JSON.parse(localStorage.getItem('patients')) || {};
+
+  if (user?.email && allPatients[user.email]) {
+    return allPatients[user.email];
+  }
+
+  return {};
+};
+
+
 const PatientInfo = () => {
   const dispatch = useDispatch();
   const patientInfo = useSelector((state) => state.patientInfo);
@@ -72,6 +84,7 @@ const PatientInfo = () => {
 
     setEdit(false);
   };
+
 
   return (
     <div className="containerPatientInfo">
@@ -204,7 +217,6 @@ const PatientInfo = () => {
               <button className="button btnlogin" type="submit">
                 <span className='button-content'>Guardar</span>
               </button>
-      
               </div>
             </form>
           )}
