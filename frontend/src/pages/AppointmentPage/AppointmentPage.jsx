@@ -7,68 +7,123 @@ import Swal from "sweetalert2";
 
 const AppointmentPage = () => {
 
-  const [date, setDate] = useState(null);
-  const [hour, setHour] = useState('')
-  const [disponibility, setDisponibility] = useState([])
-  const patientInfo = useSelector(state => state.patientInfo)
-
-  // deshabilitar los dias que ya pasaron
-  const today = new Date();
-
-  // deshabilitar los fines de semana
-  const isWeekend = date => date.getDay() === 0 || date.getDay() === 6; // Domingo (0) y Sábado (6)
-
-  // Cambiar la fecha 
-  const onChange = async (newDate) => {
+    const [date, setDate] = useState(null);
+    const [hour, setHour] = useState('');
+    const [disponibility, setDisponibility] = useState([]);
+    const [hasPendingAppointment, setHasPendingAppointment] = useState(false);
+  
+    const patientInfo = useSelector(state => state.patientInfo);
+    const today = new Date();
+  
+    // 🔥 CORRECCIÓN: función que recupera los datos de paciente de localStorage si Redux está vacío
+    const getPatientInfoFromLocalStorage = () => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const allPatients = JSON.parse(localStorage.getItem('patients')) || {};
+  
+      if (user?.email && allPatients[user.email]) {
+        return allPatients[user.email];
+      }
+  
+      return {};
+    };
+  
+    // Usar datos de Redux o LocalStorage según disponibilidad
+    const completePatientInfo = Object.keys(patientInfo).length === 0 ? getPatientInfoFromLocalStorage() : patientInfo;
+  
+    const isWeekend = date => date.getDay() === 0 || date.getDay() === 6;
+  
+    const onChange = async (newDate) => {
       setDate(newDate);
       const response = await axios.post('http://localhost:3001/fisiosport/appointment/disponibility', {
-          selectedDate: newDate
-      })
-      setDisponibility(response.data)
-  };
-
-  // Array con los horarios de 9am a 6pm
-  const horarios = [];
-  for (let i = 9; i <= 12; i++) {
-    horarios.push(`${i < 10 ? "0" + i : i}:00`); // Agrega los horarios al array
-  }
-
-  const horarios2 = [];
-  for (let j = 16; j <= 19; j++) {
-    horarios2.push(`${j < 10 ? "0" + j : j}:00`);
-  }
-
-  const reserveAppointment = async () => {
-      if (!patientInfo.id_patient || !patientInfo.email || !patientInfo.dni || !patientInfo.age || !patientInfo.lastname || !patientInfo.name || !patientInfo.phone) {
-          Swal.fire("Tienes que ingresar tu información personal completa!");
-          return;
-      }
-      
-      if (date !== null && hour !== '') {
-          const response = await axios.post('http://localhost:3001/fisiosport/appointment', {
-              date,
-              hour,
-              id_patient: patientInfo?.id_patient
-          })
-
-          response.data && Swal.fire({
-              title: "Turno reservado!",
-              text: "Te esperamos!",
-              icon: "success"
+        selectedDate: newDate
+      });
+      setDisponibility(response.data);
+    };
+  
+    useEffect(() => {
+      const checkPendingAppointment = async () => {
+        try {
+          if (!completePatientInfo?.id_patient) return;
+  
+          const response = await axios.get(`http://localhost:3001/fisiosport/appointment/patient/${completePatientInfo.id_patient}`);
+  
+          const now = new Date();
+          const hasPending = response.data.some(app => {
+            const [day, month, year] = app.date.split('/');
+            const appointmentDate = new Date(`${year}-${month}-${day}T00:00:00`);
+            return appointmentDate >= now;
           });
+  
+          setHasPendingAppointment(hasPending);
+  
+          const storedAppointments = JSON.parse(localStorage.getItem('pendingAppointments')) || {};
+          storedAppointments[completePatientInfo.id_patient] = { hasPending };
+          localStorage.setItem('pendingAppointments', JSON.stringify(storedAppointments));
+  
+        } catch (error) {
+          console.error("Error al verificar turno pendiente:", error);
+        }
+      };
+  
+      checkPendingAppointment();
+    }, [completePatientInfo]);
+  
+    const horarios = [];
+    for (let i = 9; i <= 12; i++) {
+      horarios.push(`${i < 10 ? "0" + i : i}:00`);
+    }
+  
+    const horarios2 = [];
+    for (let j = 16; j <= 19; j++) {
+      horarios2.push(`${j < 10 ? "0" + j : j}:00`);
+    }
+  
+    const reserveAppointment = async () => {
+      if (!completePatientInfo.id_patient || !completePatientInfo.email || !completePatientInfo.dni || !completePatientInfo.age || !completePatientInfo.lastname || !completePatientInfo.name || !completePatientInfo.phone) {
+        Swal.fire("Tienes que ingresar tu información personal completa!");
+        return;
       }
-      else {   
-          if(date === null && hour === '') Swal.fire("Tienes que seleccionar una fecha y una hora!");
-          else if(hour === '') Swal.fire("Tienes que seleccionar una hora!");
-          else Swal.fire("Tienes que seleccionar una fecha!")     
+  
+      if (date !== null && hour !== '') {
+        try {
+          const response = await axios.post('http://localhost:3001/fisiosport/appointment', {
+            date,
+            hour,
+            id_patient: completePatientInfo?.id_patient
+          });
+  
+          if (response.data.message) {
+            Swal.fire("Atención", response.data.message, "warning");
+            return;
+          }
+  
+          Swal.fire({
+            title: "Turno reservado!",
+            text: "Te esperamos!",
+            icon: "success"
+          });
+  
+          setHasPendingAppointment(true);
+  
+          const storedAppointments = JSON.parse(localStorage.getItem('pendingAppointments')) || {};
+          storedAppointments[completePatientInfo.id_patient] = { hasPending: true };
+          localStorage.setItem('pendingAppointments', JSON.stringify(storedAppointments));
+  
+        } catch (error) {
+          Swal.fire("Error", error.response?.data?.error || "Algo salió mal", "error");
+        }
+      } else {
+        if (date === null && hour === '') Swal.fire("Tienes que seleccionar una fecha y una hora!");
+        else if (hour === '') Swal.fire("Tienes que seleccionar una hora!");
+        else Swal.fire("Tienes que seleccionar una fecha!");
       }
-  }
-
-  const cancelAppointment = () => {
-      setDate(null)
-      setHour('')
-      setDisponibility([])
-  }
+    };
+  
+    const cancelAppointment = () => {
+      setDate(null);
+      setHour('');
+      setDisponibility([]);
+    };
 
   return (
     <div className='containerAppointment'>
@@ -96,26 +151,36 @@ const AppointmentPage = () => {
                         <p className="horarios">Horarios</p>
                     </div>
                     <div className='containerHours'>
-                        {horarios.map((horario, index) => (
-                            <button
-                                className='hours'
-                                key={index}
-                                onClick={() => setHour(horario)}
-                                disabled={disponibility.some(item => item.hour === horario && item.total_people === '4') || !date}
-                            >
-                                {horario}
-                            </button>
-                        ))}
-                        {horarios2.map((horario2, index) => (
-                            <button
-                                className='hours'
-                                key={index}
-                                onClick={() => setHour(horario2)}
-                                disabled={disponibility.some(item => item.hour === horario2 && item.total_people === '4') || !date}
-                            >
-                                {horario2}
-                            </button>
-                        ))}
+                    {horarios.map((horario, index) => (
+                <button
+                  className="hours"
+                  key={index}
+                  onClick={() => setHour(horario)}
+                  disabled={
+                    disponibility.some(
+                      (item) =>
+                        item.hour === horario && item.total_people === "4"
+                    ) || !date
+                  }
+                >
+                  {horario}
+                </button>
+              ))}
+              {horarios2.map((horario2, index) => (
+                <button
+                  className="hours"
+                  key={index}
+                  onClick={() => setHour(horario2)}
+                  disabled={
+                    disponibility.some(
+                      (item) =>
+                        item.hour === horario2 && item.total_people === "4"
+                    ) || !date
+                  }
+                >
+                  {horario2}
+                </button>
+              ))}
                     </div>
                 </div>
             </div>

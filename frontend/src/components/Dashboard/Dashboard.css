@@ -5,7 +5,10 @@
   display: flex;
   flex-direction: row; /* Asegura que los contenedores estén en fila en pantallas grandes */
   flex-wrap: wrap; /* Permite que los elementos se ajusten cuando no haya suficiente espacio */
-  justify-content: flex-start; /* Alinea los elementos al inicio */
+  justify-content: center; /* Alinea los elementos al inicio */
+  align-items: center;
+  padding: 10px;
+
 }
 
 /* Contenedor de bienvenida */
@@ -14,7 +17,6 @@
   height: 210px; /* Altura consistente */
   display: flex;
   justify-content: space-around; /* Espacio entre los contenedores */
-  margin: 10px;
   gap: 15px;
   box-sizing: border-box;
 }
@@ -120,6 +122,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
+  margin-bottom: 120px;
 }
 
 .containerChart p {
@@ -144,16 +148,18 @@
 
   .containerWelcomeDashboard {
     flex-direction: column; /* Apilar los contenedores dentro de la sección de bienvenida */
-    gap: 10px; /* Espacio entre los contenedores */
+    gap: 5px; /* Espacio entre los contenedores */
   }
 
-  .welcomeDashboard,
-  .stats,
-  .containerChart {
+  .welcomeDashboard
+{
     width: 100%; /* Ocupa todo el ancho disponible */
     max-width: 100%; /* No excede el ancho de la pantalla */
     height: 210px; /* Altura consistente */
-    margin-bottom: 15px; /* Espacio entre los contenedores */
+  }
+
+  .containerChart {
+    margin-bottom: 50px;
   }
 
   /* Asegura que la imagen no desborde */
