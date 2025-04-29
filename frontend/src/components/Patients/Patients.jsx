@@ -14,63 +14,57 @@ import EditPatient from "../../modals/EditPatient/EditPatient";
 import EditMedicalHistory from "../../modals/EditMedicalHistory/EditMedicalHistory";
 import { IoMdCloseCircle } from "react-icons/io";
 import { IoIosSettings } from "react-icons/io";
-import { FaEye } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const Patients = () => {
   const dispatch = useDispatch();
-
   const patients = useSelector((state) => state.patients);
+
   const [modalEditPatientShow, setModalEditPatientShow] = useState(false);
   const [modalMedicalHistoryShow, setMedicalHistoryShow] = useState(false);
-  const [modalDeleteShow, setDeleteShow] = useState(false);
-
   const [selectedPatient, setSelectedPatient] = useState(null);
+
+  // Nuevo estado para filtros
+  const [filters, setFilters] = useState({ dni: "", email: "" });
 
   const handleEditClick = (patient, column) => {
     setSelectedPatient(patient);
     if (column === "medicalHistory") setMedicalHistoryShow(true);
     if (column === "editPatient") setModalEditPatientShow(true);
     if (column === "deletePatient") {
-      {
-        console.log(patient);
-        const swalWithBootstrapButtons = Swal.mixin({
-          customClass: {
-            confirmButton: "btn btn-success",
-            cancelButton: "btn btn-danger",
-          },
-          buttonsStyling: false,
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger",
+        },
+        buttonsStyling: false,
+      });
+      swalWithBootstrapButtons
+        .fire({
+          title: "¿Estas seguro?",
+          text: "Esta acción no se puede deshacer!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Si, Eliminar!",
+          cancelButtonText: "No, cancelar!",
+          reverseButtons: true,
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire({
+              title: "Eliminado!",
+              text: "El paciente fue eliminado.",
+              icon: "success",
+            });
+            dispatch(deletePatientInfo(patient.id_patient));
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire({
+              title: "Cancelado",
+              text: "El paciente no se eliminó :)",
+              icon: "error",
+            });
+          }
         });
-        swalWithBootstrapButtons
-          .fire({
-            title: "¿Estas seguro?",
-            text: "Esta acción no se puede deshacer!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Si, Eliminar!",
-            cancelButtonText: "No, cancelar!",
-            reverseButtons: true,
-          })
-          .then((result) => {
-            if (result.isConfirmed) {
-              swalWithBootstrapButtons.fire({
-                title: "Eliminado!",
-                text: "El paciente fue eliminado.",
-                icon: "success",
-              });
-              dispatch(deletePatientInfo(patient.id_patient));
-            } else if (
-              /* Read more about handling dismissals below */
-              result.dismiss === Swal.DismissReason.cancel
-            ) {
-              swalWithBootstrapButtons.fire({
-                title: "Cancelado",
-                text: "El paciente no se eliminó :)",
-                icon: "error",
-              });
-            }
-          });
-      }
     }
   };
 
@@ -117,14 +111,10 @@ const Patients = () => {
         accessor: "actions",
         Cell: ({ row }) => (
           <div className="containerButtonsActions">
-            <button
-              onClick={() => handleEditClick(row.original, "editPatient")}
-            >
+            <button onClick={() => handleEditClick(row.original, "editPatient")}>
               <IoIosSettings className="iconActionEdit" />
             </button>
-            <button
-              onClick={() => handleEditClick(row.original, "deletePatient")}
-            >
+            <button onClick={() => handleEditClick(row.original, "deletePatient")}>
               <IoMdCloseCircle className="iconActionDelete" />
             </button>
           </div>
@@ -155,22 +145,19 @@ const Patients = () => {
     usePagination
   );
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleFilterChange(e);
-    }
-  };
-
   const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    const newFilters = { ...filters, [name]: value };
+    setFilters(newFilters);
+
     dispatch(
       filterByDNIOrEmail({
         stateName: "patients",
         stateNameToFilter: "patientsToFilter",
-        propertyName: e.target.name,
-        value: e.target.value,
+        filters: newFilters, // PASAMOS TODO EL OBJETO filters
       })
     );
-    gotoPage(0); // Esto reinicia a la primera página luego de un cambio
+    gotoPage(0);
   };
 
   return (
@@ -183,15 +170,15 @@ const Patients = () => {
         <input
           type="text"
           name="dni"
+          value={filters.dni}
           onChange={handleFilterChange}
-          onKeyDown={handleKeyDown}
           placeholder="DNI"
         />
         <input
           type="text"
           name="email"
+          value={filters.email}
           onChange={handleFilterChange}
-          onKeyDown={handleKeyDown}
           placeholder="Email"
         />
       </div>
@@ -201,9 +188,7 @@ const Patients = () => {
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render("Header")}
-                  </th>
+                  <th {...column.getHeaderProps()}>{column.render("Header")}</th>
                 ))}
               </tr>
             ))}
@@ -214,10 +199,13 @@ const Patients = () => {
               return (
                 <tr key={row.id} {...row.getRowProps()}>
                   {row.cells.map((cell) => (
-                    <td key={cell.column.id} {...cell.getCellProps()} data-label={cell.column.Header}>
-                    {cell.render('Cell')}
-                  </td>
-                  
+                    <td
+                      key={cell.column.id}
+                      {...cell.getCellProps()}
+                      data-label={cell.column.Header}
+                    >
+                      {cell.render("Cell")}
+                    </td>
                   ))}
                 </tr>
               );
