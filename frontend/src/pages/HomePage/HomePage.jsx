@@ -34,7 +34,7 @@ const HomePage = () => {
           <h1 className="fisiosport">FISIO SPORT</h1>
           <h2 className="kinesiologiayfisioterapia">Kinesiología & Fisioterapia</h2>
           <i><h3 className="kinesiologo">Klgo. Christian Núñez Coso</h3></i>
-          <Link to="/turno">
+          <Link to="/login">
             <button className="button">
               <span className="button-content">Solicitar turno</span>
             </button>
