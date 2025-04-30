@@ -29,7 +29,11 @@ module.exports = (sequelize) => {
             },
             notes: {
                 type: DataTypes.TEXT
-            }
+            },
+            background: {
+                type: DataTypes.TEXT,
+                allowNull: true,
+              }
         }
     )
 

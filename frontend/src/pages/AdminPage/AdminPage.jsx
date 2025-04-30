@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { getAppointments, getMedicalHistory, getPatients } from '../../Redux/Actions/Actions'
 import SideBar from '../../components/SideBar/SideBar'
 import Content from '../../components/Content/Content'
+import NavBar from '../../components/NavBar/NavBar';
 
 const AdminPage = () => {
 
@@ -19,7 +20,8 @@ const AdminPage = () => {
     
     return (
         <div className='containerAdmin'>
-            <SideBar setCurrentSelection={setCurrentSelection}></SideBar>
+            <NavBar setCurrentSelection={setCurrentSelection} />
+
             <Content currentSelection={currentSelection}></Content>
         </div>
     )

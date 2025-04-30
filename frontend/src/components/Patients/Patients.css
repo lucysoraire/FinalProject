@@ -1,174 +1,328 @@
-.containerPatients {   
-    margin-top: 40px;
+
+
+.table {
+  width: 90%;
+  max-width: 1700px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  overflow-x: hidden; /* Esto bloquea scroll horizontal */
+}
+
+/* Estilos aplicados SIEMPRE, en todas las resoluciones */
+.containerButtonsActions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.iconActionEdit,
+.iconActionDelete {
+  width: 26px;
+  height: 26px;
+}
+
+.iconActionEdit {
+  color: #447dbf;
+}
+
+.iconActionDelete {
+  color: #d9534f;
+}
+
+.iconActionEdit:hover,
+.iconActionDelete:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+.buttonViewMedicalHistory {
+  background-color: #6c63ff; /* Un violeta suave */
+  color: white;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  width: fit-content;
+  align-self: center;
+}
+
+.buttonNavigationPage {
+  background-color: #6c63ff; /* Un violeta suave */
+}
+
+.buttonNavigationPage:hover {
+  background-color: #d97b4f;
+}
+
+.buttonsArrowsPage{
+  background-color: #d97b4f; /* Un violeta suave */
+}
+
+.containerPatients {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titlePatients p {
+  font-size: 28px;
+  font-weight: 700;
+  color: #465ba6;
+  margin-bottom: 5px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.containerFilterPatients {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.containerFilterPatients p {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(192, 192, 192);
+  margin-bottom: 5px;
+}
+
+.containerFilterPatients input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.containerFilterPatients input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
+}
+
+.buscar p{
+  color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+  .table {
+    width: 100%;
+    display: block;
+    overflow-x: hidden; /* Esto bloquea scroll horizontal */
+    background-color: transparent;
+    box-sizing: border-box;
+    padding: 0 10px;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tbody {
+    display: block;
+    width: 90%;
+    background-color: transparent; /* <-- Evita fondo blanco */
+  }
+
+  .table tbody tr {
+    display: block;
+    margin-bottom: 20px;
+    width: 90%;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin: 25px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    border-left: 5px solid #465ba6;
+    color: #333;
+    background-color: #f5f3f3; /* <- esto ya está bien */
+  }
+
+  .table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px;
+    border-bottom: 1px solid #ddd;
+    word-break: break-word;
+    color: #444;
+    background-color: transparent; /* <- esto soluciona el "corte" de color */
+  }
+
+  .table tbody td:last-child {
+    border-bottom: none;
+  }
+
+  .table tbody td::before {
+    content: attr(data-label) ": ";
+    font-weight: bold;
+    color: #465ba6;
+    flex: 1;
+    padding-right: 10px;
+    text-align: left;
+  }
+
+  .containerButtonsActions {
+    justify-content: flex-start;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .containerButtonsActions button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .iconActionDelete,
+  .iconActionEdit {
+    width: 26px;
+    height: 26px;
+  }
+
+  .buttonViewMedicalHistory {
+    width: 100%;
+    margin-top: 15px;
+    padding: 8px 0;
+    font-weight: bold;
+  }
+
+  /* Íconos de acción */
+  .iconActionEdit {
+    width: 26px;
+    height: 26px;
+    color: #447dbf; /* Azul suave */
+  }
+
+  .iconActionDelete {
+    width: 26px;
+    height: 26px;
+    color: #d9534f; /* Rojo Bootstrap */
+  }
+
+  /* Hover para mejorar interacción */
+  .iconActionEdit:hover,
+  .iconActionDelete:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
+
+  .buttonViewMedicalHistory {
+    background-color: #6c63ff; /* Un violeta suave */
+    color: white;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    margin-top: 12px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    width: fit-content;
+    align-self: center;
+  }
+
+  .buttonViewMedicalHistory:hover {
+    background-color: #837dff; /* Ligeramente más claro al pasar el mouse */
+    transition: background-color 0.2s ease;
+  }
+
+  .cardPatient {
+    /* background-color: #f5f5f5; */
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(122, 122, 122, 0.1);
+    margin-bottom: 20px;
+    width: 90%; /* Limita el ancho para que se vea el borde */
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-self: center;
+  }
+
+  /* Esto centra todas las tarjetas en la columna */
+  .containerTablePatients {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10px;
+  }
+
+
+  .titlePatients p {
+  font-size: 24px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #465ba6;
+}
+
+.containerFilterPatients {
+  width: 100%;
+  max-width: 90%;
+  padding: 0 15px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.containerFilterPatients p {
+  font-size: 15px;
+  text-align: center;
+}
+
+.containerFilterPatients input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.containerFilterPatients input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
 }
 
 
 .titlePatients p {
-    margin: 0;
-    font-size: 30px;
-    color: white;
-    letter-spacing: 1px;
+  font-size: 24px;
+  margin-top: 70px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #465ba6;
 }
 
 .containerFilterPatients {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    width: 95%;
-    padding: 10px;
-    height: 50px;
-    gap: 10px;
-    margin-bottom: 20px;
+  width: 100%;
+  max-width: 90%;
+  padding: 0 15px;
+  gap: 10px;
+  margin-bottom: 5px;
 }
 
 .containerFilterPatients p {
-    margin: 0;
+  font-size: 15px;
+  text-align: center;
 }
 
-.containerFilterPatients input{
-    width: 230px;
-    height: 30px;
-    padding-left: 5px;
-    border: none;
-    border-radius: 8px;
-    background-color: #A9D0D5;
-    outline: none;
-    color: white;
+.containerFilterPatients input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
 }
 
-.containerFilterPatients input:hover {
-    background-color: #F08C30;
+.containerFilterPatients input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
 }
 
-.containerFilterPatients input::placeholder {
-    color: white;
-}
-
-.containerTablePatients {
-    width: 95%;
-}
-
-.containerOptionsNavigation {
-    width: 95%;
-}
-
-.containerButtonsNavigation {
-    width: 95%;
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-}
-
-.buttonNavigationPage {
-    width: 90px;
-    border-radius: 8px;
-    border: none;
-    background-color:  #465BA6;
-    color: white;
-    cursor: pointer;
-}
-
-.buttonNavigationPage:hover {
-    background-color: #F08C30;
-}
-
-.buttonsArrowsPage {
-    width: 30px;
-    height: 30px;
-    border: none;
-    background: none;
-    border-radius: 50%;
-}
-
-.arrowIcon {
-    width: 25px;
-    height: 25px;
-}
-
-.buttonsArrowsPage:hover {
-    background-color: #F08C30;
-    color: white;
-    cursor: pointer;;
-}
-
-.numberOfPage {
-    width: 95%;
-    margin-top: 5px;
-    display: flex;
-    justify-content: center;
-}
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 8px;
-}
-
-.table th,
-.table td{
-    
-}
-
-.table th {
-    background-color:  #465BA6;
-    color: white;
-}
-
-.table tr:hover {
-    background-color: red !important;
-   
-}   
-
-.containerButtonsActions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-.containerButtonsActions button {
-    border: none;
-    background: none;
-}
-
-.iconActionDelete {
-    width: 27px;
-    height: 27px;
-    color: rgb(172, 68, 68);
-}
-
-.iconActionDelete:hover {
-    transform: scale(1.1);
-    transition: 0.1s ease;
-}
-
-.iconActionEdit {
-    width: 27px;
-    height: 27px;
-    color: #447DBF;
-}
-
-.iconActionEdit:hover {
-    transform: scale(1.1);
-    transition: 0.1s ease;
-}
-
-.buttonViewMedicalHistory {
-    background-color: #447DBF;
-    color: white;
-    width: 70px;
-    border-radius: 8px;
-    border: none;
-    letter-spacing: 1px;
-    margin-top: 2px;
-
-}
-
-.buttonViewMedicalHistory:hover {
-    background-color: #F08C30;
-    transition: 0.3s ease;
 }

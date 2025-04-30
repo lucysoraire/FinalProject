@@ -73,28 +73,33 @@ const reducer = (state = initialState, action) => {
         },
       };
     }
-    case FILTER_BY_DNI_OR_EMAIL: {
-      const { stateName, stateNameToFilter, propertyName, value } =
-        action.payload;
 
-      const filteredData = [...state.filters[stateNameToFilter]].filter(
-        (element) => {
-          if (element[[propertyName]]) {
-            return element[propertyName]
-              .toLowerCase()
-              .includes(value.toLowerCase());
-          } else {
-            return element.Patient[propertyName]
-              .toLowerCase()
-              .includes(value.toLowerCase());
-          }
-        }
-      );
+
+    case FILTER_BY_DNI_OR_EMAIL: {
+      const { stateName, stateNameToFilter, filters } = action.payload;
+      const { dni, email, date } = filters;
+    
+      const filteredData = [...state.filters[stateNameToFilter]].filter((element) => {
+        const getProperty = (obj, prop) => obj[prop] || (obj.Patient && obj.Patient[prop]);
+    
+        const dniMatch = dni ? getProperty(element, "dni")?.toString().includes(dni) : true;
+        const emailMatch = email ? getProperty(element, "email")?.toLowerCase().includes(email.toLowerCase()) : true;
+        const dateMatch = date ? element.date?.toString().includes(date) : true;
+    
+        return dniMatch && emailMatch && dateMatch;
+      });
+    
       return {
         ...state,
         [stateName]: filteredData,
       };
     }
+    
+    
+
+
+
+
     case ORDER_APPOINTMENTS_BY_DATE: {
       return {
         ...state,

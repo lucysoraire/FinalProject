@@ -61,12 +61,15 @@ i {
 }
 
 #navbar .itemnavbar a {
+  cursor: pointer;
   text-decoration: none;
   font-size: 1rem;
   margin-right: 1em;
-  /*color: #404dbb;*/
   color: rgb(255, 255, 255);
   transition: 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 #navbar .itemnavbar a:hover::after {
@@ -127,6 +130,29 @@ i {
 #mobile i {
   color: #f08c30;
   align-items: center;
+}
+
+
+.itemnavbar button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.itemnavbar button:hover {
+  text-decoration: underline;
+}
+
+
+.react-icon-nav {
+  color: #f08c30 !important;
+  font-size: 1rem !important;
+  vertical-align: middle;
 }
 
 @media screen and (max-width: 769px) {
