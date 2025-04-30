@@ -93,7 +93,14 @@ const createNewAppointment = async (date, hour, id_patient) => {
     });
 
     if (existingPendingAppointment) {
-        return { message: 'Ya tenés un turno pendiente. No podés reservar otro hasta ser atendido.' };
+        // Formatear la fecha y hora para que se vea bonita
+        const appointmentDate = moment(existingPendingAppointment.date).format('D/M/YYYY');
+        const appointmentHour = existingPendingAppointment.hour;
+        
+        // Crear el mensaje con la fecha y la hora del turno pendiente
+        const message = `Ya tenés un turno pendiente para el ${appointmentDate} a las ${appointmentHour}. No podés reservar otro hasta ser atendido.`;
+
+        return { message };
     }
 
     const existingAppointmentsCount = await Appointment.count({
@@ -112,6 +119,8 @@ const createNewAppointment = async (date, hour, id_patient) => {
 
     return appointmentsCreated;
 };
+
+
 
 const updateAppointmentCtrl = async (data, appointmentId) => {
     if (data.hour === '') delete data.hour;
