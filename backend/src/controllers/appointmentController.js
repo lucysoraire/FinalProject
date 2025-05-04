@@ -107,7 +107,7 @@ const createNewAppointment = async (date, hour, id_patient) => {
         where: { date, hour }
     });
     
-    if (existingAppointmentsCount >= 4) {
+    if (existingAppointmentsCount > 0) {
         return { message: 'Este horario ya está reservado. Elegí otro, por favor.' };
     }
     

@@ -80,14 +80,14 @@ const AppointmentPage = () => {
   }, [completePatientInfo]);
 
   const horarios = [];
-  for (let i = 9; i <= 12; i++) {
-    horarios.push(`${i < 10 ? "0" + i : i}:00`);
+  for (let i = 14; i <= 17; i++) {
+    horarios.push(`${i < 10 ? "0" + i : i}:30`);
   }
 
-  const horarios2 = [];
-  for (let j = 16; j <= 19; j++) {
-    horarios2.push(`${j < 10 ? "0" + j : j}:00`);
-  }
+  // const horarios2 = [];
+  // for (let j = 16; j <= 19; j++) {
+  //   horarios2.push(`${j < 10 ? "0" + j : j}:00`);
+  // }
 
   const reserveAppointment = async () => {
     if (
@@ -199,9 +199,12 @@ const AppointmentPage = () => {
               <p className="horarios">Horarios</p>
             </div>
             <div className="containerHours">
-              {[...horarios, ...horarios2].map((horario, index) => (
+              {[...horarios].map((horario, index) => (
                 <button
-                  className={`hours ${hour === horario ? "selected" : ""}`}
+                className={`hours ${hour === horario ? "selected" : ""} ${
+                  disponibility.some((item) => item.hour === horario) ? "disabled-hour" : ""
+                }`}
+                
                   key={index}
                   onClick={() => setHour(horario)}
                   disabled={
@@ -216,51 +219,54 @@ const AppointmentPage = () => {
         </div>
         {
           <div className="appointmentDetail">
-            <p className="appointmentDetail-title">DETALLES DEL TURNO</p>
-            <div className="containerDetail">
-              <p>
-                <b>
-                  <span>Direccion:</span>
-                </b>{" "}
-                Álvarez Condarco 1205, altura Av. Coronel Suárez 1200
+          <p className="appointmentDetail-title">DETALLES DEL TURNO</p>
+          <div className="containerDetail">
+            <p>
+              <b><span>Direccion:</span></b> Álvarez Condarco 1205, altura Av. Coronel Suárez 1200
+            </p>
+            <p>
+              <b><span>Telefono:</span></b> 3813545337
+            </p>
+            <p>
+              <b><span>Email:</span></b> kinchristianfabian@gmail.com
+            </p>
+        
+            {hasPendingAppointment ? (
+              <p className="turno-confirmado">
+                <b>Turno reservado:</b> {date?.toLocaleDateString()} a las {hour}
               </p>
-              <p>
-                <b>
-                  <span>Telefono:</span>{" "}
-                </b>{" "}
-                3813545337
-              </p>
-              <p>
-                <b>
-                  <span>Email:</span>{" "}
-                </b>{" "}
-                kinchristianfabian@gmail.com
-              </p>
-              <p>
-                <b>
-                  <span>Fecha:</span>{" "}
-                </b>{" "}
-                {date && date.toLocaleDateString()}
-              </p>
-              <p>
-                <b>
-                  <span>Hora:</span>{" "}
-                </b>{" "}
-                {date && hour}
-              </p>
-            </div>
-            <div className="containerButtonsCalendar">
-              <button
-                className="button btnlogin firstbutton"
-                onClick={cancelAppointment}
-              >
-                <span className="button-content">Cancelar</span>
-              </button>
-              <button className="button btnlogin " onClick={reserveAppointment}>
-                <span className="button-content">Confirmar</span>
-              </button>
-            </div>
+            ) : (
+              <>
+                <p>
+                  <b><span>Fecha:</span></b> {date && date.toLocaleDateString()}
+                </p>
+                <p>
+                  <b><span>Hora:</span></b> {date && hour}
+                </p>
+              </>
+            )}
           </div>
+        
+          <div className="containerButtonsCalendar">
+            {!hasPendingAppointment && (
+              <>
+                <button
+                  className="button btnlogin firstbutton"
+                  onClick={cancelAppointment}
+                >
+                  <span className="button-content">Cancelar</span>
+                </button>
+                <button
+                  className="button btnlogin"
+                  onClick={reserveAppointment}
+                >
+                  <span className="button-content">Confirmar</span>
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+        
         }
       </div>
       {/* CONTENEDOR BOTONES PARA RESERVAR O CANCELAR EL TURNO */}

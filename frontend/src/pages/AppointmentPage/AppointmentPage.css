@@ -262,6 +262,15 @@
   color: #666;
 }
 
+.appointmentDetail .containerDetail span {
+  color: orange;
+}
+
+.turno-confirmado b{
+  color: orange;
+  letter-spacing: 1px;
+  
+}
 
   @media (min-width: 768px) {
     .containerCalendarAndInfo {
