@@ -239,9 +239,37 @@
     color: white;
 }
 
+/* Al final de AppointmentPage.css */
+
+.hours:disabled {
+  background-color: #e0e0e0;  /* gris claro */
+  color: #888888;             /* texto gris oscuro */
+  border-color: #cccccc;      /* borde gris */
+  cursor: not-allowed;        /* cursor prohibido */
+  opacity: 1;                 /* full opacity si quieres */
+}
+
+/* Opcional: si quieres que la clase .selected tenga prioridad cuando el usuario la escoge */
 .hours.selected {
-  background-color: #ff8c00; /* mismo color que el hover */
-  color: white;
+  background-color: #ff8c00;  /* o el color que uses para selected */
+  color: #fff;
+}
+
+
+.disabled-hour {
+  background-color: #ccc;
+  cursor: not-allowed;
+  color: #666;
+}
+
+.appointmentDetail .containerDetail span {
+  color: orange;
+}
+
+.turno-confirmado b{
+  color: orange;
+  letter-spacing: 1px;
+
 }
 
   @media (min-width: 768px) {
