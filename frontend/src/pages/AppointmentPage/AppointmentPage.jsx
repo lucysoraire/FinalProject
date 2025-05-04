@@ -201,14 +201,14 @@ const AppointmentPage = () => {
             <div className="containerHours">
               {[...horarios, ...horarios2].map((horario, index) => (
                 <button
-                  className={`hours ${hour === horario ? "selected" : ""}`}
+                className={`hours ${hour === horario ? "selected" : ""} ${
+                  disponibility.some((item) => item.hour === horario) ? "disabled-hour" : ""
+                }`}
+                
                   key={index}
                   onClick={() => setHour(horario)}
                   disabled={
-                    disponibility.some(
-                      (item) =>
-                        item.hour === horario && item.total_people === "4"
-                    ) || !date
+                    disponibility.some((item) => item.hour === horario) || !date
                   }
                 >
                   {horario}

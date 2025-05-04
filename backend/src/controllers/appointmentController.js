@@ -106,10 +106,11 @@ const createNewAppointment = async (date, hour, id_patient) => {
     const existingAppointmentsCount = await Appointment.count({
         where: { date, hour }
     });
-
-    if (existingAppointmentsCount >= 4) {
-        return { message: 'No se pueden agregar más citas para esta fecha y hora' };
+    
+    if (existingAppointmentsCount > 0) {
+        return { message: 'Este horario ya está reservado. Elegí otro, por favor.' };
     }
+    
 
     const appointmentsCreated = await Appointment.create({
         date,
