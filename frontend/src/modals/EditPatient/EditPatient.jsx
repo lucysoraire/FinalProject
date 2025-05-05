@@ -33,8 +33,8 @@ const EditPatient = (props) => {
             text: "Esta acción no se puede deshacer!",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Si, guardar!",
-            cancelButtonText: "No, cancelar!",
+            confirmButtonText: "Guardar",
+            cancelButtonText: "Cancelar",
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
@@ -70,13 +70,11 @@ const EditPatient = (props) => {
         >
             <Modal.Header closeButton >
                 <Modal.Title id="contained-modal-title-vcenter" className='containerHeaderModal'>
-                    Editar Paciente
+                    Editar paciente
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className='containerBodyEditPatient'>
-                <div>
-                    <h2 className='titleModal'>{`Editando a ${props?.patient?.name + ' ' + props?.patient?.lastname}`}</h2>
-                </div>
+          
                 <div className='containerInputsModal'>
                     <div className='inputsAndLabesModal'>
                         <label htmlFor="dni">DNI:</label>

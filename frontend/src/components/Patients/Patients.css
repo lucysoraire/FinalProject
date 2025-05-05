@@ -1,11 +1,11 @@
 
 
 .table {
-  width: 90%;
+  width: 100%;
   max-width: 1700px;
   margin: 0 auto;
   border-collapse: collapse;
-  overflow-x: hidden; /* Esto bloquea scroll horizontal */
+
 }
 
 /* Estilos aplicados SIEMPRE, en todas las resoluciones */
@@ -36,7 +36,7 @@
 }
 
 .buttonViewMedicalHistory {
-  background-color: #6c63ff; /* Un violeta suave */
+  background-color: rgb(255, 115, 0); /* Un violeta suave */
   color: white;
   font-size: 13px;
   padding: 6px 12px;
@@ -49,36 +49,38 @@
 }
 
 .buttonNavigationPage {
-  background-color: #6c63ff; /* Un violeta suave */
+  background-color: #ffffff;
+  color: rgb(255, 115, 0); /* Un violeta suave */
 }
 
+
 .buttonNavigationPage:hover {
-  background-color: #d97b4f;
+  background-color: rgb(255, 115, 0);
+  color: white;
 }
 
 .buttonsArrowsPage{
-  background-color: #d97b4f; /* Un violeta suave */
+  background-color: rgb(255, 115, 0); /* Un violeta suave */
 }
 
 .containerPatients {
-  padding: 30px 20px;
+  padding: 100px 100px 0px 100px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
 }
 
 .titlePatients p {
   font-size: 28px;
-  font-weight: 700;
-  color: #465ba6;
-  margin-bottom: 5px;
-  margin-top: 50px;
-  text-align: center;
+  color: #ffffff;
+  font-family: "Oswald", sans-serif;
+  width: 100%;
+  color: rgb(255, 115, 0);
 }
 
 .containerFilterPatients {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 5px;
   margin-bottom: 10px;
@@ -89,90 +91,91 @@
 .containerFilterPatients p {
   font-size: 16px;
   font-weight: 600;
-  color: rgb(192, 192, 192);
+  color: rgb(255, 255, 255);
   margin-bottom: 5px;
 }
 
 .containerFilterPatients input {
-  width: 100%;
-  padding: 10px 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 10px;
   font-size: 14px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
   outline: none;
-  transition: border-color 0.2s ease;
+  width: 100%;
+  transition: all 0.3s ease;
+  height: 40px;
 }
 
+
 .containerFilterPatients input:focus {
-  border-color: #6c63ff;
-  box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
+  background: rgba(255, 153, 0, 0.2);
+  border-color: rgba(255, 123, 0, 0.8);
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.9);
+  color: white;
 }
 
 .buscar p{
   color: #ffffff;
 }
+.containerTablePatients{
+  height: 700px !important;
+}
+th{
+  background-color: #333 !important;
+  color: white !important ;
+  border-color: black;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+td{
+  background-color: #444 !important;
+  color: white !important ;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
 
 @media screen and (max-width: 768px) {
-  .table {
+  .containerTablePatients {
     width: 100%;
+    overflow-x: auto;
     display: block;
-    overflow-x: hidden; /* Esto bloquea scroll horizontal */
-    background-color: transparent;
+    height: 100% !important;
+  }
+
+  .table {
+    width: max-content;
+    min-width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
     box-sizing: border-box;
-    padding: 0 10px;
   }
 
   .table thead {
-    display: none;
-  }
+    display:flex; /* ← Clave para mantener alineación */
+    background-color: #a9d0d5;
+    color: white;
+  }   
 
   .table tbody {
-    display: block;
-    width: 90%;
-    background-color: transparent; /* <-- Evita fondo blanco */
+    display: table-row-group; /* ← Esto repara problemas de layout */
+    background-color: transparent;
   }
 
-  .table tbody tr {
-    display: block;
-    margin-bottom: 20px;
-    width: 90%;
-    border-radius: 12px;
-    padding: 15px 20px;
-    margin: 25px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-    border-left: 5px solid #465ba6;
-    color: #333;
-    background-color: #f5f3f3; /* <- esto ya está bien */
+  .table th,
+  .table td {
+    white-space: nowrap;
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid #ddd;
+    min-width: 200px; /* ← Da ancho mínimo para evitar celdas invisibles */
   }
+
+
 
   .table tbody td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 5px;
-    border-bottom: 1px solid #ddd;
-    word-break: break-word;
     color: #444;
-    background-color: transparent; /* <- esto soluciona el "corte" de color */
-  }
-
-  .table tbody td:last-child {
-    border-bottom: none;
-  }
-
-  .table tbody td::before {
-    content: attr(data-label) ": ";
-    font-weight: bold;
-    color: #465ba6;
-    flex: 1;
-    padding-right: 10px;
-    text-align: left;
-  }
-
-  .containerButtonsActions {
-    justify-content: flex-start;
-    gap: 15px;
-    margin-top: 10px;
+    background-color: transparent;
   }
 
   .containerButtonsActions button {
@@ -189,58 +192,16 @@
   }
 
   .buttonViewMedicalHistory {
-    width: 100%;
-    margin-top: 15px;
-    padding: 8px 0;
+    width: 50px;
     font-weight: bold;
   }
 
-  /* Íconos de acción */
-  .iconActionEdit {
-    width: 26px;
-    height: 26px;
-    color: #447dbf; /* Azul suave */
-  }
-
-  .iconActionDelete {
-    width: 26px;
-    height: 26px;
-    color: #d9534f; /* Rojo Bootstrap */
-  }
-
-  /* Hover para mejorar interacción */
-  .iconActionEdit:hover,
-  .iconActionDelete:hover {
-    transform: scale(1.1);
-    transition: transform 0.2s ease;
-  }
-
-  .buttonViewMedicalHistory {
-    background-color: #6c63ff; /* Un violeta suave */
-    color: white;
-    font-size: 13px;
-    padding: 6px 12px;
-    border-radius: 6px;
-    border: none;
-    margin-top: 12px;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-    width: fit-content;
-    align-self: center;
-  }
-
-  .buttonViewMedicalHistory:hover {
-    background-color: #837dff; /* Ligeramente más claro al pasar el mouse */
-    transition: background-color 0.2s ease;
-  }
-
   .cardPatient {
-    /* background-color: #f5f5f5; */
     padding: 15px;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(122, 122, 122, 0.1);
     margin-bottom: 20px;
-    width: 90%; /* Limita el ancho para que se vea el borde */
+    width: 100%;
     max-width: 320px;
     display: flex;
     flex-direction: column;
@@ -248,81 +209,17 @@
     align-self: center;
   }
 
-  /* Esto centra todas las tarjetas en la columna */
-  .containerTablePatients {
+  .containerPatients {
+    padding: 120px 30px 0px 30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
   }
 
-
-  .titlePatients p {
-  font-size: 24px;
-  margin-top: 30px;
-  margin-bottom: 10px;
-  text-align: center;
-  color: #465ba6;
-}
-
-.containerFilterPatients {
-  width: 100%;
-  max-width: 90%;
-  padding: 0 15px;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.containerFilterPatients p {
-  font-size: 15px;
-  text-align: center;
-}
-
-.containerFilterPatients input {
-  width: 100%;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-.containerFilterPatients input:focus {
-  border-color: #6c63ff;
-  box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
-}
-
-
-.titlePatients p {
-  font-size: 24px;
-  margin-top: 70px;
-  margin-bottom: 10px;
-  text-align: center;
-  color: #465ba6;
-}
-
-.containerFilterPatients {
-  width: 100%;
-  max-width: 90%;
-  padding: 0 15px;
-  gap: 10px;
-  margin-bottom: 5px;
-}
-
-.containerFilterPatients p {
-  font-size: 15px;
-  text-align: center;
-}
-
-.containerFilterPatients input {
-  width: 100%;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-.containerFilterPatients input:focus {
-  border-color: #6c63ff;
-  box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
-}
-
+  .containerFilterPatients {
+    width: 100%;
+    max-width: 100%;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
 }
