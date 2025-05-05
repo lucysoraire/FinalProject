@@ -222,13 +222,13 @@ const AppointmentPage = () => {
           <p className="appointmentDetail-title">DETALLES DEL TURNO</p>
           <div className="containerDetail">
             <p>
-              <b><span>Direccion:</span></b> Álvarez Condarco 1205, altura Av. Coronel Suárez 1200
+              <b><span>Direccion:</span></b> Álvarez Condarco 1205
             </p>
             <p>
-              <b><span>Telefono:</span></b> 3813545337
+              <b><span>Telefono:</span></b> 3816292005
             </p>
             <p>
-              <b><span>Email:</span></b> kinchristianfabian@gmail.com
+              <b><span>Email:</span></b> biomecanicatucuman@gmail.com
             </p>
         
             {hasPendingAppointment ? (

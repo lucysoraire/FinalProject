@@ -112,8 +112,8 @@ const LoginPage = () => {
 
                 <div className="new-account">
                   <p className="noAccount">
-                    ¿Aún no tienes una cuenta?{" "}
-                    <Link to="/register">Registrarse</Link>
+                    ¿Aún no tenes una cuenta?{" "}
+                    <Link to="/register">Regístrate</Link>
                   </p>
                 </div>
               </Form>
