@@ -130,7 +130,7 @@ const EditAppointment = (props) => {
                         </div>
                     </div>
                     <div className='containerModalCalendar'>
-
+                    <div className='containerModalCalendar2'>
                         <Calendar
                             className='calendar'
                             onChange={onChange}
@@ -161,11 +161,12 @@ const EditAppointment = (props) => {
                                     </button>
                                 ))}
                             </div>
+                            </div>
                         </div>
                         <div className='infoAppointmentModal'>
                             <p><b>Fecha: </b>{date ? date.toLocaleDateString() : props?.appointment?.date}</p>
                             <p><b>Hora: </b>{hour ? hour : props?.appointment?.hour}</p>
-                            <button onClick={cancelAppointment}>Cancelar</button>
+                            <button onClick={cancelAppointment} className='btn cancelarturno'>Cancelar</button>
                         </div>
                     </div>
                 </div>

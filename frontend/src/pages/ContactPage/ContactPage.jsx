@@ -43,7 +43,7 @@ const ContactPage = () => {
           <div className="social-icons">
             <a href="https://wa.me/5493816292005" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-whatsapp"></i>
-              <span>+54 9 381 629 2006</span>
+              <span>+54 9 381 629 2005</span>
             </a>
             <a href="https://instagram.com/biomecanicatucuman" target="_blank" rel="noopener noreferrer">
               <i className="fab fa-instagram"></i>
