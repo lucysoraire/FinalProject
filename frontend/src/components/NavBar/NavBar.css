@@ -52,6 +52,8 @@ i {
   list-style: none;
   padding: 00px 0px 0px 20px;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 .itemsnavbar {
   margin-right: 40px;

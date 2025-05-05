@@ -77,8 +77,8 @@ const EditMedicalHistory = (props) => {
         text: "Esta acción no se puede deshacer!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Si, guardar!",
-        cancelButtonText: "No, cancelar!",
+        confirmButtonText: "Guardar",
+        cancelButtonText: "Cancelar",
         reverseButtons: true,
       })
       .then((result) => {

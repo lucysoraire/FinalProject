@@ -45,8 +45,8 @@ const Patients = () => {
           text: "Esta acción no se puede deshacer!",
           icon: "warning",
           showCancelButton: true,
-          confirmButtonText: "Si, Eliminar!",
-          cancelButtonText: "No, cancelar!",
+          confirmButtonText: "Eliminar",
+          cancelButtonText: "Cancelar",
           reverseButtons: true,
         })
         .then((result) => {
@@ -162,11 +162,8 @@ const Patients = () => {
 
   return (
     <div className="containerPatients">
-      <div className="titlePatients">
-        <p>Pacientes</p>
-      </div>
+  
       <div className="containerFilterPatients">
-        <p className="buscar">Buscar por:</p>
         <input
           type="text"
           name="dni"

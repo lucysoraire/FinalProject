@@ -44,8 +44,8 @@ const EditAppointment = (props) => {
 
     // Array con los horarios de 9am a 6pm
     const horarios = [];
-    for (let i = 9; i <= 18; i++) {
-        horarios.push(`${i < 10 ? '0' + i : i}:00`); // Agrega los horarios al array
+    for (let i = 14; i <= 17; i++) {
+      horarios.push(`${i}:30`);
     }
 
     // GUARDAR LOS CAMBIOS HECHOS EN EL TURNO
@@ -62,8 +62,8 @@ const EditAppointment = (props) => {
             text: "Esta acción no se puede deshacer!",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Si, guardar!",
-            cancelButtonText: "No, cancelar!",
+            confirmButtonText: "Guardar",
+            cancelButtonText: "Cancelar",
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
@@ -104,13 +104,11 @@ const EditAppointment = (props) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter" className='containerHeaderModal'>
-                    Editar Turno
+                    Editar turno
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className='containerBodyEditPatient'>
-                <div>
-                    <h2 className='titleModal'>{`Editando el turno de: ${props?.appointment?.Patient?.name + ' ' + props?.appointment?.Patient?.lastname}`}</h2>
-                </div>
+            
                 <div>
                     <div className='containerInfoAppointmentPatient'>
                         <div>

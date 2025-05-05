@@ -138,8 +138,8 @@ const AppointmentPage = () => {
         }
 
         Swal.fire({
-          title: "Turno reservado!",
-          text: "Te esperamos!",
+          title: "Turno reservado",
+  
           icon: "success",
         });
 

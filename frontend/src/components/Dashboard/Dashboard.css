@@ -1,38 +1,36 @@
 /* Contenedor principal del Dashboard */
 .containerDashboard {
   margin-top: 74px;
-  height: 100%;
   display: flex;
   flex-direction: row; /* Asegura que los contenedores estén en fila en pantallas grandes */
   flex-wrap: wrap; /* Permite que los elementos se ajusten cuando no haya suficiente espacio */
   justify-content: center; /* Alinea los elementos al inicio */
   align-items: center;
-  padding: 10px;
+  padding: 50px 100px 0px 100px;
 
 }
 
 /* Contenedor de bienvenida */
 .containerWelcomeDashboard {
   width: 100%; /* Asegura que ocupe todo el ancho disponible */
-  height: 210px; /* Altura consistente */
+  height: 200px; /* Altura consistente */
   display: flex;
-  justify-content: space-around; /* Espacio entre los contenedores */
+  justify-content: space-between; /* Espacio entre los contenedores */
   gap: 15px;
   box-sizing: border-box;
 }
-
 .welcomeDashboard {
   width: 100%;
-  max-width: 400px; /* Máximo ancho de 300px */
-  height: 210px; /* Altura consistente */
-  background-color: #465ba6;
-  border-radius: 8px;
+  max-width: 500px; /* Máximo ancho de 300px */
+  height: 150px; /* Altura consistente */
+  background-color: #000000;
+  border-radius: 16px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content:space-between;
+  align-items: start;
+  padding: 30px;
   gap: 10px;
-  margin: 10px 0;
-  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .welcomeDashboard img {
@@ -52,29 +50,34 @@
 }
 
 .welcomeDashboard p {
-  font-size: 18px;
-  color: #ff932d;
-  margin: 0;
+  font-size: 20px;
+  color: #ffffff;
+  width: 100%;
+  color: rgb(255, 115, 0);
+  margin: 0px;
+}
+.cfnc{
+  color: rgb(255, 115, 0) !important;
 }
 
-.welcomeDashboard b {
+.welcomeDashboard p {
   color: white;
-  font-size: 22px;
+  font-size: 17px;
 }
 
 /* Contenedor de estadísticas */
 .stats {
   width: 100%;
-  max-width: 400px; /* Máximo ancho de 300px */
-  height: 210px; /* Altura consistente */
-  background-color: #465ba6;
-  border-radius: 8px;
+  max-width: 300px; /* Máximo ancho de 300px */
+  height: 150px; /* Altura consistente */
+  background-color: #000000;
+  border-radius: 16px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
-  padding: 15px;
-  margin: 10px 0;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .containerIconsDashboardStats {
@@ -92,7 +95,11 @@
   width: 35px;
   height: 35px;
 }
-
+.christianfabian{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 .statsInfo {
   width: 130px;
   text-align: left;
@@ -103,6 +110,8 @@
 .titleStat {
   color: white;
   font-size: 17px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .stat {
@@ -114,28 +123,31 @@
 /* Contenedor de gráficos */
 .containerChart {
   width: 100%; /* Asegura que ocupe todo el ancho disponible */
-  max-width: 800px; /* Aumentamos el max-width para hacerlo más grande */
-  max-height: 600px; /* Aumentamos el max-height */
-  height: 380px; /* Aumentamos la altura a 350px */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
+  justify-content: start;
+  align-items: start;
   margin-bottom: 120px;
-}
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 30px;
+  border-radius: 16px;
 
+}
+  
 .containerChart p {
-  margin: 0;
-  font-size: 40px;
-  letter-spacing: 1px;
-  color: #465ba6;
+  font-size: 28px;
+  color: #ffffff;
+  font-family: "Oswald", sans-serif;
+  width: 100%;
+  color: rgb(255, 115, 0);
 }
 
 .barChart {
   height: 100% !important; /* Ajusta la altura de la barra */
   width: 100%; /* Asegura que la barra ocupe todo el ancho disponible */
+  
+
 }
 
 /* Media query para pantallas pequeñas */
@@ -144,11 +156,14 @@
   .containerDashboard {
     flex-direction: column; /* Apilan los contenedores en columna */
     align-items: center; /* Centra los contenedores */
+    padding: 30px 30px 0px 30px;
   }
 
   .containerWelcomeDashboard {
     flex-direction: column; /* Apilar los contenedores dentro de la sección de bienvenida */
     gap: 5px; /* Espacio entre los contenedores */
+    height: 100%;
+    gap: 10px;
   }
 
   .welcomeDashboard
@@ -162,18 +177,18 @@
     margin-bottom: 50px;
   }
 
-  /* Asegura que la imagen no desborde */
-  .welcomeDashboard img {
-    width: 90px; /* Ajusta el tamaño de la imagen */
-    height: 110px; /* Ajusta el tamaño de la imagen */
-    margin-right: 15px; /* Mantiene el espacio entre la imagen y el texto */
+  div.stats{
+    max-width: 100% !important;
   }
+
+  /* Asegura que la imagen no desborde */
+ 
 
   /* Ajustes para el contenedor de gráficos */
   .containerChart {
-    margin-top: 300px;
-    max-width: 90%; /* Deja que el contenedor ocupe un 90% del ancho disponible */
-    height: 250px; /* Ajusta la altura para que no sea demasiado grande */
+    margin-top: 30px;
+    max-width: 100%; /* Deja que el contenedor ocupe un 90% del ancho disponible */
+    
   }
 
   .containerChart p {

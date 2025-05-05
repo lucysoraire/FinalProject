@@ -57,8 +57,8 @@ const Appointments = () => {
           text: "Esta acción no se puede deshacer!",
           icon: "warning",
           showCancelButton: true,
-          confirmButtonText: "Si, Eliminar!",
-          cancelButtonText: "No, cancelar!",
+          confirmButtonText: "Eliminar",
+          cancelButtonText: "Cancelar",
           reverseButtons: true,
         })
         .then((result) => {
@@ -75,7 +75,7 @@ const Appointments = () => {
           ) {
             swalWithBootstrapButtons.fire({
               title: "Cancelado",
-              text: "El turno no se eliminó :)",
+              text: "El turno no se eliminó.",
               icon: "error",
             });
           }
@@ -244,12 +244,10 @@ const Appointments = () => {
 
   return (
     <div className="containerPatients">
-      <div className="titlePatients">
-        <p>Turnos</p>
-      </div>
+    
       <div className="containerFilterAppointment">
         <div className="containerInputsAppointment2">
-          <p>Buscar por: </p>
+        
           <input
             type="text"
             name="dni"
@@ -260,13 +258,13 @@ const Appointments = () => {
             type="text"
             name="email"
             onChange={handleFilterChange}
-            placeholder="EMAIL"
+            placeholder="Email"
           />
           <input
             type="text"
             name="date"
             onChange={handleFilterChange}
-            placeholder="DATE"
+            placeholder="Date"
           />
         </div>
       </div>
