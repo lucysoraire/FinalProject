@@ -167,6 +167,11 @@ button.button.btnlogin{
   color: #007dc5;
 }
 
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
 
 
 /* Media Queries */
