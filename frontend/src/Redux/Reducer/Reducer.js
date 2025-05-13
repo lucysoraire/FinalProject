@@ -24,14 +24,14 @@ const initialState = {
     email: null,
   },
   patientInfo: {},
-  // estados para los filtros
+
   filters: {
     patientsToFilter: [],
     medicalHistoryToFilter: [],
     appointmentsToFilter: [],
   },
-  //Aqui el envio de contacto
-  contactMessage: null, // Nuevo estado para almacenar la respuesta del mensaje de contacto
+
+  contactMessage: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -74,31 +74,36 @@ const reducer = (state = initialState, action) => {
       };
     }
 
-
     case FILTER_BY_DNI_OR_EMAIL: {
       const { stateName, stateNameToFilter, filters } = action.payload;
       const { dni, email, date } = filters;
-    
-      const filteredData = [...state.filters[stateNameToFilter]].filter((element) => {
-        const getProperty = (obj, prop) => obj[prop] || (obj.Patient && obj.Patient[prop]);
-    
-        const dniMatch = dni ? getProperty(element, "dni")?.toString().includes(dni) : true;
-        const emailMatch = email ? getProperty(element, "email")?.toLowerCase().includes(email.toLowerCase()) : true;
-        const dateMatch = date ? element.date?.toString().includes(date) : true;
-    
-        return dniMatch && emailMatch && dateMatch;
-      });
-    
+
+      const filteredData = [...state.filters[stateNameToFilter]].filter(
+        (element) => {
+          const getProperty = (obj, prop) =>
+            obj[prop] || (obj.Patient && obj.Patient[prop]);
+
+          const dniMatch = dni
+            ? getProperty(element, "dni")?.toString().includes(dni)
+            : true;
+          const emailMatch = email
+            ? getProperty(element, "email")
+                ?.toLowerCase()
+                .includes(email.toLowerCase())
+            : true;
+          const dateMatch = date
+            ? element.date?.toString().includes(date)
+            : true;
+
+          return dniMatch && emailMatch && dateMatch;
+        }
+      );
+
       return {
         ...state,
         [stateName]: filteredData,
       };
     }
-    
-    
-
-
-
 
     case ORDER_APPOINTMENTS_BY_DATE: {
       return {
@@ -162,11 +167,10 @@ const reducer = (state = initialState, action) => {
       };
     }
 
-    //aquí el envío del formulario
     case SEND_CONTACT_MESSAGE: {
       return {
         ...state,
-        contactMessage: action.payload, // Guardamos la respuesta del backend
+        contactMessage: action.payload,
       };
     }
 
