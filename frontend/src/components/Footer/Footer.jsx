@@ -39,7 +39,7 @@ const Footer = () => {
                         <div className="legal">
                             <a href="#">Términos y Condiciones</a><a href="#">Política de Privacidad</a>
                         </div>
-                        <div className="copyright">2024 &copy; Tesis Soraire - Romano</div>
+                        <div className="copyright">2025 &copy;</div>
                     </div>
                 </footer>
             </div>
