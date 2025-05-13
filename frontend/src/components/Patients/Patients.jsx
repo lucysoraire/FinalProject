@@ -24,7 +24,7 @@ const Patients = () => {
   const [modalMedicalHistoryShow, setMedicalHistoryShow] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState(null);
 
-  // Nuevo estado para filtros
+
   const [filters, setFilters] = useState({ dni: "", email: "" });
 
   const handleEditClick = (patient, column) => {
@@ -154,7 +154,7 @@ const Patients = () => {
       filterByDNIOrEmail({
         stateName: "patients",
         stateNameToFilter: "patientsToFilter",
-        filters: newFilters, // PASAMOS TODO EL OBJETO filters
+        filters: newFilters, 
       })
     );
     gotoPage(0);

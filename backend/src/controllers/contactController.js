@@ -15,10 +15,10 @@ const sendMessageController = async (user) => {
   });
 
   const mailOptions = {
-    from: "<practiceapplications0@gmail.com>", // Nombre personalizado del remitente
-    to: process.env.email, // Correo del administrador
-    replyTo: user.email, // Al responder, se enviará al usuario
-    subject: "Kinesiología - Nueva Consulta", // Asunto por defecto
+    from: "<practiceapplications0@gmail.com>",
+    to: process.env.email,
+    replyTo: user.email,
+    subject: "Kinesiología - Nueva Consulta",
     html: `
         <html>
         <body>

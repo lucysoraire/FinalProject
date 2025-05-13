@@ -17,18 +17,19 @@ const medicalHistoryByPatientId = async (patientId) => {
 };
 
 const createMedicalHistory = async ({
-    diagnostic,
-    notes,
-    background,
-    id_patient,
-    emergencyContact,
-    medicationAllergies,
-    currentMedications,
-    previusInjuries,
-    currentSymptoms,
+  diagnostic,
+  notes,
+  background,
+  id_patient,
+  emergencyContact,
+  medicationAllergies,
+  currentMedications,
+  previusInjuries,
+  currentSymptoms,
 }) => {
-  // Busca si ya existe una historia clínica para este paciente
-  const existingHistory = await MedicalHistory.findOne({ where: { id_patient } });
+  const existingHistory = await MedicalHistory.findOne({
+    where: { id_patient },
+  });
 
   const data = {
     diagnostic,
@@ -53,10 +54,13 @@ const createMedicalHistory = async ({
 };
 
 const updateHistory = async (data, historyId) => {
-  const [rowsUpdated, [updatedMedicalHistory]] = await MedicalHistory.update(data, {
-    where: { id_medicalhistory: historyId },
-    returning: true,
-  });
+  const [rowsUpdated, [updatedMedicalHistory]] = await MedicalHistory.update(
+    data,
+    {
+      where: { id_medicalhistory: historyId },
+      returning: true,
+    }
+  );
   return rowsUpdated === 1 ? updatedMedicalHistory : null;
 };
 

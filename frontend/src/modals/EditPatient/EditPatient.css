@@ -52,6 +52,5 @@
 }
 
 .custom-modal {
-    max-width: 650px; /* ajusta el valor según tus necesidades */
-    /* centrar el modal horizontalmente */
+    max-width: 650px;
   }

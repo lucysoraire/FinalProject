@@ -1,345 +1,319 @@
-.videointro{
-    
+.videointro {
   width: 100%;
   margin: 0;
   padding: 0;
   height: 80vh;
-  object-fit:cover;
+  object-fit: cover;
   position: absolute;
   top: 0;
   z-index: 1;
-  }
-  
-  .home{
-      height: 80vh; 
-  }
-  
-  
-  .intro{
+}
 
-      display: flex;
-      align-items: left;
-      justify-content: center;
-      height: 80vh;
-      width: 100%;
-      flex-direction: column;
-      color: white;
-      z-index: 1;
-      background: linear-gradient(to bottom, rgba(103, 103, 202, 0), rgb(0, 0, 0));
-  }
-  
-  .fisiosport{
-    margin-left: 100px;    margin-right: 100px;
-      font-size: 120px;
-      font-weight: 900;
-      font-family: "Oswald", sans-serif;
-  }
-  
-  .kinesiologiayfisioterapia{
-      font-size: 40px;
-      margin-left: 100px;    margin-right: 100px;
+.home {
+  height: 80vh;
+}
 
-  }
-  
-  .kinesiologo{
-      font-size: 30px;
-      text-transform:capitalize;
-      color: #ffffff;
-      font-family: "Playfair", serif;
-      margin-bottom: 34px;
-      margin-left: 100px;    margin-right: 100px;
-      
-  }
-  
-  
-  
-  .titulovideo{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  
-  }
-  
-  .button {
+.intro {
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  height: 80vh;
+  width: 100%;
+  flex-direction: column;
+  color: white;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(103, 103, 202, 0), rgb(0, 0, 0));
+}
 
-      position: relative;
-      overflow: hidden;
-      height: 3.5rem;
-      padding: 0 2rem;
-      font-weight: 700;
-      border-radius: 1.5rem;
-      background: #f08c30;
-      background-size: 400%;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-size: 1.5em;  
-      margin-left: 100px;    margin-right: 100px;
-    }
-    
-    .buttonn {
+.fisiosport {
+  margin-left: 100px;
+  margin-right: 100px;
+  font-size: 120px;
+  font-weight: 900;
+  font-family: "Oswald", sans-serif;
+}
 
-      position: relative;
-      overflow: hidden;
-      height: 3.5rem;
-      padding: 0 2rem;
-      font-weight: 700;
-      border-radius: 1.5rem;
-      background: #f08c30;
-      background-size: 400%;
-      font-size: 24px;
+.kinesiologiayfisioterapia {
+  font-size: 40px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
 
-      color: #fff;
-      border: none;
-      cursor: pointer;
- 
-      margin-left: 100px;    margin-right: 100px;
-    }
-    .button:hover::before {
-      transform: scaleX(1);
-    }
-    
-    .button-content {
-      position: relative;
-      z-index: 1;
-    }
+.kinesiologo {
+  font-size: 30px;
+  text-transform: capitalize;
+  color: #ffffff;
+  font-family: "Playfair", serif;
+  margin-bottom: 34px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
 
-.reviews{
+.titulovideo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  position: relative;
+  overflow: hidden;
+  height: 3.5rem;
+  padding: 0 2rem;
+  font-weight: 700;
+  border-radius: 1.5rem;
+  background: #f08c30;
+  background-size: 400%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.buttonn {
+  position: relative;
+  overflow: hidden;
+  height: 3.5rem;
+  padding: 0 2rem;
+  font-weight: 700;
+  border-radius: 1.5rem;
+  background: #f08c30;
+  background-size: 400%;
+  font-size: 24px;
+
+  color: #fff;
+  border: none;
+  cursor: pointer;
+
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.button:hover::before {
+  transform: scaleX(1);
+}
+
+.button-content {
+  position: relative;
+  z-index: 1;
+}
+
+.reviews {
   background-color: black;
 }
 
-
-.css-qnun6a{
+.css-qnun6a {
   background-color: black !important;
   border-color: rgba(255, 255, 255, 0.263) !important;
 }
 
-.css-dyvl56
-{
+.css-dyvl56 {
   display: none !important;
 }
 
-.css-kzqzfd
-{
+.css-kzqzfd {
   display: none !important;
 }
 
-.slick-dots{
+.slick-dots {
   display: none !important;
 }
 
-.css-2xmatf{
+.css-2xmatf {
   padding-bottom: 0px !important;
   padding: 0px 20px !important;
 }
 
-.css-1uyvnff
-{
+.css-1uyvnff {
   background-color: black;
   margin: 30px 0px !important;
 }
 
-.app{
+.app {
   background-color: black;
 }
-.container-principal{
+.container-principal {
   background-color: black !important;
 }
 
-    
-    .button::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: scaleX(0);
-      transform-origin: 0 50%;
-      width: 100%;
-      height: inherit;
-      border-radius: inherit;
-      background: linear-gradient(
-        90deg,
-        rgb(255, 115, 0) 50%,
-        rgb(255, 185, 120)
-      );
-      transition: all 0.475s;
-    }
-    
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgb(255, 115, 0) 50%, rgb(255, 185, 120));
+  transition: all 0.475s;
+}
 
-    .about-us {
-      display: flex;
-      justify-content: center;
-      color: #fff;
-      background-color: #f08c30;
+.about-us {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  background-color: #f08c30;
+}
 
-      
-    }
-    
-    .about-us-container {
-     margin: 100px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-justify-content: space-between;      max-width: 1200px;
-      width: 100%;
-    }
-    
-    .about-us-image img {
-      width: 100%;
-      max-width: 500px;
-      border-radius: 8px;
-    }
-    
-    .about-us-text {
-      max-width: 600px;
-      font-size: 40px;
-      
+.about-us-container {
+  margin: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+}
 
-    }
-    
-    .about-us-text h2 {
-      font-size: 2rem;      font-family: "Oswald", sans-serif;
+.about-us-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 8px;
+}
 
-      margin-bottom: 1rem;
-    }
-    
-    .about-us-text p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
+.about-us-text {
+  max-width: 600px;
+  font-size: 40px;
+}
 
-    div.about-us-text{
-      text-align: start;
-    }
+.about-us-text h2 {
+  font-size: 2rem;
+  font-family: "Oswald", sans-serif;
 
-    #contactar{
-      align-items: start;
-      margin-left: 0px;
-      margin-top: 40px;
-      background-color: #fff;
-      color: #f08c30;
-    }
-    button.button{
-      text-align: start;
-      font-size: 20px;
+  margin-bottom: 1rem;
+}
 
-    }
+.about-us-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
 
+div.about-us-text {
+  text-align: start;
+}
 
+#contactar {
+  align-items: start;
+  margin-left: 0px;
+  margin-top: 40px;
+  background-color: #fff;
+  color: #f08c30;
+}
+button.button {
+  text-align: start;
+  font-size: 20px;
+}
 
-    
-    @media (max-width: 768px) {
-
-      section .about-us{
-        width: 100vw;
-
-
-      }
-      .about-us-container {
-        flex-direction: column;
-        text-align: center;
-        width: 100vw;
-        margin-left: 30px;
-        margin-right: 30px;
-
-      }
-
-    
-      .about-us-image img {
-        width: 100%;
-        margin-bottom: 40px;
-
-
-      }
-    
-      .about-us-text {
-        max-width: 100%;
-      }
-    }
-    
-    @keyframes slide {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-100%);
-        }
-      }
-      
-      .logos {
-        overflow: hidden;
-        padding: 60px 0;
-        background: rgb(0, 0, 0);
-        white-space: nowrap;
-        position: relative;
-      }
-      
-      .logos:before,
-      .logos:after {
-        position: absolute;
-        top: 0;
-        width: 250px;
-        height: 100%;
-        content: "";
-        z-index: 2;
-      }
-      
-      .logos:before {
-        left: 0;
-        background: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(0, 0, 0));
-      }
-      
-      .logos:after {
-        right: 0;
-        background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(0, 0, 0));
-      }
-      
-      .logos:hover .logos-slide {
-        animation-play-state: paused;
-      }
-      
-      .logos-slide {
-        display: inline-block;
-        animation: 35s slide infinite linear;
-      }
-      
-      .logos-slide img {
-        height: 50px;
-        margin: 0 40px;
-      }
-      
-  @media screen and (max-width: 433px){
-  .kinesiologo, section .about-us, .about-us-container,  .about-us-text {
-
-      font-size: 1.2em;
-
+@media (max-width: 768px) {
+  section .about-us {
+    width: 100vw;
   }
-  
-  .kinesiologiayfisioterapia{
-      font-size: 1.5em;
-      margin-left: 30px;
-      margin-right: 30px;
-  }
-  .fisiosport{
-      font-size: 60px;
-      margin-left: 30px;
-      margin-right: 30px;
-  }
-  .intro{
-      width: 100%;
-      text-align: center;
-      height: 500px;
-      padding-top: 100px;
+  .about-us-container {
+    flex-direction: column;
+    text-align: center;
+    width: 100vw;
+    margin-left: 30px;
+    margin-right: 30px;
   }
 
-  .videointro{
+  .about-us-image img {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .about-us-text {
+    max-width: 100%;
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.logos {
+  overflow: hidden;
+  padding: 60px 0;
+  background: rgb(0, 0, 0);
+  white-space: nowrap;
+  position: relative;
+}
+
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.logos:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), rgb(0, 0, 0));
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(0, 0, 0));
+}
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos-slide {
+  display: inline-block;
+  animation: 35s slide infinite linear;
+}
+
+.logos-slide img {
+  height: 50px;
+  margin: 0 40px;
+}
+
+@media screen and (max-width: 433px) {
+  .kinesiologo,
+  section .about-us,
+  .about-us-container,
+  .about-us-text {
+    font-size: 1.2em;
+  }
+
+  .kinesiologiayfisioterapia {
+    font-size: 1.5em;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  .fisiosport {
+    font-size: 60px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  .intro {
+    width: 100%;
+    text-align: center;
+    height: 500px;
+    padding-top: 100px;
+  }
+
+  .videointro {
     height: 500px;
   }
-  .home{
+  .home {
     height: 500px;
   }
-  .button{
-      font-size: 24px;
-      margin-left: 30px;
-      margin-right: 30px;
-  }}
+  .button {
+    font-size: 24px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}

@@ -1,4 +1,3 @@
-/* Estilos generales */
 * {
   box-sizing: border-box;
 }
@@ -6,12 +5,8 @@
 .container-de-todo-login {
   margin: 0;
   padding: 0;
-  background: linear-gradient(
-    135deg,
-    #000000,
-    #000000
-  ); /* Fondo azul medio oscuro */
-  color: #ffffff; /* Texto blanco para mayor contraste */
+  background: linear-gradient(135deg, #000000, #000000);
+  color: #ffffff;
   font-family: Arial, sans-serif;
   height: 100vh;
   display: flex;
@@ -19,22 +14,20 @@
   justify-content: center;
 }
 
-/* Contenedor principal */
 .container-de-todo-login {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row; /* Alineación horizontal de la imagen y el formulario */
+  flex-direction: row;
   min-height: 83vh;
-    padding: 100px;
+  padding: 100px;
   width: 100%;
-  gap: 0px; /* Espacio entre la imagen y el formulario */
+  gap: 0px;
 }
 
-/* Contenedor para la imagen */
 .containerImage {
   flex: 1;
-  background-image: url('./../../assets/register.jpg'); /* Cambia esta URL por la imagen que quieras usar */
+  background-image: url("./../../assets/register.jpg");
   background-size: cover;
   background-position: center;
   height: 80%;
@@ -45,7 +38,7 @@
 }
 .containerImage2 {
   flex: 1;
-  background-image: url(./../../assets/login.png); /* Cambia esta URL por la imagen que quieras usar */
+  background-image: url(./../../assets/login.png);
   background-size: cover;
   background-position: center;
   height: 80%;
@@ -55,25 +48,23 @@
   border-radius: 16px 0px 0px 16px;
 }
 
-
-/* Contenedor del formulario */
 .containerLogin {
   background: black;
-  border: solid 1px rgba(255, 255, 255, 0.263)  ;
+  border: solid 1px rgba(255, 255, 255, 0.263);
 
   border-radius: 0px 16px 16px 0px;
-height: 80%;
+  height: 80%;
   color: #fff;
-  flex: 1; /* El formulario toma el resto del espacio disponible */
+  flex: 1;
   justify-content: space-between;
 }
 
-button.button.btnlogin{
+button.button.btnlogin {
   margin: 0px;
   text-align: center;
   height: 50px;
 }
-/* Formulario */
+
 .formLogin {
   display: flex;
   flex-direction: column;
@@ -104,9 +95,8 @@ button.button.btnlogin{
   display: flex;
   flex-direction: column;
   gap: 10px;
-  flex-wrap: wrap; /* Permite que los mensajes de error se ajusten sin afectar el input */
+  flex-wrap: wrap;
 }
-
 
 .field input {
   padding: 10px;
@@ -122,10 +112,10 @@ button.button.btnlogin{
 }
 
 .error {
-  color: #ff6b6b; /* Color rojo para el mensaje de error */
+  color: #ff6b6b;
   font-size: 12px;
   margin-top: 5px;
-  width: 100%; /* Asegura que el mensaje ocupe todo el ancho del campo */
+  width: 100%;
 }
 
 .field input::placeholder {
@@ -137,7 +127,6 @@ button.button.btnlogin{
   border-color: rgba(255, 123, 0, 0.8);
   box-shadow: 0 0 10px rgba(255, 123, 0, 0.9);
 }
-
 
 .new-account {
   display: flex;
@@ -167,49 +156,43 @@ button.button.btnlogin{
   color: #007dc5;
 }
 
-
-
-/* Media Queries */
 @media (max-width: 768px) {
   .container-de-todo-login {
-    flex-direction: column; /* En pantallas pequeñas, el formulario y la imagen se apilan verticalmente */
+    flex-direction: column;
     align-items: center;
     padding: 0px 20px;
     height: 400px;
   }
 
   .containerImage {
-    width: 100%; /* La imagen ocupa todo el ancho */
-    height: 100px; /* Tamaño reducido para pantallas pequeñas */
-    margin-bottom: 20px; /* Espacio entre la imagen y el formulario */
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
     border-radius: 16px;
     margin-top: 100px;
   }
   .containerImage2 {
-    width: 100%; /* La imagen ocupa todo el ancho */
-    height: 100px; /* Tamaño reducido para pantallas pequeñas */
-    margin-bottom: 20px; /* Espacio entre la imagen y el formulario */
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
     border-radius: 16px;
     margin-top: 100px;
   }
 
   .containerLogin {
-    width: 100%; /* El formulario ocupa todo el ancho */
+    width: 100%;
     padding: 50px 30px;
     border-radius: 16px;
-flex: 0;
+    flex: 0;
   }
-  .field{
+  .field {
     height: auto !important;
   }
-  .formLogin{
-    height: 350px ;
+  .formLogin {
+    height: 350px;
     display: flex;
     justify-content: space-between;
   }
-
-
-
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

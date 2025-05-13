@@ -1,13 +1,12 @@
 .table {
   max-width: 100% !important;
   margin: 0 auto;
-  border-collapse: separate;  /* Cambiado */
-  border-spacing: 0;          /* Agregado */
+  border-collapse: separate;
+  border-spacing: 0;
   overflow: hidden;
-  border-radius: 16px;        /* Redondeo aplicado */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-
-
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
 
 .containerPatients {
   padding: 30px 20px;
@@ -16,7 +15,6 @@
   align-items: center;
   gap: 20px;
 }
-
 
 .containerFilterAppointment {
   display: flex;
@@ -27,7 +25,7 @@
   width: 100%;
   max-width: 500px;
 }
-.containerInputsAppointment2  {
+.containerInputsAppointment2 {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -37,7 +35,7 @@
   max-width: 500px;
 }
 
-.containerInputsAppointment2 p{
+.containerInputsAppointment2 p {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 5px;
@@ -71,11 +69,11 @@
   color: white;
 }
 
-.containerDropAppointment{
-margin-top: 15px;
+.containerDropAppointment {
+  margin-top: 15px;
 }
 
-.dropdrop{
+.dropdrop {
   display: flex;
   gap: 10px;
 }
@@ -97,25 +95,23 @@ margin-top: 15px;
   color: white;
 }
 
-.table th{
+.table th {
   padding: 12px;
   text-align: left;
   font-size: 14px;
   white-space: nowrap;
 }
 
-#dropdown-item-button.dropdown-toggle.btn.btn-primary{
-    background-color: white !important;
-    color: rgb(255, 115, 0);
+#dropdown-item-button.dropdown-toggle.btn.btn-primary {
+  background-color: white !important;
+  color: rgb(255, 115, 0);
 
-    border: none !important;
+  border: none !important;
 }
 
-button.swal2-confirm.btn.btn-success{
+button.swal2-confirm.btn.btn-success {
   margin-left: 15px !important;
 }
-
-
 
 .table tbody td::before {
   font-weight: bold;
@@ -126,12 +122,10 @@ button.swal2-confirm.btn.btn-success{
   white-space: nowrap;
 }
 
-
 .table tbody tr:nth-child(odd) {
   background-color: #f6f6f6;
 }
 
-/* Navegación */
 .containerOptionsNavigation {
   margin-top: 20px;
   display: flex;
@@ -188,7 +182,6 @@ button.swal2-confirm.btn.btn-success{
   color: #333;
 }
 
-/* Responsive */
 @media screen and (max-width: 768px) {
   .table {
     width: 100%;
@@ -207,16 +200,13 @@ button.swal2-confirm.btn.btn-success{
   }
 
   .table tbody tr {
-    display: flex;  
+    display: flex;
 
     width: 100%;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
     color: #333;
     background-color: #f5f3f3;
-
   }
-
-
 
   .buttonNavigationPage,
   .buttonsArrowsPage {

@@ -117,7 +117,6 @@ const AppointmentPage = () => {
         if (response.data.message) {
           const messageExtra = response.data.message;
 
-          // Verificar si hay un turno pendiente y mostrar la fecha y hora
           if (response.data.appointment) {
             const appointment = response.data.appointment;
             const messageWithAppointment = `${messageExtra} Tu turno pendiente es el ${appointment.date} a las ${appointment.hour}.`;
@@ -139,7 +138,7 @@ const AppointmentPage = () => {
 
         Swal.fire({
           title: "Turno reservado",
-  
+
           icon: "success",
         });
 
@@ -177,9 +176,7 @@ const AppointmentPage = () => {
 
   return (
     <div className="containerAppointment">
-      {/* MUESTRA LA FECHA Y HORARIOS SELECCIONADOS */}
       <div className="containerCalendarAndInfo">
-        {/* CONTENEDOR DEL CALENDARIO Y HORARIOS */}
         <div className="containerCalendar">
           <Calendar
             className="calendar"
@@ -189,7 +186,7 @@ const AppointmentPage = () => {
             tileClassName={({ date, view }) => {
               if (view === "month") {
                 if (isWeekend(date) || date < today) {
-                  return "disabled"; // Agrega la clase 'disabled' a los días deshabilitados
+                  return "disabled";
                 }
               }
             }}
@@ -201,10 +198,11 @@ const AppointmentPage = () => {
             <div className="containerHours">
               {[...horarios].map((horario, index) => (
                 <button
-                className={`hours ${hour === horario ? "selected" : ""} ${
-                  disponibility.some((item) => item.hour === horario) ? "disabled-hour" : ""
-                }`}
-                
+                  className={`hours ${hour === horario ? "selected" : ""} ${
+                    disponibility.some((item) => item.hour === horario)
+                      ? "disabled-hour"
+                      : ""
+                  }`}
                   key={index}
                   onClick={() => setHour(horario)}
                   disabled={
@@ -219,57 +217,71 @@ const AppointmentPage = () => {
         </div>
         {
           <div className="appointmentDetail">
-          <p className="appointmentDetail-title">DETALLES DEL TURNO</p>
-          <div className="containerDetail">
-            <p>
-              <b><span>Direccion:</span></b> Álvarez Condarco 1205
-            </p>
-            <p>
-              <b><span>Telefono:</span></b> 3816292005
-            </p>
-            <p>
-              <b><span>Email:</span></b> biomecanicatucuman@gmail.com
-            </p>
-        
-            {hasPendingAppointment ? (
-              <p className="turno-confirmado">
-                <b>Turno reservado:</b> {date?.toLocaleDateString()} a las {hour}
+            <p className="appointmentDetail-title">DETALLES DEL TURNO</p>
+            <div className="containerDetail">
+              <p>
+                <b>
+                  <span>Direccion:</span>
+                </b>{" "}
+                Álvarez Condarco 1205
               </p>
-            ) : (
-              <>
-                <p>
-                  <b><span>Fecha:</span></b> {date && date.toLocaleDateString()}
+              <p>
+                <b>
+                  <span>Telefono:</span>
+                </b>{" "}
+                3816292005
+              </p>
+              <p>
+                <b>
+                  <span>Email:</span>
+                </b>{" "}
+                biomecanicatucuman@gmail.com
+              </p>
+
+              {hasPendingAppointment ? (
+                <p className="turno-confirmado">
+                  <b>Turno reservado:</b> {date?.toLocaleDateString()} a las{" "}
+                  {hour}
                 </p>
-                <p>
-                  <b><span>Hora:</span></b> {date && hour}
-                </p>
-              </>
-            )}
+              ) : (
+                <>
+                  <p>
+                    <b>
+                      <span>Fecha:</span>
+                    </b>{" "}
+                    {date && date.toLocaleDateString()}
+                  </p>
+                  <p>
+                    <b>
+                      <span>Hora:</span>
+                    </b>{" "}
+                    {date && hour}
+                  </p>
+                </>
+              )}
+            </div>
+
+            <div className="containerButtonsCalendar">
+              {!hasPendingAppointment && (
+                <>
+                  <button
+                    className="button btnlogin firstbutton"
+                    onClick={cancelAppointment}
+                  >
+                    <span className="button-content">Cancelar</span>
+                  </button>
+                  <button
+                    className="button btnlogin"
+                    onClick={reserveAppointment}
+                  >
+                    <span className="button-content">Confirmar</span>
+                  </button>
+                </>
+              )}
+            </div>
           </div>
-        
-          <div className="containerButtonsCalendar">
-            {!hasPendingAppointment && (
-              <>
-                <button
-                  className="button btnlogin firstbutton"
-                  onClick={cancelAppointment}
-                >
-                  <span className="button-content">Cancelar</span>
-                </button>
-                <button
-                  className="button btnlogin"
-                  onClick={reserveAppointment}
-                >
-                  <span className="button-content">Confirmar</span>
-                </button>
-              </>
-            )}
-          </div>
-        </div>
-        
         }
       </div>
-      {/* CONTENEDOR BOTONES PARA RESERVAR O CANCELAR EL TURNO */}
     </div>
   );
 };

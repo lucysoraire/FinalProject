@@ -27,7 +27,6 @@ const NavBar = ({ setCurrentSelection }) => {
   const handleClick = () => setClicked(!clicked);
   const closeMobileMenu = () => setClicked(false);
 
-  // Esta función combina cerrar el menú y setear la selección
   const handleAdminClick = (section) => {
     setCurrentSelection(section);
     closeMobileMenu();
