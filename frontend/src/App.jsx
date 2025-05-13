@@ -9,11 +9,13 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import PatientInfo from "./pages/PatientInfo/PatientInfo";
-import "./App.css";
+import ScrollToHashElement from "./components/ScrollToHash";
+import "./App.css"
 
 function App() {
   return (
     <div className="app">
+          <ScrollToHashElement />
       <NavBar />
 
       <Routes>
