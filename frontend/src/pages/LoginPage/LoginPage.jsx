@@ -1,9 +1,8 @@
-import { useNavigate, Link } from 'react-router-dom';
-import './LoginPage.css';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import axios from 'axios';
-
+import { useNavigate, Link } from "react-router-dom";
+import "./LoginPage.css";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -22,41 +21,35 @@ const LoginPage = () => {
 
   const onSubmit = async (values, { setSubmitting }) => {
     try {
-      // Verifica si el email está vacío
       if (!values.email.trim()) {
         alert("El correo electrónico es obligatorio.");
         setSubmitting(false);
         return;
       }
-  
-      // Realiza la solicitud al backend
+
       const response = await axios.post(
         `http://localhost:3001/fisiosport/user/login`,
         values
       );
-  
-      // Extrae los datos de la respuesta del servidor
+
       const userData = response.data;
-  
-      // Si el servidor no devuelve un usuario válido, muestra un error
+
       if (!userData.email) {
         alert("Error al iniciar sesión. Usuario no válido.");
         setSubmitting(false);
         return;
       }
-  
-      // Guarda los datos relevantes en el localStorage
+
       const user = {
         email: userData.email,
         authenticated: true,
-        isAdmin: userData.isAdmin || false, // Asegúrate de que isAdmin venga del backend
+        isAdmin: userData.isAdmin || false,
       };
-  
+
       localStorage.setItem("user", JSON.stringify(user));
-  
-      // Recarga la página o redirige después de iniciar sesión
+
       setSubmitting(false);
-      window.location.href = "/";
+      window.location.href = "/info";
     } catch (error) {
       console.error("Error during login:", error);
       setSubmitting(false);
@@ -67,12 +60,8 @@ const LoginPage = () => {
   return (
     <>
       <div className="container-de-todo-login">
-        {/* Contenedor de la imagen */}
-        <div className="containerImage">
+        <div className="containerImage"></div>
 
-        </div>
-
-        {/* Contenedor del formulario */}
         <div className="containerLogin">
           <div className="containerFormLogin">
             <Formik
@@ -92,7 +81,11 @@ const LoginPage = () => {
                       placeholder="Email"
                       required
                     />
-                    <ErrorMessage name="email" component="div" className="error" />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="error"
+                    />
                   </div>
                   <div className="field-2">
                     <Field
@@ -101,13 +94,16 @@ const LoginPage = () => {
                       placeholder="Contraseña"
                       required
                     />
-                    <ErrorMessage name="password" component="div" className="error" />
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className="error"
+                    />
                   </div>
                 </div>
 
                 <button className="button btnlogin" type="submit">
-                  
-                  <span className='button-content'>Ingresar</span>
+                  <span className="button-content">Ingresar</span>
                 </button>
 
                 <div className="new-account">

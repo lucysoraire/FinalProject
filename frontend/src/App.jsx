@@ -13,13 +13,11 @@ import ScrollToHashElement from "./components/ScrollToHash";
 import "./App.css"
 
 function App() {
-
-
   return (
     <div className="app">
           <ScrollToHashElement />
       <NavBar />
-      {/* {location.pathname !== "/admin" && } */}
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contacto" element={<ContactPage />} />
@@ -31,7 +29,7 @@ function App() {
         <Route path="/info" element={<PatientInfo />} />
       </Routes>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }

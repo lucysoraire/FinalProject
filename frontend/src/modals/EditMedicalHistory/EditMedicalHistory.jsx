@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 const EditMedicalHistory = (props) => {
   const [patient, setPatient] = useState({
     diagnostic: "",
-    background: "", // <- AÑADIR ESTE CAMPO
+    background: "", 
     emergencyContact: "",
     medicationAllergies: "",
     currentMedications: "",
@@ -22,7 +22,7 @@ const EditMedicalHistory = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       if (props?.patient) {
-        setPatient({ // reset para evitar datos anteriores
+        setPatient({ 
           diagnostic: "",
           emergencyContact: "",
           medicationAllergies: "",
@@ -96,10 +96,10 @@ const EditMedicalHistory = (props) => {
           axios.post("http://localhost:3001/fisiosport/history/", {
             ...patient,
             id_patient: props.patient.id_patient,
-            background: patient.background || "", // esto asegura que se mande el campo aunque esté vacío
+            background: patient.background || "", 
           });
         } else if (
-          /* Read more about handling dismissals below */
+
           result.dismiss === Swal.DismissReason.cancel
         ) {
           swalWithBootstrapButtons.fire({

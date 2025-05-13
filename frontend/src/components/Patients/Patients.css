@@ -1,14 +1,10 @@
-
-
 .table {
   width: 100%;
   max-width: 1700px;
   margin: 0 auto;
   border-collapse: collapse;
-
 }
 
-/* Estilos aplicados SIEMPRE, en todas las resoluciones */
 .containerButtonsActions button {
   background: none;
   border: none;
@@ -36,7 +32,7 @@
 }
 
 .buttonViewMedicalHistory {
-  background-color: rgb(255, 115, 0); /* Un violeta suave */
+  background-color: rgb(255, 115, 0);
   color: white;
   font-size: 13px;
   padding: 6px 12px;
@@ -50,17 +46,16 @@
 
 .buttonNavigationPage {
   background-color: #ffffff;
-  color: rgb(255, 115, 0); /* Un violeta suave */
+  color: rgb(255, 115, 0);
 }
-
 
 .buttonNavigationPage:hover {
   background-color: rgb(255, 115, 0);
   color: white;
 }
 
-.buttonsArrowsPage{
-  background-color: rgb(255, 115, 0); /* Un violeta suave */
+.buttonsArrowsPage {
+  background-color: rgb(255, 115, 0);
 }
 
 .containerPatients {
@@ -108,7 +103,6 @@
   height: 40px;
 }
 
-
 .containerFilterPatients input:focus {
   background: rgba(255, 153, 0, 0.2);
   border-color: rgba(255, 123, 0, 0.8);
@@ -116,20 +110,20 @@
   color: white;
 }
 
-.buscar p{
+.buscar p {
   color: #ffffff;
 }
-.containerTablePatients{
+.containerTablePatients {
   height: 700px !important;
 }
-th{
+th {
   background-color: #333 !important;
   color: white !important ;
   border-color: black;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
-td{
+td {
   background-color: #444 !important;
   color: white !important ;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
@@ -152,13 +146,13 @@ td{
   }
 
   .table thead {
-    display:flex; /* ← Clave para mantener alineación */
+    display: flex;
     background-color: #a9d0d5;
     color: white;
-  }   
+  }
 
   .table tbody {
-    display: table-row-group; /* ← Esto repara problemas de layout */
+    display: table-row-group;
     background-color: transparent;
   }
 
@@ -168,10 +162,8 @@ td{
     padding: 12px 16px;
     text-align: left;
     border: 1px solid #ddd;
-    min-width: 200px; /* ← Da ancho mínimo para evitar celdas invisibles */
+    min-width: 200px;
   }
-
-
 
   .table tbody td {
     color: #444;

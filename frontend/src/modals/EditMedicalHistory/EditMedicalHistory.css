@@ -69,7 +69,7 @@
 .textarea-medical {
     padding: 10px;
     box-sizing: border-box;
-    resize: vertical; /* opcional, para que el usuario pueda agrandarlo */
+    resize: vertical; 
   }
   
 .containerMedicalHistory div textarea {

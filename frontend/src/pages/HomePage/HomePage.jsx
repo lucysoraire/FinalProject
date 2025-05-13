@@ -111,7 +111,7 @@ const HomePage = () => {
               2020, abrí mi propio consultorio en Parque Centenario, brindando
               atención personalizada de calidad.
             </p>
-            <Link to="/turno">
+            <Link to="/contacto">
               <button className="buttonn" id="contactar">
                 <span>Contactar</span>
               </button>

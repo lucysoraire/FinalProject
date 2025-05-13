@@ -1,4 +1,4 @@
-import './contactPage.css'; // Reutilizamos los estilos del login
+import './contactPage.css'; 
 import { useDispatch } from "react-redux";
 import { sendContactMessage } from "../../Redux/Actions/Actions.js";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
@@ -33,7 +33,7 @@ const ContactPage = () => {
 
   return (
     <div className="container-de-todo-login">
-      {/* Imagen con info de contacto */}
+
       <div className="containerImage3">
         <div className="contact-overlay">
             <div>
@@ -53,7 +53,7 @@ const ContactPage = () => {
         </div>
       </div>
 
-      {/* Formulario */}
+
       <div className="containerLogin-contact">
         <div className="containerFormLogin">
           <Formik
@@ -69,7 +69,7 @@ const ContactPage = () => {
 
               <div className="field-contact">
                 <div className="field-1">
-                  <Field type="text" name="name" placeholder="Nombre" />
+                  <Field type="text" name="name" placeholder="Nombre Completo" />
                   <ErrorMessage name="name" component="div" className="error" />
                 </div>
                 <div className="field-1">
