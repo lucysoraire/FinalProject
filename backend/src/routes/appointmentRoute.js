@@ -1,20 +1,20 @@
-const { Router } = require('express');
+const { Router } = require("express");
 const {
   getAllAppointments,
   getDisponibility,
   createAppointment,
   updateAppointment,
   deleteAppointment,
-  getAppointmentsByPatientHandler // <-- nuevo import
-} = require('../handlers/appointmentHandler');
+  getAppointmentsByPatientHandler,
+} = require("../handlers/appointmentHandler");
 
 const appointmentRouter = Router();
 
-appointmentRouter.get('/all', getAllAppointments); // TODOS LOS TURNOS
-appointmentRouter.get('/patient/:id_patient', getAppointmentsByPatientHandler); // 🔥 NUEVO: Turnos por paciente
-appointmentRouter.post('/disponibility', getDisponibility); // DISPONIBILIDAD DE HORARIOS
-appointmentRouter.post('/', createAppointment); // RESERVAR UN TURNO
-appointmentRouter.put('/:appointmentId', updateAppointment); // ACTUALIZAR UN TURNO
-appointmentRouter.delete('/:appointmentId', deleteAppointment); // ELIMINAR UN TURNO
+appointmentRouter.get("/all", getAllAppointments);
+appointmentRouter.get("/patient/:id_patient", getAppointmentsByPatientHandler);
+appointmentRouter.post("/disponibility", getDisponibility);
+appointmentRouter.post("/", createAppointment);
+appointmentRouter.put("/:appointmentId", updateAppointment);
+appointmentRouter.delete("/:appointmentId", deleteAppointment);
 
 module.exports = appointmentRouter;

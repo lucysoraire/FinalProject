@@ -12,10 +12,10 @@ const SideBar = ({ setCurrentSelection, setUserAuth }) => {
   const handleLogout = async () => {
     try {
       localStorage.removeItem("user");
-      localStorage.removeItem("authToken"); // Si usas un token adicional
-      setUserAuth({ authenticated: false, isAdmin: false }); // Actualiza el estado
-      setCurrentSelection(""); // Resetea la selección del menú
-      navigate("/"); // Redirige al inicio
+      localStorage.removeItem("authToken"); 
+      setUserAuth({ authenticated: false, isAdmin: false }); 
+      setCurrentSelection(""); 
+      navigate("/");
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
     }

@@ -19,9 +19,6 @@ import { IoMdCloseCircle } from "react-icons/io";
 import { IoIosSettings } from "react-icons/io";
 import Swal from "sweetalert2";
 
-
-
-
 const Appointments = () => {
   const dispatch = useDispatch();
 
@@ -29,10 +26,9 @@ const Appointments = () => {
   const [filterValues, setFilterValues] = useState({
     dni: "",
     email: "",
-    date: "", // aunque en el reducer todavía no manejás filtro por fecha
+    date: "",
   });
 
-  
   const [modalEditAppointmentShow, setModalEditAppointmentShow] =
     useState(false);
   const [modalDeleteShow, setDeleteShow] = useState(false);
@@ -82,8 +78,6 @@ const Appointments = () => {
         });
     }
   };
-
-  
 
   const columns = React.useMemo(
     () => [
@@ -155,17 +149,15 @@ const Appointments = () => {
     state: { pageIndex },
   } = useTable({ columns, data }, usePagination);
 
-
-  
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
-  
+
     const newFilterValues = {
       ...filterValues,
       [name]: value,
     };
     setFilterValues(newFilterValues);
-  
+
     dispatch(
       filterByDNIOrEmail({
         stateName: "appointments",
@@ -177,10 +169,9 @@ const Appointments = () => {
         },
       })
     );
-  
-    gotoPage(0); // Reinicia la paginación al filtrar
+
+    gotoPage(0);
   };
-  
 
   const [orderAppointment, setOrderAppointment] = useState({
     date: "",
@@ -244,10 +235,8 @@ const Appointments = () => {
 
   return (
     <div className="containerPatients">
-    
       <div className="containerFilterAppointment">
         <div className="containerInputsAppointment2">
-        
           <input
             type="text"
             name="dni"
@@ -320,12 +309,12 @@ const Appointments = () => {
                 <tr key={row.id} {...row.getRowProps()}>
                   {row.cells.map((cell) => (
                     <td
-                    key={cell.column.id}
-                    {...cell.getCellProps()}
-                    data-label={cell.column.Header} // 👈 este es el truco
-                  >
-                    {cell.render("Cell")}
-                  </td>
+                      key={cell.column.id}
+                      {...cell.getCellProps()}
+                      data-label={cell.column.Header}
+                    >
+                      {cell.render("Cell")}
+                    </td>
                   ))}
                 </tr>
               );

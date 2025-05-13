@@ -6,10 +6,48 @@ import {
   savePatientInfo,
   updatePatientInfo,
 } from "../../Redux/Actions/Actions";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string()
+    .matches(/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/, "Solo se permiten letras")
+    .min(2, "Mínimo 2 caracteres")
+    .max(30, "Máximo 30 caracteres")
+    .required("El nombre es obligatorio"),
+
+  lastname: Yup.string()
+    .matches(/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/, "Solo se permiten letras")
+    .min(2, "Mínimo 2 caracteres")
+    .max(30, "Máximo 30 caracteres")
+    .required("El apellido es obligatorio"),
+
+  age: Yup.number()
+    .typeError("Debe ser un número")
+    .min(0, "Edad mínima 0")
+    .max(120, "Edad máxima 120")
+    .required("La edad es obligatoria"),
+
+  phone: Yup.string()
+    .matches(/^[0-9]+$/, "Solo se permiten números")
+    .min(10, "Mínimo 10 dígitos")
+    .max(13, "Máximo 13 dígitos")
+    .required("El teléfono es obligatorio"),
+
+  dni: Yup.string()
+    .matches(/^[0-9]+$/, "Solo se permiten números")
+    .min(7, "Mínimo 7 dígitos")
+    .max(8, "Máximo 8 dígitos")
+    .required("El DNI es obligatorio"),
+
+  email: Yup.string()
+    .email("Correo inválido")
+    .required("El correo es obligatorio"),
+});
 
 const getPatientInfoFromLocalStorage = () => {
-  const user = JSON.parse(localStorage.getItem('user')); // usuario logueado
-  const allPatients = JSON.parse(localStorage.getItem('patients')) || {};
+  const user = JSON.parse(localStorage.getItem("user"));
+  const allPatients = JSON.parse(localStorage.getItem("patients")) || {};
 
   if (user?.email && allPatients[user.email]) {
     return allPatients[user.email];
@@ -17,7 +55,6 @@ const getPatientInfoFromLocalStorage = () => {
 
   return {};
 };
-
 
 const PatientInfo = () => {
   const dispatch = useDispatch();
@@ -85,28 +122,31 @@ const PatientInfo = () => {
     setEdit(false);
   };
 
-
   return (
     <div className="containerPatientInfo">
       <div className="textPatientInfo">
         <h2 className="titleInfo">INFORMACIÓN PERSONAL</h2>
         <div className="containerInfo">
-              <p className="textInfo">
-                Para reservar turnos, completa todos los campos con información
-                precisa y actualizada.
-              </p>
+          <p className="textInfo">
+            Para reservar turnos, completa todos los campos con información
+            precisa y actualizada dando click en "CARGAR INFORMACION".
+          </p>
 
-              <p className="textInfo">
-                Tus datos serán tratados de forma confidencial y solo se usarán
-                para brindarte un servicio personalizado, cumpliendo con las
-                normativas de seguridad.
-              </p>
+          <p className="textInfo">
+            Una vez que hayas cargado tu información debes dirigirte a la sección "TURNOS" y reservarlo.
+          </p>
 
-              <p className="textInfo">
-                Puedes actualizar tu información en cualquier momento desde la
-                sección "Información Personal". Si necesitas modificar algo, estamos aquí
-                para ayudarte.
-              </p>
+          <p className="textInfo">
+            Tus datos serán tratados de forma confidencial y solo se usarán para
+            brindarte un servicio personalizado, cumpliendo con las normativas
+            de seguridad.
+          </p>
+
+          <p className="textInfo">
+            Puedes actualizar tu información en cualquier momento desde la
+            sección "Información Personal". Si necesitas modificar algo, estamos
+            aquí para ayudarte.
+          </p>
         </div>
       </div>
 
@@ -142,83 +182,102 @@ const PatientInfo = () => {
                 </p>
               </div>
               <button className="button btnlogin" onClick={() => setEdit(true)}>
-                <span className='button-content'>Editar</span>
+                <span className="button-content">Cargar Informacion</span>
               </button>
-
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="formInfo">
-              <p className="datos-personales">DATOS PERSONALES</p>
-              <div className="labelsAndInputs">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData?.name}
-                  onChange={handleChange}
-                  placeholder="Nombre"
-                />
-              </div>
-              <div className="labelsAndInputs">
-                <input
-                  type="text"
-                  name="lastname"
-                  value={formData?.lastname}
-                  onChange={handleChange}
-                  placeholder="Apellido"
-                />
-              </div>
-              <div className="labelsAndInputs">
-                <input
-                  type="number"
-                  name="age"
-                  value={formData?.age}
-                  onChange={handleChange}
-                  placeholder="Edad"
-                />
-              </div>
-              <div className="labelsAndInputs">
-                <input
-                  type="text"
-                  name="phone"
-                  value={formData?.phone}
-                  onChange={handleChange}
-                  placeholder="Teléfono"
-                />
-              </div>
-              <div className="labelsAndInputs">
-                <input
-                  type="text"
-                  name="dni"
-                  value={formData?.dni}
-                  onChange={handleChange}
-                  placeholder="DNI"
-                />
-              </div>
-              <div className="labelsAndInputs">
-                <input
-                  type="email"
-                  name="email"
-                  value={formData?.email}
-                  readOnly={edit ? false : true} // Solo es 'readOnly' cuando no está en edición
-                  disabled={edit ? true : false} // Deshabilita el campo solo si está en edición
-                  className={edit ? "disabledInput" : ""}
-                  placeholder="Correo"
-                />
-              </div>
-              <div className="containerButtonSubmit">
-              <button className="button btnlogin firstbutton">
-                <span
-                  className="buttonEditOrCancel button-content"
-                  onClick={() => setEdit(false)}
-                >
-                  Cancelar
-                </span>
-                </button>
-              <button className="button btnlogin" type="submit">
-                <span className='button-content'>Guardar</span>
-              </button>
-              </div>
-            </form>
+            <Formik
+              initialValues={formData}
+              validationSchema={validationSchema}
+              onSubmit={(values) => {
+                setFormData(values);
+                handleSubmit({ preventDefault: () => {} });
+              }}
+            >
+              {() => (
+                <Form className="formInfo">
+                  <p className="datos-personales">DATOS PERSONALES</p>
+
+                  <div className="labelsAndInputs">
+                    <Field name="name" placeholder="Nombre Completo" />
+                    <ErrorMessage
+                      name="name"
+                      component="div"
+                      className="error"
+                    />
+                  </div>
+
+                  <div className="labelsAndInputs">
+                    <Field name="lastname" placeholder="Apellido" />
+                    <ErrorMessage
+                      name="lastname"
+                      component="div"
+                      className="error"
+                    />
+                  </div>
+
+                  <div className="labelsAndInputs">
+                    <Field name="age" type="number" placeholder="Edad" />
+                    <ErrorMessage
+                      name="age"
+                      component="div"
+                      className="error"
+                    />
+                  </div>
+
+                  <div className="labelsAndInputs">
+                    <Field
+                      name="phone"
+                      placeholder="Teléfono (381635xxxx)"
+                      inputMode="numeric"
+                    />
+                    <ErrorMessage
+                      name="phone"
+                      component="div"
+                      className="error"
+                    />
+                  </div>
+
+                  <div className="labelsAndInputs">
+                    <Field name="dni" placeholder="DNI" inputMode="numeric" />
+                    <ErrorMessage
+                      name="dni"
+                      component="div"
+                      className="error"
+                    />
+                  </div>
+
+                  <div className="labelsAndInputs">
+                    <Field
+                      name="email"
+                      type="email"
+                      placeholder="Correo"
+                      disabled
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="error"
+                    />
+                  </div>
+
+                  <div className="containerButtonSubmit">
+                    <button
+                      className="button btnlogin firstbutton"
+                      type="button"
+                      onClick={() => setEdit(false)}
+                    >
+                      <span className="buttonEditOrCancel button-content">
+                        Cancelar
+                      </span>
+                    </button>
+                    <button className="button btnlogin" type="submit">
+                      <span className="button-content">Guardar</span>
+                    </button>
+                  </div>
+                </Form>
+              )}
+            </Formik>
           )}
         </div>
       </div>

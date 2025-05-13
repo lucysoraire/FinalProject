@@ -45,7 +45,7 @@ const EditPatient = (props) => {
                 });
                 dispatch(updatePatientInfo(props.patient.id_patient, patient))
             } else if (
-                /* Read more about handling dismissals below */
+
                 result.dismiss === Swal.DismissReason.cancel
             ) {
                 swalWithBootstrapButtons.fire({
