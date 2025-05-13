@@ -14,24 +14,24 @@ const Footer = () => {
                         <div className="pages">
                             <ul>
                                 <h3>Explore</h3>
-                                <li><a href="#">Inicio</a></li>
-                                <li><a href="#">Contacto</a></li>
-                                <li><a href="#">Iniciar sesión</a></li>
+                                <li><Link to="/">Inicio</Link></li>
+                                <li><Link to="/contacto">Contacto</Link></li>
+                                <li><Link to="/login">Iniciar sesión</Link></li>
                             </ul>
 
                             <ul>
                                 <h3>Conozca</h3>
-                                <li><a href="#">Sobre nosotros</a></li>
-                                <li><a href="#">Reseñas</a></li>
-                                <li><a href="#">Ubicación</a></li>
+                                <li><a href="/#sobre-nosotros">Sobre nosotros</a></li>
+                                <li><a href="/#reviews">Reseñas</a></li>
+                                <li><a href="https://maps.app.goo.gl/57EqmCeeuiGBBt1x5" target="_blank">Ubicación</a></li>
                             </ul>
 
                          
                         </div>
                         <div className="social">
-                        <i className="fab fa-facebook"></i>
-                        <i className="fab fa-instagram"></i>
-                        <i className="fab fa-google"></i>
+                        <a href="https://www.facebook.com/fisiosport.tucuman/" target="_blank"><i className="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/biomecanicatucuman/" target="_blank"><i className="fab fa-instagram"></i></a>
+                        <a href="https://maps.app.goo.gl/Fir6N4nMJ8hdmAZm9" target="_blank"><i className="fab fa-google"></i></a>
                     </div>
                     </div>
                     

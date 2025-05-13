@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Logo from "./../../assets/logoblanco2.png";
-import { Navigate, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Navigate, NavLink, useLocation, useNavigate, Link } from "react-router-dom";
 import "./NavBar.css";
 import { MdOutlineDashboard } from "react-icons/md";
 
@@ -42,9 +42,9 @@ const NavBar = ({ setCurrentSelection }) => {
   return (
     <>
       <nav className={scrolling ? "scrolled" : ""}>
-        <a href="#">
-          <img src={Logo} alt="Logo" className="logo" />
-        </a>
+      <Link to="/">
+    <img src={Logo} alt="Logo" className="logo" />
+  </Link>
 
         <div className="itemsnavbar">
           <ul id="navbar" className={clicked ? "#navbar active" : "#navbar"}>
