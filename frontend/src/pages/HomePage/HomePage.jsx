@@ -95,7 +95,7 @@ const HomePage = () => {
           <img src={subsidio} />
         </div>
       </div>
-      <section className="about-us">
+      <section className="about-us"  id="sobre-nosotros">
         <div className="about-us-container">
           <div className="about-us-image">
             <img src={kinechris} alt="Kinesiologo Christian Nuñez Coso" />
@@ -119,7 +119,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <div className="reviews">
+      <div className="reviews" id="reviews">
         <ReactGoogleReviews
           className="reviews"
           layout="carousel"
