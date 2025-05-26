@@ -1,4 +1,4 @@
-const { createUser, searchUser } = require("../controllers/usersController");
+const { createUser, searchUser, findUserByEmail  } = require("../controllers/usersController");
 
 const loginUser = async (req, res) => {
   try {
@@ -20,7 +20,21 @@ const registerUser = async (req, res) => {
   }
 };
 
+
+const checkUserExists = async (req, res) => {
+  const { email } = req.query;
+  if (!email) return res.status(400).json({ error: "Email requerido" });
+
+  try {
+    const user = await findUserByEmail(email);
+    res.json({ exists: !!user });
+  } catch (error) {
+    res.status(500).json({ error: "Error al verificar el usuario" });
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
+  checkUserExists,
 };

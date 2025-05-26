@@ -23,47 +23,62 @@ const RegisterPage = () => {
   ];
 
   const validationSchema = Yup.object({
-    email: Yup.string()
-      .required("El correo electrónico es obligatorio")
-      .min(10, "El correo debe tener al menos 10 caracteres")
-      .test(
-        "domain-check",
-        "Solo se permiten correos de Gmail, Hotmail u Outlook",
-        (value) => {
-          if (!value) return false;
-          const email = value.toLowerCase();
-          const domain = email.split("@")[1];
-          return allowedDomains.includes(domain);
-        }
-      )
-      .email("Correo electrónico no válido"),
+ email: Yup.string()
+  .required("El correo electrónico es obligatorio")
+  .min(10, "El correo debe tener al menos 10 caracteres")
+  .email("Correo electrónico no válido")
+  .test(
+    "domain-check",
+    "Solo se permiten correos de Gmail, Hotmail u Outlook",
+    (value) => {
+      if (!value) return false;
+      const domain = value.toLowerCase().split("@")[1];
+      return allowedDomains.includes(domain);
+    }
+  )
+  .test(
+    "unique-email",
+    "El correo ya está registrado",
+    async (value) => {
+      if (!value) return false;
+      try {
+        const res = await axios.get(
+          `http://localhost:3001/fisiosport/user/exists?email=${value}`
+        );
+        return !res.data.exists;
+      } catch (err) {
+        console.error("Error validando email:", err);
+        return false; // en caso de error, prevenir el registro
+      }
+    }
+  ),
 
-    password: Yup.string()
-      .required("La contraseña es obligatoria")
-      .min(8, "La contraseña debe tener al menos 8 caracteres")
-      .test(
-        "no-common-password",
-        "La contraseña es demasiado simple",
-        (value) => {
-          if (!value) return false;
-          const lower = value.toLowerCase();
-          return !forbiddenPasswords.includes(lower);
-        }
-      ),
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values, { setFieldError, setSubmitting }) => {
     try {
-      console.log("hola");
+      // Verificar si el email ya existe
+      const check = await axios.get(
+        `http://localhost:3001/fisiosport/user/exists?email=${values.email}`
+      );
 
+      if (check.data.exists) {
+        setFieldError("email", "Ya existe una cuenta con este correo");
+        setSubmitting(false);
+        return;
+      }
+
+      // Si no existe, registramos normalmente
       const response = await axios.post(
         "http://localhost:3001/fisiosport/user/register",
         values
       );
-      console.log(response.data);
+
+      console.log("Usuario registrado:", response.data);
       navigate("/login");
     } catch (error) {
       console.error("Error al registrar al usuario:", error);
+      setSubmitting(false);
     }
   };
 
@@ -89,7 +104,7 @@ const RegisterPage = () => {
                     <ErrorMessage
                       name="email"
                       component="div"
-                      className="error-message"
+                      className="error"
                     />
                   </div>
                   <div className="field-2">
@@ -101,7 +116,7 @@ const RegisterPage = () => {
                     <ErrorMessage
                       name="password"
                       component="div"
-                      className="error-message"
+                      className="error"
                     />
                   </div>
                 </div>
