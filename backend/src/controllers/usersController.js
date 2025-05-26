@@ -1,6 +1,7 @@
 const { User } = require("../../db");
 const { encrypt, verify } = require("../utils/passwordEncrypt");
 
+
 const createUser = async (user) => {
   const userFound = await User.findOne({ where: { email: user.email } });
 
@@ -31,7 +32,14 @@ const searchUser = async (email, password) => {
   };
 };
 
+const findUserByEmail = async (email) => {
+  return await User.findOne({ where: { email } });
+};
+
+
+
 module.exports = {
   createUser,
   searchUser,
+  findUserByEmail, // ✅ agregalo acá
 };
