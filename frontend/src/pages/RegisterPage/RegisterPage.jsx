@@ -22,38 +22,49 @@ const RegisterPage = () => {
     "contraseña",
   ];
 
-  const validationSchema = Yup.object({
- email: Yup.string()
-  .required("El correo electrónico es obligatorio")
-  .min(10, "El correo debe tener al menos 10 caracteres")
-  .email("Correo electrónico no válido")
-  .test(
-    "domain-check",
-    "Solo se permiten correos de Gmail, Hotmail u Outlook",
-    (value) => {
-      if (!value) return false;
-      const domain = value.toLowerCase().split("@")[1];
-      return allowedDomains.includes(domain);
-    }
-  )
-  .test(
-    "unique-email",
-    "El correo ya está registrado",
-    async (value) => {
-      if (!value) return false;
-      try {
-        const res = await axios.get(
-          `http://localhost:3001/fisiosport/user/exists?email=${value}`
-        );
-        return !res.data.exists;
-      } catch (err) {
-        console.error("Error validando email:", err);
-        return false; // en caso de error, prevenir el registro
+ const validationSchema = Yup.object({
+  email: Yup.string()
+    .required("El correo electrónico es obligatorio")
+    .min(10, "El correo debe tener al menos 10 caracteres")
+    .email("Correo electrónico no válido")
+    .test(
+      "domain-check",
+      "Solo se permiten correos de Gmail, Hotmail u Outlook",
+      (value) => {
+        if (!value) return false;
+        const domain = value.toLowerCase().split("@")[1];
+        return allowedDomains.includes(domain);
       }
-    }
-  ),
+    )
+    .test(
+      "unique-email",
+      "El correo ya está registrado",
+      async (value) => {
+        if (!value) return false;
+        try {
+          const res = await axios.get(
+            `http://localhost:3001/fisiosport/user/exists?email=${value}`
+          );
+          return !res.data.exists;
+        } catch (err) {
+          console.error("Error validando email:", err);
+          return false;
+        }
+      }
+    ),
 
-  });
+  password: Yup.string()
+    .required("La contraseña es obligatoria")
+    .min(8, "La contraseña debe tener al menos 8 caracteres")
+    .test(
+      "not-forbidden",
+      "La contraseña es demasiado común o insegura",
+      (value) => !forbiddenPasswords.includes(value?.toLowerCase())
+    )
+    .matches(/[a-zA-Z]/, "La contraseña debe contener letras")
+    .matches(/[0-9]/, "La contraseña debe contener números"),
+});
+
 
   const onSubmit = async (values, { setFieldError, setSubmitting }) => {
     try {
