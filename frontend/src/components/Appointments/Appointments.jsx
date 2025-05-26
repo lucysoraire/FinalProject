@@ -35,49 +35,60 @@ const Appointments = () => {
 
   const [selectedAppointment, setSelectedAppointment] = useState(null);
 
-  const handleEditClick = (appointment, column) => {
-    console.log(appointment);
-    setSelectedAppointment(appointment);
-    if (column === "editAppointment") setModalEditAppointmentShow(true);
-    if (column === "deleteAppointment") {
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger",
-        },
-        buttonsStyling: false,
-      });
-      swalWithBootstrapButtons
-        .fire({
-          title: "¿Estas seguro?",
-          text: "Esta acción no se puede deshacer!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonText: "Eliminar",
-          cancelButtonText: "Cancelar",
-          reverseButtons: true,
-        })
-        .then((result) => {
-          if (result.isConfirmed) {
-            swalWithBootstrapButtons.fire({
+const handleEditClick = (appointment, column) => {
+  console.log(appointment);
+  setSelectedAppointment(appointment);
+
+  if (column === "editAppointment") {
+    setModalEditAppointmentShow(true);
+  }
+
+  if (column === "deleteAppointment") {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "¿Estas seguro?",
+        text: "Esta acción no se puede deshacer!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Eliminar",
+        cancelButtonText: "Cancelar",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          // Confirmado: mostrar mensaje y recargar luego
+          swalWithBootstrapButtons
+            .fire({
               title: "Eliminado!",
               text: "El turno fue eliminado.",
               icon: "success",
+            })
+            .then(() => {
+              dispatch(deleteAppointment(appointment.id_appointment));
+              window.location.reload();
             });
-            dispatch(deleteAppointment(appointment.id_appointment));
-          } else if (
-            /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.cancel
-          ) {
-            swalWithBootstrapButtons.fire({
-              title: "Cancelado",
-              text: "El turno no se eliminó.",
-              icon: "error",
-            });
-          }
-        });
-    }
-  };
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          // Cancelado explícitamente: mostrar mensaje
+          swalWithBootstrapButtons.fire({
+            title: "Cancelado",
+            text: "El turno no se eliminó.",
+            icon: "error",
+          });
+        }
+        // Cierre con la "X" u otro motivo: no hacer nada
+      });
+  }
+};
+
+
 
   const columns = React.useMemo(
     () => [
@@ -109,6 +120,7 @@ const Appointments = () => {
         Header: "Hora",
         accessor: "hour",
       },
+      
       {
         Header: "Acciones",
         accesor: "actions",
@@ -130,6 +142,7 @@ const Appointments = () => {
     ],
     []
   );
+
 
   const data = React.useMemo(() => appointments, [appointments]);
 
