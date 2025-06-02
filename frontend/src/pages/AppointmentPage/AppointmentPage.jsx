@@ -47,10 +47,11 @@ const AppointmentPage = () => {
     );
   };
 
-  const isHourFullyBooked = (hour) => {
-    return disponibility.some((item) => item.hour === hour && item.count >= 4);
-  };
-
+const isHourFullyBooked = (hour) => {
+  return disponibility.some(
+    (item) => item.hour === hour && Number(item.count) >= 4
+  );
+};
   const horarios = [];
   for (let i = 14; i <= 17; i++) {
     horarios.push(`${i}:30`);
