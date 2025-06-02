@@ -18,7 +18,7 @@ const sendMessageController = async (user) => {
     from: "<practiceapplications0@gmail.com>",
     to: process.env.email,
     replyTo: user.email,
-    subject: "Kinesiología - Nueva Consulta",
+    subject: "Kinesiología - Nueva consulta",
     html: `
         <html>
         <body>

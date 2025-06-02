@@ -88,24 +88,19 @@ const PatientInfo = () => {
     }
   }, [patientInfo]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (values) => {
     try {
       const response = await axios.post(
         "http://localhost:3001/fisiosport/patient",
-        formData
+        values
       );
       dispatch(savePatientInfo(response.data));
 
       const allPatients = JSON.parse(localStorage.getItem("patients")) || {};
-      allPatients[formData.email] = response.data;
+      allPatients[values.email] = response.data;
       localStorage.setItem("patients", JSON.stringify(allPatients));
 
+      setFormData(response.data);
       setEdit(false);
     } catch (error) {
       console.error("Error al guardar los datos:", error);
@@ -182,16 +177,16 @@ const PatientInfo = () => {
                 </p>
               </div>
               <button className="button btnlogin" onClick={() => setEdit(true)}>
-                <span className="button-content">Cargar Informacion</span>
+                <span className="button-content">Cargar informacion</span>
               </button>
             </div>
           ) : (
             <Formik
               initialValues={formData}
+              enableReinitialize={true}
               validationSchema={validationSchema}
-              onSubmit={(values) => {
-                setFormData(values);
-                handleSubmit({ preventDefault: () => {} });
+              onSubmit={(values, { setSubmitting }) => {
+                handleSubmit(values).finally(() => setSubmitting(false));
               }}
             >
               {() => (
@@ -199,7 +194,7 @@ const PatientInfo = () => {
                   <p className="datos-personales">DATOS PERSONALES</p>
 
                   <div className="labelsAndInputs">
-                    <Field name="name" placeholder="Nombre Completo" />
+                    <Field name="name" placeholder="Nombre completo" />
                     <ErrorMessage
                       name="name"
                       component="div"

@@ -69,7 +69,7 @@ const ContactPage = () => {
 
               <div className="field-contact">
                 <div className="field-1">
-                  <Field type="text" name="name" placeholder="Nombre Completo" />
+                  <Field type="text" name="name" placeholder="Nombre completo" />
                   <ErrorMessage name="name" component="div" className="error" />
                 </div>
                 <div className="field-1">

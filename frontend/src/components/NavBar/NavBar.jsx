@@ -74,7 +74,7 @@ const NavBar = ({ setCurrentSelection }) => {
             {userAuth.authenticated && !userAuth.isAdmin && (
               <li className="itemnavbar" onClick={closeMobileMenu}>
                 <NavLink to="/info">
-                  <i className="fa-solid fa-circle-info"></i> Información Personal
+                  <i className="fa-solid fa-circle-info"></i> Datos personales
                 </NavLink>
               </li>
             )}

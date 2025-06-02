@@ -41,5 +41,5 @@ const findUserByEmail = async (email) => {
 module.exports = {
   createUser,
   searchUser,
-  findUserByEmail, // ✅ agregalo acá
-};
+  findUserByEmail,
+}

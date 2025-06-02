@@ -1,16 +1,18 @@
-const { Router } = require('express')
-const userRouter = require('./usersRoute')
-const patientRouter = require('./patientRoute')
-const medicalHistoryRouter = require('./medicalHistoryRoute')
-const appointmentRouter = require('./appointmentRoute')
-const contactRouter = require('./contactRoute')
+const { Router } = require('express');
 
-const router = Router()
+const userRouter = require('./usersRoute'); // el archivo correcto: usersRoute.js
+const patientRouter = require('./patientRoute');
+const medicalHistoryRouter = require('./medicalHistoryRoute');
+const appointmentRouter = require('./appointmentRoute');
+const contactRouter = require('./contactRoute');
 
-router.use('/user', userRouter) 
-router.use('/patient', patientRouter)
-router.use('/history', medicalHistoryRouter)
-router.use('/appointment', appointmentRouter)
-router.use('/contact', contactRouter)
+const router = Router();
 
-module.exports = router
+// Aquí definís el prefijo para cada router
+router.use('/user', userRouter);         // queda '/fisiosport/user'
+router.use('/patient', patientRouter);
+router.use('/history', medicalHistoryRouter);
+router.use('/appointment', appointmentRouter);
+router.use('/contact', contactRouter);
+
+module.exports = router;

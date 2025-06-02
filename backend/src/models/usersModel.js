@@ -13,5 +13,13 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    reset_token: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    reset_token_expiration: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
   });
 };

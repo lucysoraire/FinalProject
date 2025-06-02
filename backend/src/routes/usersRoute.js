@@ -1,10 +1,19 @@
-const { Router } = require('express')
-const { registerUser, loginUser, checkUserExists  } = require('../handlers/usersHandler')
+const { Router } = require('express');
 
-const userRouter = Router()
+const {
+  registerUser,
+  loginUser,
+  checkUserExists,
+} = require('../handlers/usersHandler');
+const { forgotPassword, resetPassword } = require('../controllers/authController');
 
-userRouter.post('/register', registerUser)
-userRouter.post('/login', loginUser)
-userRouter.get("/exists", checkUserExists);
+const userRouter = Router();
 
-module.exports = userRouter
+userRouter.post('/register', registerUser);
+userRouter.post('/login', loginUser);
+userRouter.get('/exists', checkUserExists);
+
+userRouter.post('/forgot-password', forgotPassword);
+userRouter.post('/reset-password/:token', resetPassword);
+
+module.exports = userRouter;

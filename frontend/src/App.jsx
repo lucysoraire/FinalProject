@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -10,12 +10,15 @@ import Footer from "./components/Footer/Footer";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import PatientInfo from "./pages/PatientInfo/PatientInfo";
 import ScrollToHashElement from "./components/ScrollToHash";
-import "./App.css"
+import ForgotPasswordPage from "./pages/LoginPage/ForgotPassword"; 
+import ResetPasswordPage from "./pages/LoginPage/ResetPassword";
+
+import "./App.css";
 
 function App() {
   return (
     <div className="app">
-          <ScrollToHashElement />
+      <ScrollToHashElement />
       <NavBar />
 
       <Routes>
@@ -27,6 +30,8 @@ function App() {
         <Route path="/turno" element={<AppointmentPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/info" element={<PatientInfo />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
       </Routes>
 
       <Footer />

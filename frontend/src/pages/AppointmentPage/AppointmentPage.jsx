@@ -99,7 +99,7 @@ const AppointmentPage = () => {
       !completePatientInfo.name ||
       !completePatientInfo.phone
     ) {
-      Swal.fire("Tienes que ingresar tu información personal completa!");
+      Swal.fire("Antes de solicitar un turno completa tus datos personales.");
       return;
     }
 

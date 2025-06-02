@@ -35,7 +35,7 @@ const LoginPage = () => {
       const userData = response.data;
 
       if (!userData.email) {
-        alert("Error al iniciar sesión. Usuario no válido.");
+        alert("Error al iniciar sesión.");
         setSubmitting(false);
         return;
       }
@@ -99,11 +99,15 @@ const LoginPage = () => {
                       component="div"
                       className="error"
                     />
+                    <div className="forgot-password">
+                      <Link to="/forgot-password">¿Olvidaste tu contraseña?</Link>
+                    </div>
                   </div>
                 </div>
 
                 <button className="button btnlogin" type="submit">
                   <span className="button-content">Ingresar</span>
+
                 </button>
 
                 <div className="new-account">
