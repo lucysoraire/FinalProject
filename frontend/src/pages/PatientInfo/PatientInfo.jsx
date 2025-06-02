@@ -223,7 +223,7 @@ const PatientInfo = () => {
                   <div className="labelsAndInputs">
                     <Field
                       name="phone"
-                      placeholder="Teléfono (381635xxxx)"
+                      placeholder="Teléfono (381xxxxxx)"
                       inputMode="numeric"
                     />
                     <ErrorMessage

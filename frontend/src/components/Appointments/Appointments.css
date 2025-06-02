@@ -25,6 +25,10 @@
   width: 100%;
   max-width: 500px;
 }
+
+.button.unvailable{
+  margin: 0px !important;
+}
 .containerInputsAppointment2 {
   display: flex;
   flex-direction: row;
@@ -100,6 +104,10 @@
   text-align: left;
   font-size: 14px;
   white-space: nowrap;
+}
+.button.config{
+  margin: 0px !important;
+
 }
 
 #dropdown-item-button.dropdown-toggle.btn.btn-primary {

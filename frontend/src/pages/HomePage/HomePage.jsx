@@ -112,9 +112,11 @@ const HomePage = () => {
               atención personalizada de calidad.
             </p>
             <Link to="/contacto">
-              <button className="buttonn" id="contactar">
-                <span>Contactar</span>
-              </button>
+                            <button
+                  className="button btnlogin firstbutton"
+                >
+                  <span className="button-content">Contactar</span>
+                </button>
             </Link>
           </div>
         </div>

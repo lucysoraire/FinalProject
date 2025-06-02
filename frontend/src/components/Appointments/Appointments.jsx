@@ -1,5 +1,6 @@
 import "./Appointments.css";
 import React, { useState } from "react";
+import DisableAvailabilityModal from "./DisableAvailabilityModal";
 import { useTable, usePagination } from "react-table";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -28,65 +29,65 @@ const Appointments = () => {
     email: "",
     date: "",
   });
-
+  const [modalDisableDaysShow, setModalDisableDaysShow] = useState(false);
   const [modalEditAppointmentShow, setModalEditAppointmentShow] =
     useState(false);
   const [modalDeleteShow, setDeleteShow] = useState(false);
 
   const [selectedAppointment, setSelectedAppointment] = useState(null);
 
-const handleEditClick = (appointment, column) => {
-  console.log(appointment);
-  setSelectedAppointment(appointment);
+  const handleEditClick = (appointment, column) => {
+    console.log(appointment);
+    setSelectedAppointment(appointment);
 
-  if (column === "editAppointment") {
-    setModalEditAppointmentShow(true);
-  }
+    if (column === "editAppointment") {
+      setModalEditAppointmentShow(true);
+    }
 
-  if (column === "deleteAppointment") {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger",
-      },
-      buttonsStyling: false,
-    });
-
-    swalWithBootstrapButtons
-      .fire({
-        title: "¿Estas seguro?",
-        text: "Esta acción no se puede deshacer!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Eliminar",
-        cancelButtonText: "Cancelar",
-        reverseButtons: true,
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          // Confirmado: mostrar mensaje y recargar luego
-          swalWithBootstrapButtons
-            .fire({
-              title: "Eliminado!",
-              text: "El turno fue eliminado.",
-              icon: "success",
-            })
-            .then(() => {
-              dispatch(deleteAppointment(appointment.id_appointment));
-              window.location.reload();
-            });
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          // Cancelado explícitamente: mostrar mensaje
-          swalWithBootstrapButtons.fire({
-            title: "Cancelado",
-            text: "El turno no se eliminó.",
-            icon: "error",
-          });
-        }
-        // Cierre con la "X" u otro motivo: no hacer nada
+    if (column === "deleteAppointment") {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger",
+        },
+        buttonsStyling: false,
       });
-  }
-};
+
+      swalWithBootstrapButtons
+        .fire({
+          title: "¿Estas seguro?",
+          text: "Esta acción no se puede deshacer!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Eliminar",
+          cancelButtonText: "Cancelar",
+          reverseButtons: true,
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            // Confirmado: mostrar mensaje y recargar luego
+            swalWithBootstrapButtons
+              .fire({
+                title: "Eliminado!",
+                text: "El turno fue eliminado.",
+                icon: "success",
+              })
+              .then(() => {
+                dispatch(deleteAppointment(appointment.id_appointment));
+                window.location.reload();
+              });
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            // Cancelado explícitamente: mostrar mensaje
+            swalWithBootstrapButtons.fire({
+              title: "Cancelado",
+              text: "El turno no se eliminó.",
+              icon: "error",
+            });
+          }
+          // Cierre con la "X" u otro motivo: no hacer nada
+        });
+    }
+  };
 
 
 
@@ -120,7 +121,7 @@ const handleEditClick = (appointment, column) => {
         Header: "Hora",
         accessor: "hour",
       },
-      
+
       {
         Header: "Acciones",
         accesor: "actions",
@@ -248,6 +249,11 @@ const handleEditClick = (appointment, column) => {
 
   return (
     <div className="containerPatients">
+
+
+      <button className="button config" onClick={() => setModalDisableDaysShow(true)}>
+        <span className="button-content"> Configurar días/horarios no disponibles</span>
+      </button>
       <div className="containerFilterAppointment">
         <div className="containerInputsAppointment2">
           <input
@@ -380,7 +386,14 @@ const handleEditClick = (appointment, column) => {
         onHide={() => setModalEditAppointmentShow(false)}
         appointment={selectedAppointment}
       />
+
+
+      <DisableAvailabilityModal
+        show={modalDisableDaysShow}
+        onHide={() => setModalDisableDaysShow(false)}
+      />
     </div>
+
   );
 };
 
